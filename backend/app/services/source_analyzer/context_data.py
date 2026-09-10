@@ -1,0 +1,168 @@
+"""
+Maritime contextual intelligence database for Module 18 — Probable Spill Source Analyzer.
+Provides spatial definitions of international shipping lanes, anchorages, coastal ports,
+and historical discharge hotspots in Indian and adjacent coastal waters.
+"""
+from typing import Any
+
+# Major Shipping Routes / Sea Lines of Communication (SLOC)
+SHIPPING_LANES: list[dict[str, Any]] = [
+    {
+        "id": "SLOC_BAY_OF_BENGAL_TRUNK",
+        "name": "Bay of Bengal Main Tanker Corridor",
+        "corridor_type": "MAJOR_INTERNATIONAL_FAIRWAY",
+        "description": "High-density crude carrier and bulk vessel transit route between Malacca Strait, Sri Lanka, and East Coast Indian ports.",
+        "start_coords": [80.30, 12.80],
+        "end_coords": [82.50, 14.50],
+        "traffic_density_vessels_per_day": 85,
+        "primary_cargo": "Crude Oil, Chemical Products, Bulk Minerals",
+    },
+    {
+        "id": "SLOC_CHENNAI_PORT_BLAIR",
+        "name": "Chennai – Port Blair Deepwater Channel",
+        "corridor_type": "REGIONAL_STRATEGIC_ROUTE",
+        "description": "Commercial freight and coastal transport corridor connecting Chennai Port to Andaman & Nicobar hub.",
+        "start_coords": [80.35, 13.10],
+        "end_coords": [85.00, 12.50],
+        "traffic_density_vessels_per_day": 40,
+        "primary_cargo": "Refined Petroleum, Containerized Cargo",
+    },
+    {
+        "id": "SLOC_ARABIAN_SEA_GULF_TRANSIT",
+        "name": "West Coast Arabian Sea Tanker Highway",
+        "corridor_type": "MAJOR_INTERNATIONAL_FAIRWAY",
+        "description": "Primary Middle East oil import fairway transiting south of Gujarat towards Mumbai and Kochi refineries.",
+        "start_coords": [71.50, 18.50],
+        "end_coords": [72.80, 19.20],
+        "traffic_density_vessels_per_day": 120,
+        "primary_cargo": "VLCC Heavy Crude, LNG, Bunkering Fuel",
+    },
+    {
+        "id": "SLOC_PALK_STRAIT_APPROACH",
+        "name": "Palk Strait & Gulf of Mannar Coastal Fairway",
+        "corridor_type": "COASTAL_COMMERCIAL_ROUTE",
+        "description": "Shallow-draft feeder vessel corridor navigating between Sri Lanka and Tuticorin VOC Port.",
+        "start_coords": [78.20, 8.70],
+        "end_coords": [79.40, 9.30],
+        "traffic_density_vessels_per_day": 35,
+        "primary_cargo": "Bunkering, Coastal Fertilizers, Light Diesel",
+    },
+    {
+        "id": "SLOC_PARADIP_VISAKHAPATNAM",
+        "name": "North Coromandel Deep Sea Route",
+        "corridor_type": "INTER_PORT_TRANSIT",
+        "description": "Industrial vessel fairway servicing Visakhapatnam and Paradip refinery offloading SPM buoys.",
+        "start_coords": [83.30, 17.65],
+        "end_coords": [86.70, 20.25],
+        "traffic_density_vessels_per_day": 55,
+        "primary_cargo": "Heavy Fuel Oil, Bitumen, Iron Ore",
+    },
+]
+
+# Major Coastal Ports & Offshore Anchorage Zones
+PORT_ANCHORAGES: list[dict[str, Any]] = [
+    {
+        "id": "PORT_CHENNAI_ANCHORAGE",
+        "name": "Chennai Port Outer Roadstead Anchorage",
+        "port_name": "Chennai Port Trust",
+        "latitude": 13.0850,
+        "longitude": 80.3200,
+        "radius_km": 7.5,
+        "type": "OFFSHORE_ANCHORAGE",
+        "bunkering_activity": "HIGH",
+    },
+    {
+        "id": "PORT_ENNORE_KAMARAJAR",
+        "name": "Kamarajar Port Ennore Coal & Chemical Terminal",
+        "port_name": "Kamarajar Port",
+        "latitude": 13.2600,
+        "longitude": 80.3550,
+        "radius_km": 6.0,
+        "type": "PORT_APPROACH",
+        "bunkering_activity": "MEDIUM",
+    },
+    {
+        "id": "PORT_MUMBAI_JNPT",
+        "name": "JNPT & Mumbai Harbor Outer Anchorage",
+        "port_name": "Jawaharlal Nehru Port Trust",
+        "latitude": 18.9200,
+        "longitude": 72.8200,
+        "radius_km": 10.0,
+        "type": "OFFSHORE_ANCHORAGE",
+        "bunkering_activity": "VERY_HIGH",
+    },
+    {
+        "id": "PORT_TUTICORIN_VOC",
+        "name": "V.O. Chidambaranar Port Approaches",
+        "port_name": "VOC Port Tuticorin",
+        "latitude": 8.7500,
+        "longitude": 78.1800,
+        "radius_km": 6.5,
+        "type": "PORT_APPROACH",
+        "bunkering_activity": "MEDIUM",
+    },
+    {
+        "id": "PORT_VISAKHAPATNAM_SPM",
+        "name": "Visakhapatnam Single Point Mooring (SPM) Zone",
+        "port_name": "Visakhapatnam Port",
+        "latitude": 17.6700,
+        "longitude": 83.3300,
+        "radius_km": 8.0,
+        "type": "OFFSHORE_ANCHORAGE",
+        "bunkering_activity": "HIGH",
+    },
+]
+
+# Contextual Vessels for AIS Trajectory Matching
+CONTEXT_VESSEL_DATABASE: list[dict[str, Any]] = [
+    {
+        "mmsi": "419001234",
+        "name": "MT Ocean Pioneer",
+        "vessel_type": "Crude Oil Tanker",
+        "flag": "Panama (PA)",
+        "dwt": 115000,
+        "typical_speed_knots": 12.4,
+        "base_lat": 13.0450,
+        "base_lon": 80.3600,
+    },
+    {
+        "mmsi": "419005678",
+        "name": "MV Eastern Trader",
+        "vessel_type": "Bulk Carrier / Container",
+        "flag": "Liberia (LR)",
+        "dwt": 64000,
+        "typical_speed_knots": 13.8,
+        "base_lat": 13.1200,
+        "base_lon": 80.4100,
+    },
+    {
+        "mmsi": "419009876",
+        "name": "MT Coastal Mariner",
+        "vessel_type": "Chemical / Oil Products Tanker",
+        "flag": "India (IN)",
+        "dwt": 48000,
+        "typical_speed_knots": 11.2,
+        "base_lat": 13.2100,
+        "base_lon": 80.3800,
+    },
+    {
+        "mmsi": "419004321",
+        "name": "MV Global Horizon",
+        "vessel_type": "General Cargo Vessel",
+        "flag": "Singapore (SG)",
+        "dwt": 32000,
+        "typical_speed_knots": 14.1,
+        "base_lat": 18.9100,
+        "base_lon": 72.8400,
+    },
+    {
+        "mmsi": "419007788",
+        "name": "MT Southern Star",
+        "vessel_type": "VLCC Crude Carrier",
+        "flag": "Marshall Islands (MH)",
+        "dwt": 318000,
+        "typical_speed_knots": 13.0,
+        "base_lat": 8.7200,
+        "base_lon": 78.2200,
+    },
+]

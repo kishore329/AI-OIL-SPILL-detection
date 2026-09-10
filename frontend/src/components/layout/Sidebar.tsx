@@ -1,0 +1,158 @@
+import { NavLink, useLocation } from "react-router-dom";
+import {
+  LayoutDashboard,
+  AlertTriangle,
+  ScanSearch,
+  ListOrdered,
+  Map,
+  BarChart3,
+  Waves,
+  Boxes,
+  FileText,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  BellRing,
+  Bot,
+} from "lucide-react";
+import { useState } from "react";
+
+interface NavItem {
+  id: string;
+  label: string;
+  path: string;
+  Icon: React.ElementType;
+  badge?: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { id: "dashboard",   label: "Dashboard",      path: "/",          Icon: LayoutDashboard },
+  { id: "assistant",   label: "AI Assistant",   path: "/assistant", Icon: Bot,            badge: "M24" },
+  { id: "incidents",   label: "Incidents",      path: "/incidents", Icon: AlertTriangle,  badge: "Live" },
+  { id: "alerts",      label: "Smart Alerts",   path: "/alerts",    Icon: BellRing,       badge: "M23" },
+  { id: "detect",      label: "Detect Spill",   path: "/detect",    Icon: ScanSearch },
+  { id: "priority",    label: "Priority Queue", path: "/priority",  Icon: ListOrdered },
+  { id: "map",         label: "Map Operations", path: "/map",       Icon: Map },
+  { id: "risk",        label: "Risk Analysis",  path: "/risk",      Icon: BarChart3 },
+  { id: "resources",   label: "Resources",      path: "/resources", Icon: Boxes },
+  { id: "reports",     label: "Citizen Reports", path: "/reports",  Icon: FileText,     badge: "M19" },
+  { id: "simulator",   label: "What-If Simulator", path: "/simulator", Icon: Waves,    badge: "M20" },
+];
+
+interface SidebarProps {
+  mobileOpen?: boolean;
+  onCloseMobile?: () => void;
+}
+
+export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
+  const [collapsed, setCollapsed] = useState(false);
+  const location = useLocation();
+
+  return (
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-ocean-950/80 backdrop-blur-sm z-40 md:hidden animate-fade-in"
+          onClick={onCloseMobile}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Main Sidebar Component */}
+      <aside
+        className={`glass-sidebar flex flex-col h-screen fixed inset-y-0 left-0 z-50 md:sticky md:top-0 transition-all duration-300 ${
+          mobileOpen ? "translate-x-0 w-64 shadow-2xl" : "-translate-x-full md:translate-x-0"
+        } ${collapsed ? "md:w-16" : "md:w-60"}`}
+        aria-label="Sidebar navigation"
+      >
+        {/* Logo & Header */}
+        <div className="flex items-center justify-between px-4 py-5 border-b border-ocean-800/50">
+          <div className="flex items-center gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-ocean-gradient flex items-center justify-center shadow-glow-blue">
+              <Waves className="w-5 h-5 text-white" />
+            </div>
+            {(!collapsed || mobileOpen) && (
+              <div className="animate-fade-in overflow-hidden">
+                <p className="text-xs font-bold text-ocean-300 tracking-widest uppercase leading-none">
+                  OilSpill AI
+                </p>
+                <p className="text-[10px] text-slate-500 mt-0.5">Command Center</p>
+              </div>
+            )}
+          </div>
+
+          {/* Close button on mobile */}
+          <button
+            onClick={onCloseMobile}
+            className="p-1 rounded-lg text-slate-400 hover:text-white md:hidden"
+            aria-label="Close navigation menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Navigation items */}
+        <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+          {NAV_ITEMS.map(({ id, label, path, Icon, badge }) => {
+            const isActive =
+              path === "/"
+                ? location.pathname === "/"
+                : location.pathname.startsWith(path);
+
+            return (
+              <NavLink
+                key={id}
+                to={path}
+                id={`nav-${id}`}
+                onClick={() => onCloseMobile?.()}
+                className={`nav-item relative ${isActive ? "active" : ""}`}
+                title={collapsed && !mobileOpen ? label : undefined}
+                aria-label={label}
+              >
+                <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? "text-ocean-300" : ""}`} />
+                {(!collapsed || mobileOpen) && (
+                  <span className="flex-1 animate-fade-in">{label}</span>
+                )}
+                {(!collapsed || mobileOpen) && badge && (
+                  <span className="badge badge-warning text-[10px] px-1.5 py-0.5">
+                    {badge}
+                  </span>
+                )}
+                {collapsed && !mobileOpen && badge && (
+                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-spill-400" />
+                )}
+              </NavLink>
+            );
+          })}
+        </nav>
+
+        {/* System Module Status */}
+        {(!collapsed || mobileOpen) && (
+          <div className="px-4 py-3 mx-2 mb-3 rounded-lg bg-ocean-900/60 border border-ocean-800/40 animate-fade-in">
+            <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-2">
+              System Pipeline
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-success-400 shadow-[0_0_6px_rgba(77,255,145,0.6)]" />
+              <span className="text-xs text-slate-300 font-medium">Autonomous Tier-1 Active</span>
+            </div>
+            <div className="text-[10px] text-slate-500 mt-1">SIH Demo Simulation Mode</div>
+          </div>
+        )}
+
+        {/* Desktop Collapse Toggle */}
+        <button
+          id="sidebar-toggle"
+          onClick={() => setCollapsed((c) => !c)}
+          className="hidden md:flex items-center justify-center w-full py-3 border-t border-ocean-800/50
+                     text-slate-500 hover:text-ocean-300 hover:bg-ocean-900/40 transition-all duration-200"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          {!collapsed && <span className="ml-2 text-xs">Collapse Navigation</span>}
+        </button>
+      </aside>
+    </>
+  );
+}
