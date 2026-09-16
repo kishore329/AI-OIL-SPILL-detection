@@ -166,20 +166,20 @@ export default function DetectSpill() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6 animate-fade-in">
       {/* Top Title Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9E8F2] pb-5">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-ocean-800/80 border border-ocean-500/30 flex items-center justify-center text-ocean-400">
-              <Sparkles className="w-5 h-5 text-ocean-300" />
+            <div className="w-10 h-10 rounded-xl bg-[#EAF6FF] border border-[#A9D9F5] flex items-center justify-center text-[#1268B3]">
+              <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+              <h1 className="text-xl font-bold text-[#17324D] tracking-tight flex items-center gap-2">
                 AI Oil Spill Detection &amp; Segmentation Engine
-                <span className="text-[10px] px-2 py-0.5 rounded bg-ocean-800 text-ocean-300 border border-ocean-600 font-mono">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5] font-mono font-bold">
                   DEMO MODEL
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#5E7183]">
                 Deep-learning multi-spectral &amp; SAR analysis for rapid maritime slick identification &amp; area estimation
               </p>
             </div>
@@ -191,8 +191,8 @@ export default function DetectSpill() {
             <MapPin className="w-3.5 h-3.5" />
             <span>Geospatial Map</span>
           </Link>
-          <Link to="/incidents" className="glass-card px-3 py-2 text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition">
-            <Shield className="w-3.5 h-3.5 text-ocean-400" />
+          <Link to="/incidents" className="btn-secondary text-xs flex items-center gap-1.5">
+            <Shield className="w-3.5 h-3.5 text-[#1268B3]" />
             <span>Incidents</span>
           </Link>
         </div>
@@ -203,16 +203,16 @@ export default function DetectSpill() {
         {/* Left Column: Image Selection & Config (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* Tab Selector: Demo Presets vs Custom Upload */}
-          <div className="glass-card p-1.5 flex items-center gap-1">
+          <div className="bg-white p-1.5 rounded-xl border border-[#D9E8F2] shadow-xs flex items-center gap-1">
             <button
               onClick={() => {
                 setActiveTab("preset");
                 setResult(null);
               }}
-              className={`flex-1 py-2 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === "preset"
-                  ? "bg-ocean-600 text-white shadow-glow-blue"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900/60"
+                  ? "bg-[#1268B3] text-white shadow-xs"
+                  : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
               }`}
             >
               <Radio className="w-3.5 h-3.5" />
@@ -224,10 +224,10 @@ export default function DetectSpill() {
                 setActiveTab("upload");
                 setResult(null);
               }}
-              className={`flex-1 py-2 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 cursor-pointer ${
                 activeTab === "upload"
-                  ? "bg-ocean-600 text-white shadow-glow-blue"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900/60"
+                  ? "bg-[#1268B3] text-white shadow-xs"
+                  : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
               }`}
             >
               <Upload className="w-3.5 h-3.5" />
@@ -238,7 +238,7 @@ export default function DetectSpill() {
           {/* Mode 1: Demo Presets List */}
           {activeTab === "preset" && (
             <div className="space-y-2.5">
-              <span className="text-[11px] font-semibold text-ocean-300 uppercase tracking-wider block">
+              <span className="text-[11px] font-bold text-[#1268B3] uppercase tracking-wider block">
                 Available SIH Simulation Datasets
               </span>
               <div className="space-y-2">
@@ -248,13 +248,13 @@ export default function DetectSpill() {
                     <div
                       key={preset.id}
                       onClick={() => handleSelectPreset(preset)}
-                      className={`glass-card p-3 rounded-xl cursor-pointer transition flex items-start gap-3 relative ${
+                      className={`p-3 rounded-xl cursor-pointer transition flex items-start gap-3 relative border bg-white ${
                         isSelected
-                          ? "border-ocean-400 bg-ocean-800/80 shadow-glow-blue"
-                          : "hover:bg-ocean-800/40 hover:border-ocean-600"
+                          ? "border-2 border-[#1268B3] bg-[#F3FAFE] shadow-md"
+                          : "border-[#D9E8F2] hover:bg-[#F8FCFF] shadow-xs"
                       }`}
                     >
-                      <div className="w-14 h-14 rounded-lg bg-ocean-950 overflow-hidden shrink-0 border border-ocean-700/60 relative">
+                      <div className="w-14 h-14 rounded-lg bg-slate-900 overflow-hidden shrink-0 border border-[#D9E8F2] relative">
                         <img
                           src={preset.imagePath}
                           alt={preset.name}
@@ -264,19 +264,19 @@ export default function DetectSpill() {
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-1">
-                          <span className="text-xs font-bold text-white truncate">
+                          <span className="text-xs font-bold text-[#17324D] truncate">
                             {preset.name}
                           </span>
-                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-ocean-900 text-ocean-300 border border-ocean-700">
+                          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5] font-semibold">
                             {preset.category}
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-300 line-clamp-2 mt-0.5">
+                        <p className="text-[11px] text-[#5E7183] line-clamp-2 mt-0.5 leading-snug">
                           {preset.description}
                         </p>
-                        <div className="flex items-center gap-2 text-[10px] text-slate-400 mt-1.5">
+                        <div className="flex items-center gap-2 text-[10px] text-[#8A9AA8] mt-1.5">
                           <span className="flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-ocean-400" />
+                            <MapPin className="w-3 h-3 text-[#1268B3]" />
                             {preset.locationName}
                           </span>
                         </div>
@@ -300,24 +300,24 @@ export default function DetectSpill() {
               />
               <div
                 onClick={() => fileInputRef.current?.click()}
-                className="glass-card border-2 border-dashed border-ocean-500/40 hover:border-ocean-400 p-8 rounded-2xl text-center cursor-pointer transition hover:bg-ocean-900/40 space-y-3"
+                className="bg-white border-2 border-dashed border-[#A9D9F5] hover:border-[#1268B3] p-8 rounded-2xl text-center cursor-pointer transition hover:bg-[#F8FCFF] space-y-3 shadow-sm"
               >
-                <div className="w-12 h-12 rounded-2xl bg-ocean-800/80 border border-ocean-600 flex items-center justify-center mx-auto text-ocean-300">
+                <div className="w-12 h-12 rounded-2xl bg-[#EAF6FF] border border-[#A9D9F5] flex items-center justify-center mx-auto text-[#1268B3]">
                   <Upload className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-sm font-semibold text-slate-100 block">
+                  <span className="text-sm font-bold text-[#17324D] block">
                     Choose or drop satellite / drone imagery
                   </span>
-                  <span className="text-xs text-slate-400 mt-1 block">
+                  <span className="text-xs text-[#5E7183] mt-1 block">
                     Supported formats: PNG, JPG, JPEG (Max 20 MB)
                   </span>
                 </div>
                 {uploadedFile && (
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ocean-800/90 text-ocean-200 text-xs border border-ocean-600">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF6FF] text-[#1268B3] text-xs border border-[#A9D9F5] font-medium">
                     <FileImage className="w-3.5 h-3.5" />
                     <span>{uploadedFile.name}</span>
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-[#5E7183]">
                       ({(uploadedFile.size / (1024 * 1024)).toFixed(2)} MB)
                     </span>
                   </div>
@@ -327,18 +327,18 @@ export default function DetectSpill() {
           )}
 
           {/* Geographic Coordinates Configuration */}
-          <div className="glass-card p-4 space-y-3">
+          <div className="bg-white p-4 rounded-xl border border-[#D9E8F2] shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-                <Sliders className="w-3.5 h-3.5 text-ocean-400" />
+              <span className="text-xs font-bold text-[#17324D] flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5 text-[#1268B3]" />
                 Capture Point Coordinates
               </span>
-              <span className="text-[10px] text-slate-400">Decimal Degrees</span>
+              <span className="text-[10px] text-[#8A9AA8]">Decimal Degrees</span>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">
+                <label className="text-[10px] text-[#5E7183] uppercase font-bold block mb-1">
                   Latitude (°N)
                 </label>
                 <input
@@ -346,12 +346,12 @@ export default function DetectSpill() {
                   step="0.001"
                   value={latitude}
                   onChange={(e) => setLatitude(parseFloat(e.target.value) || 0)}
-                  className="w-full py-1.5 px-2.5 bg-ocean-900/90 border border-ocean-700/80 rounded-lg text-xs font-mono text-slate-100 focus:outline-none focus:border-ocean-400"
+                  className="w-full py-1.5 px-2.5 bg-[#F8FCFF] border border-[#D9E8F2] rounded-lg text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3]"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">
+                <label className="text-[10px] text-[#5E7183] uppercase font-bold block mb-1">
                   Longitude (°E)
                 </label>
                 <input
@@ -359,7 +359,7 @@ export default function DetectSpill() {
                   step="0.001"
                   value={longitude}
                   onChange={(e) => setLongitude(parseFloat(e.target.value) || 0)}
-                  className="w-full py-1.5 px-2.5 bg-ocean-900/90 border border-ocean-700/80 rounded-lg text-xs font-mono text-slate-100 focus:outline-none focus:border-ocean-400"
+                  className="w-full py-1.5 px-2.5 bg-[#F8FCFF] border border-[#D9E8F2] rounded-lg text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3]"
                 />
               </div>
             </div>
@@ -369,7 +369,7 @@ export default function DetectSpill() {
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing}
-            className="w-full py-3 px-4 bg-gradient-to-r from-ocean-500 to-ocean-600 hover:from-ocean-400 hover:to-ocean-500 text-white font-bold rounded-xl text-sm shadow-glow-blue transition duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full py-3 px-4 bg-[#1268B3] hover:bg-[#0F4C81] text-white font-bold rounded-xl text-sm shadow-xs transition duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {isAnalyzing ? (
               <>
@@ -385,7 +385,7 @@ export default function DetectSpill() {
           </button>
 
           {error && (
-            <div className="p-3 bg-red-500/15 border border-red-500/30 rounded-xl text-xs text-red-300 flex items-center gap-2">
+            <div className="p-3 bg-[#FFF1F2] border border-[#F5B5BC] rounded-xl text-xs text-[#C6283D] flex items-center gap-2 font-medium">
               <AlertTriangle className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -395,33 +395,33 @@ export default function DetectSpill() {
         {/* Right Column: Visualizer & Detection Dossier (7 cols) */}
         <div className="lg:col-span-7 space-y-5">
           {/* Visualizer Box */}
-          <div className="glass-card p-4 rounded-2xl space-y-3">
+          <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] shadow-sm space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Eye className="w-4 h-4 text-ocean-400" />
-                <span className="text-xs font-bold text-slate-200">
+                <Eye className="w-4 h-4 text-[#1268B3]" />
+                <span className="text-xs font-bold text-[#17324D]">
                   Spectral &amp; SAR Anomaly Visualizer
                 </span>
               </div>
 
               {result && result.detected && result.mask_base64 && (
-                <div className="flex items-center gap-1 bg-ocean-900/80 p-1 rounded-lg border border-ocean-700/60">
+                <div className="flex items-center gap-1 bg-[#F3FAFE] p-1 rounded-lg border border-[#D9E8F2]">
                   <button
                     onClick={() => setViewMode("overlay")}
-                    className={`text-[10px] px-2.5 py-1 rounded font-semibold transition ${
+                    className={`text-[10px] px-2.5 py-1 rounded font-semibold transition cursor-pointer ${
                       viewMode === "overlay"
-                        ? "bg-ocean-500 text-white shadow-sm"
-                        : "text-slate-400 hover:text-white"
+                        ? "bg-[#1268B3] text-white shadow-xs"
+                        : "text-[#5E7183] hover:text-[#17324D]"
                     }`}
                   >
                     AI Mask Overlay
                   </button>
                   <button
                     onClick={() => setViewMode("original")}
-                    className={`text-[10px] px-2.5 py-1 rounded font-semibold transition ${
+                    className={`text-[10px] px-2.5 py-1 rounded font-semibold transition cursor-pointer ${
                       viewMode === "original"
-                        ? "bg-ocean-500 text-white shadow-sm"
-                        : "text-slate-400 hover:text-white"
+                        ? "bg-[#1268B3] text-white shadow-xs"
+                        : "text-[#5E7183] hover:text-[#17324D]"
                     }`}
                   >
                     Raw Image
@@ -431,7 +431,7 @@ export default function DetectSpill() {
             </div>
 
             {/* Image Canvas with Scanning Pulse */}
-            <div className="relative w-full h-80 rounded-xl overflow-hidden bg-ocean-950 border border-ocean-700/60 flex items-center justify-center">
+            <div className="relative w-full h-80 rounded-xl overflow-hidden bg-slate-950 border border-[#D9E8F2] flex items-center justify-center">
               <img
                 src={currentImageSrc}
                 alt="Analyzed target"
@@ -449,10 +449,10 @@ export default function DetectSpill() {
 
               {/* Scanning HUD line animation during inference */}
               {isAnalyzing && (
-                <div className="absolute inset-0 bg-ocean-950/40 pointer-events-none flex flex-col justify-between">
+                <div className="absolute inset-0 bg-slate-950/40 pointer-events-none flex flex-col justify-between">
                   <div className="w-full h-1 bg-cyan-400 shadow-[0_0_15px_#22d3ee] animate-bounce" />
                   <div className="p-3 text-center">
-                    <span className="text-xs font-mono font-bold text-cyan-300 bg-ocean-950/80 px-3 py-1 rounded-full border border-cyan-500/40">
+                    <span className="text-xs font-mono font-bold text-cyan-300 bg-slate-950/80 px-3 py-1 rounded-full border border-cyan-500/40">
                       SCANNING SPECTRUM • {analysisStep}
                     </span>
                   </div>
@@ -461,10 +461,10 @@ export default function DetectSpill() {
               )}
 
               {/* Corner target reticles */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-ocean-400 pointer-events-none" />
-              <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-ocean-400 pointer-events-none" />
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-ocean-400 pointer-events-none" />
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-ocean-400 pointer-events-none" />
+              <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none" />
+              <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cyan-400 pointer-events-none" />
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cyan-400 pointer-events-none" />
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-400 pointer-events-none" />
             </div>
           </div>
 
@@ -473,41 +473,41 @@ export default function DetectSpill() {
             <div className="space-y-4 animate-fade-in">
               {/* Primary Detection Banner */}
               {result.detected ? (
-                <div className="glass-card p-4 rounded-xl border border-red-500/40 bg-gradient-to-r from-red-950/70 to-ocean-950/80 flex items-center justify-between">
+                <div className="bg-white p-4 rounded-xl border border-[#F5B5BC] shadow-sm flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
-                      <Flame className="w-6 h-6 animate-pulse" />
+                    <div className="w-10 h-10 rounded-xl bg-[#FFF1F2] border border-[#F5B5BC] flex items-center justify-center text-[#C6283D] shrink-0">
+                      <Flame className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-white flex items-center gap-2">
+                      <h3 className="text-base font-bold text-[#17324D] flex items-center gap-2">
                         Oil Spill Detected
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#FFF1F2] text-[#C6283D] border border-[#F5B5BC]">
                           {result.severity || "CONFIRMED"} SEVERITY
                         </span>
                       </h3>
-                      <p className="text-xs text-slate-300 mt-0.5">
+                      <p className="text-xs text-[#5E7183] mt-0.5">
                         Surface hydrocarbon sheen identified by {result.model_name}.
                       </p>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <div className="text-xs text-slate-400">Incident Code</div>
-                    <div className="text-sm font-mono font-bold text-white">
+                    <div className="text-xs text-[#8A9AA8]">Incident Code</div>
+                    <div className="text-sm font-mono font-bold text-[#0B3A66]">
                       {result.incident_code}
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="glass-card p-4 rounded-xl border border-emerald-500/40 bg-gradient-to-r from-emerald-950/60 to-ocean-950/80 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="bg-white p-4 rounded-xl border border-[#9ADBC8] shadow-sm flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#EAF8F4] border border-[#9ADBC8] flex items-center justify-center text-[#087F68] shrink-0">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-bold text-[#17324D]">
                       No Oil Spill Detected
                     </h3>
-                    <p className="text-xs text-slate-300 mt-0.5">
+                    <p className="text-xs text-[#5E7183] mt-0.5">
                       Water surface normal. No hydrocarbon dampening anomalies detected in analyzed area.
                     </p>
                   </div>
@@ -516,13 +516,13 @@ export default function DetectSpill() {
 
               {/* False Positive Alert Banner if confidence < 70% */}
               {result.potential_false_positive && (
-                <div className="p-3.5 bg-amber-500/15 border border-amber-500/40 rounded-xl flex items-start gap-3 text-amber-300 animate-pulse">
-                  <AlertTriangle className="w-5 h-5 shrink-0 text-amber-400 mt-0.5" />
+                <div className="p-3.5 bg-[#FFF8E8] border border-[#F3D58A] rounded-xl flex items-start gap-3 text-[#A86A00]">
+                  <AlertTriangle className="w-5 h-5 shrink-0 text-[#A86A00] mt-0.5" />
                   <div className="text-xs space-y-0.5">
-                    <div className="font-bold text-amber-200">
+                    <div className="font-bold text-[#805000]">
                       Potential false positive — additional verification recommended.
                     </div>
-                    <div className="text-amber-300/90 text-[11px]">
+                    <div className="text-[#A86A00] text-[11px]">
                       Confidence score is below the 70% threshold ({((result.confidence) * 100).toFixed(1)}%). Anomaly may be caused by calm water conditions, natural biogenic seeps, or algal blooms.
                     </div>
                   </div>
@@ -531,81 +531,81 @@ export default function DetectSpill() {
 
               {/* Quantitative Metrics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="glass-card p-3 rounded-xl text-center">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">
+                <div className="bg-white p-3 rounded-xl border border-[#D9E8F2] shadow-xs text-center">
+                  <div className="text-[10px] text-[#5E7183] uppercase font-bold">
                     Detection Confidence
                   </div>
-                  <div className="text-xl font-bold font-mono text-amber-400 mt-1">
+                  <div className="text-xl font-black font-mono text-[#0B3A66] mt-1">
                     {(result.confidence * 100).toFixed(1)}%
                   </div>
-                  <div className="text-[9px] text-slate-500">Never 100% (Probabilistic)</div>
+                  <div className="text-[9px] text-[#8A9AA8]">Never 100% (Probabilistic)</div>
                 </div>
 
-                <div className="glass-card p-3 rounded-xl text-center">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">
+                <div className="bg-white p-3 rounded-xl border border-[#D9E8F2] shadow-xs text-center">
+                  <div className="text-[10px] text-[#5E7183] uppercase font-bold">
                     Estimated Area
                   </div>
-                  <div className="text-xl font-bold font-mono text-slate-100 mt-1">
+                  <div className="text-xl font-black font-mono text-[#0B3A66] mt-1">
                     {result.spill_area_km2.toFixed(1)} km²
                   </div>
-                  <div className="text-[9px] text-slate-500">Surface slick coverage</div>
+                  <div className="text-[9px] text-[#8A9AA8]">Surface slick coverage</div>
                 </div>
 
-                <div className="glass-card p-3 rounded-xl text-center">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">
+                <div className="bg-white p-3 rounded-xl border border-[#D9E8F2] shadow-xs text-center">
+                  <div className="text-[10px] text-[#5E7183] uppercase font-bold">
                     Model Identifier
                   </div>
-                  <div className="text-xs font-bold text-ocean-300 mt-2 truncate" title={result.model_name}>
+                  <div className="text-xs font-bold text-[#1268B3] mt-2 truncate" title={result.model_name}>
                     {result.model_name}
                   </div>
-                  <div className="text-[9px] text-slate-500">{result.is_demo_model ? "Demo Model" : "Trained Model"}</div>
+                  <div className="text-[9px] text-[#8A9AA8]">{result.is_demo_model ? "Demo Model" : "Trained Model"}</div>
                 </div>
 
-                <div className="glass-card p-3 rounded-xl text-center">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">
+                <div className="bg-white p-3 rounded-xl border border-[#D9E8F2] shadow-xs text-center">
+                  <div className="text-[10px] text-[#5E7183] uppercase font-bold">
                     Inference Latency
                   </div>
-                  <div className="text-xl font-bold font-mono text-emerald-400 mt-1">
+                  <div className="text-xl font-black font-mono text-[#087F68] mt-1">
                     {result.processing_time_ms.toFixed(0)} ms
                   </div>
-                  <div className="text-[9px] text-slate-500">Processing speed</div>
+                  <div className="text-[9px] text-[#8A9AA8]">Processing speed</div>
                 </div>
               </div>
 
               {/* Location & Metadata Details */}
-              <div className="glass-card p-4 rounded-xl space-y-2 text-xs">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-2 border-b border-ocean-800">
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <MapPin className="w-3.5 h-3.5 text-ocean-400" />
-                    <span>Location: <span className="font-mono text-white">{result.latitude.toFixed(4)}°N, {result.longitude.toFixed(4)}°E</span></span>
+              <div className="bg-white p-4 rounded-xl border border-[#D9E8F2] shadow-xs space-y-2 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-2 border-b border-[#EAF3F8]">
+                  <div className="flex items-center gap-2 text-[#5E7183]">
+                    <MapPin className="w-3.5 h-3.5 text-[#1268B3]" />
+                    <span>Location: <span className="font-mono text-[#17324D] font-bold">{result.latitude.toFixed(4)}°N, {result.longitude.toFixed(4)}°E</span></span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <Clock className="w-3.5 h-3.5 text-ocean-400" />
-                    <span>Timestamp: <span className="text-white">{new Date(result.timestamp).toLocaleString()}</span></span>
+                  <div className="flex items-center gap-2 text-[#5E7183]">
+                    <Clock className="w-3.5 h-3.5 text-[#1268B3]" />
+                    <span>Timestamp: <span className="text-[#17324D] font-bold">{new Date(result.timestamp).toLocaleString()}</span></span>
                   </div>
                 </div>
 
                 {/* Tier-1 Autonomous Pipeline Summary Bar */}
                 {result.detected && (
-                  <div className="p-3 bg-ocean-900/80 rounded-xl border border-ocean-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                  <div className="p-3 bg-[#F3FAFE] rounded-xl border border-[#D9E8F2] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div className="space-y-1">
-                      <div className="text-[10px] uppercase font-bold tracking-wider text-amber-400">
+                      <div className="text-[10px] uppercase font-bold tracking-wider text-[#1268B3]">
                         Autonomous Tier-1 Escalation Pipeline
                       </div>
-                      <div className="text-slate-300 text-[11px] flex items-center gap-2 flex-wrap">
-                        <span>Risk Score: <strong className="text-amber-400 font-mono">{result.risk_score ? result.risk_score.toFixed(1) : "--"}/100</strong></span>
+                      <div className="text-[#17324D] text-[11px] flex items-center gap-2 flex-wrap">
+                        <span>Risk Score: <strong className="text-[#0B3A66] font-mono">{result.risk_score ? result.risk_score.toFixed(1) : "--"}/100</strong></span>
                         <span>•</span>
-                        <span>Priority Score: <strong className="text-red-400 font-mono">{result.priority_score ? result.priority_score.toFixed(1) : "--"}/100</strong></span>
+                        <span>Priority Score: <strong className="text-[#C6283D] font-mono">{result.priority_score ? result.priority_score.toFixed(1) : "--"}/100</strong></span>
                         <span>•</span>
-                        <span>Urgency: <strong className="text-red-300 font-semibold">{result.urgency_level || "IMMEDIATE"}</strong></span>
+                        <span>Urgency: <strong className="text-[#C6283D] font-semibold">{result.urgency_level || "IMMEDIATE"}</strong></span>
                         <span>•</span>
-                        <span>Shoreline ETA: <strong className="text-cyan-300 font-mono">{result.coastline_eta_hours ? `~${result.coastline_eta_hours.toFixed(1)}h` : "--"}</strong></span>
+                        <span>Shoreline ETA: <strong className="text-[#1268B3] font-mono">{result.coastline_eta_hours ? `~${result.coastline_eta_hours.toFixed(1)}h` : "--"}</strong></span>
                       </div>
                     </div>
 
                     <Link
                       to="/priority"
-                      className="px-2.5 py-1 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 rounded text-[11px] font-semibold flex items-center justify-center gap-1 shrink-0 transition"
+                      className="px-3 py-1.5 bg-[#1268B3] hover:bg-[#0F4C81] text-white rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1 shrink-0 transition shadow-xs"
                     >
                       <span>Priority Queue</span>
                       <ArrowRight className="w-3 h-3" />
@@ -614,15 +614,15 @@ export default function DetectSpill() {
                 )}
 
                 {result.details && Object.keys(result.details).length > 0 && (
-                  <div className="pt-1 text-[11px] text-slate-400 space-y-1">
+                  <div className="pt-1 text-[11px] text-[#5E7183] space-y-1">
                     {result.details.sensor_type && (
-                      <div>Sensor Specification: <span className="text-slate-200">{result.details.sensor_type}</span></div>
+                      <div>Sensor Specification: <span className="text-[#17324D] font-medium">{result.details.sensor_type}</span></div>
                     )}
                     {result.details.anomaly_type && (
-                      <div>Spectral Anomaly: <span className="text-slate-200">{result.details.anomaly_type}</span></div>
+                      <div>Spectral Anomaly: <span className="text-[#17324D] font-medium">{result.details.anomaly_type}</span></div>
                     )}
                     {result.details.note && (
-                      <div className="italic text-slate-400">{result.details.note}</div>
+                      <div className="italic text-[#8A9AA8]">{result.details.note}</div>
                     )}
                   </div>
                 )}
@@ -642,9 +642,9 @@ export default function DetectSpill() {
                   {result.incident_id && (
                     <Link
                       to={`/incidents/${result.incident_id}`}
-                      className="glass-card px-4 py-2 text-xs text-slate-200 hover:text-white flex items-center justify-center gap-1.5 transition w-full sm:w-auto"
+                      className="btn-secondary text-xs flex items-center justify-center gap-1.5 w-full sm:w-auto"
                     >
-                      <Shield className="w-3.5 h-3.5 text-ocean-400" />
+                      <Shield className="w-3.5 h-3.5 text-[#1268B3]" />
                       <span>Open Incident Operations</span>
                     </Link>
                   )}
@@ -652,10 +652,10 @@ export default function DetectSpill() {
               )}
             </div>
           ) : (
-            <div className="glass-card p-12 rounded-2xl text-center space-y-2">
-              <Crosshair className="w-8 h-8 text-ocean-400/80 mx-auto" />
-              <h4 className="text-sm font-bold text-slate-200">Ready for Imagery Inference</h4>
-              <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            <div className="bg-white p-12 rounded-2xl text-center space-y-2 border border-[#D9E8F2] shadow-sm">
+              <Crosshair className="w-8 h-8 text-[#1268B3] mx-auto opacity-70" />
+              <h4 className="text-sm font-bold text-[#17324D]">Ready for Imagery Inference</h4>
+              <p className="text-xs text-[#5E7183] max-w-sm mx-auto">
                 Select one of the calibrated simulation presets or upload satellite/drone imagery to execute deep oil spill segmentation.
               </p>
             </div>

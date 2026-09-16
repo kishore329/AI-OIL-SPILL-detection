@@ -53,7 +53,7 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
       {/* Mobile Backdrop Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-ocean-950/80 backdrop-blur-sm z-40 md:hidden animate-fade-in"
+          className="fixed inset-0 bg-[#17324D]/40 backdrop-blur-sm z-40 md:hidden animate-fade-in"
           onClick={onCloseMobile}
           aria-hidden="true"
         />
@@ -67,17 +67,17 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
         aria-label="Sidebar navigation"
       >
         {/* Logo & Header */}
-        <div className="flex items-center justify-between px-4 py-5 border-b border-ocean-800/50">
+        <div className="flex items-center justify-between px-4 py-5 border-b border-[#D9E8F2]">
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-ocean-gradient flex items-center justify-center shadow-glow-blue">
+            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#1268B3] flex items-center justify-center shadow-sm">
               <Waves className="w-5 h-5 text-white" />
             </div>
             {(!collapsed || mobileOpen) && (
               <div className="animate-fade-in overflow-hidden">
-                <p className="text-xs font-bold text-ocean-300 tracking-widest uppercase leading-none">
+                <p className="text-xs font-extrabold text-[#0B3A66] tracking-widest uppercase leading-none">
                   OilSpill AI
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">Command Center</p>
+                <p className="text-[10px] text-[#5E7183] mt-0.5 font-medium">Command Center</p>
               </div>
             )}
           </div>
@@ -85,7 +85,7 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
           {/* Close button on mobile */}
           <button
             onClick={onCloseMobile}
-            className="p-1 rounded-lg text-slate-400 hover:text-white md:hidden"
+            className="p-1 rounded-lg text-[#5E7183] hover:text-[#17324D] hover:bg-[#F0F7FC] md:hidden transition"
             aria-label="Close navigation menu"
           >
             <X className="w-5 h-5" />
@@ -93,7 +93,7 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
         </div>
 
         {/* Navigation items */}
-        <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-2.5 py-4 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map(({ id, label, path, Icon, badge }) => {
             const isActive =
               path === "/"
@@ -110,17 +110,17 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
                 title={collapsed && !mobileOpen ? label : undefined}
                 aria-label={label}
               >
-                <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? "text-ocean-300" : ""}`} />
+                <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? "text-[#1268B3]" : "text-[#5E7183]"}`} />
                 {(!collapsed || mobileOpen) && (
-                  <span className="flex-1 animate-fade-in">{label}</span>
+                  <span className="flex-1">{label}</span>
                 )}
                 {(!collapsed || mobileOpen) && badge && (
-                  <span className="badge badge-warning text-[10px] px-1.5 py-0.5">
+                  <span className="badge badge-warning text-[9px] px-1.5 py-0.5">
                     {badge}
                   </span>
                 )}
                 {collapsed && !mobileOpen && badge && (
-                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-spill-400" />
+                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#A86A00]" />
                 )}
               </NavLink>
             );
@@ -129,15 +129,15 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
 
         {/* System Module Status */}
         {(!collapsed || mobileOpen) && (
-          <div className="px-4 py-3 mx-2 mb-3 rounded-lg bg-ocean-900/60 border border-ocean-800/40 animate-fade-in">
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-2">
+          <div className="px-3.5 py-3 mx-2.5 mb-3 rounded-xl bg-[#F3FAFE] border border-[#D9E8F2] shadow-sm animate-fade-in">
+            <p className="text-[10px] text-[#5E7183] uppercase tracking-wider font-bold mb-1.5">
               System Pipeline
             </p>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-success-400 shadow-[0_0_6px_rgba(77,255,145,0.6)]" />
-              <span className="text-xs text-slate-300 font-medium">Autonomous Tier-1 Active</span>
+              <span className="w-2 h-2 rounded-full bg-[#087F68] live-dot-pulse shrink-0" />
+              <span className="text-xs text-[#17324D] font-bold">Autonomous Tier-1 Active</span>
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">SIH Demo Simulation Mode</div>
+            <div className="text-[10px] text-[#5E7183] mt-0.5 font-medium">SIH Demo Simulation Mode</div>
           </div>
         )}
 
@@ -145,12 +145,12 @@ export function Sidebar({ mobileOpen = false, onCloseMobile }: SidebarProps) {
         <button
           id="sidebar-toggle"
           onClick={() => setCollapsed((c) => !c)}
-          className="hidden md:flex items-center justify-center w-full py-3 border-t border-ocean-800/50
-                     text-slate-500 hover:text-ocean-300 hover:bg-ocean-900/40 transition-all duration-200"
+          className="hidden md:flex items-center justify-center w-full py-3 border-t border-[#D9E8F2]
+                     text-[#5E7183] hover:text-[#1268B3] hover:bg-[#F3FAFE] transition-all duration-200"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-          {!collapsed && <span className="ml-2 text-xs">Collapse Navigation</span>}
+          {!collapsed && <span className="ml-2 text-xs font-semibold">Collapse Navigation</span>}
         </button>
       </aside>
     </>

@@ -169,24 +169,24 @@ export default function AIAssistant() {
   return (
     <div className="flex h-[calc(100vh-4.5rem)] gap-4 animate-fade-in">
       {/* Left Sidebar: Session Threads & Context */}
-      <div className="hidden lg:flex flex-col w-72 shrink-0 glass-card rounded-2xl border border-ocean-800/80 bg-ocean-950/70 p-4 space-y-4">
+      <div className="hidden lg:flex flex-col w-72 shrink-0 bg-white rounded-2xl border border-[#D9E8F2] p-4 space-y-4 shadow-sm">
         {/* New Chat Button */}
         <button
           onClick={handleNewConversation}
-          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-ocean-gradient text-white text-xs font-bold shadow-glow-blue hover:brightness-110 transition"
+          className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#1268B3] hover:bg-[#0F4C81] text-white text-xs font-bold shadow-sm transition"
         >
           <Plus className="w-4 h-4" />
           <span>New Query Session</span>
         </button>
 
         {/* Incident Context Selector */}
-        <div className="space-y-1.5 pt-2 border-t border-ocean-800/80">
-          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="space-y-1.5 pt-2 border-t border-[#D9E8F2]">
+          <label className="text-[10px] font-bold text-[#5E7183] uppercase tracking-wider flex items-center justify-between">
             <span>Incident Context</span>
             {selectedIncidentId && (
               <button
                 onClick={() => setSelectedIncidentId("")}
-                className="text-ocean-400 hover:text-white text-[9px] lowercase font-normal"
+                className="text-[#1268B3] hover:underline text-[9px] lowercase font-normal"
               >
                 Clear
               </button>
@@ -195,7 +195,7 @@ export default function AIAssistant() {
           <select
             value={selectedIncidentId}
             onChange={(e) => setSelectedIncidentId(e.target.value)}
-            className="w-full text-xs bg-ocean-900 border border-ocean-700/80 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-ocean-500"
+            className="w-full text-xs bg-white border border-[#D9E8F2] rounded-lg px-2.5 py-1.5 text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
           >
             <option value="">Global Fleet Scope (All Spills)</option>
             {incidents.map((inc) => (
@@ -205,12 +205,12 @@ export default function AIAssistant() {
             ))}
           </select>
           {activeIncidentObj && (
-            <div className="p-2 rounded-lg bg-ocean-900/80 border border-ocean-750 text-[11px] space-y-1">
-              <div className="flex items-center justify-between font-mono font-bold text-ocean-300">
+            <div className="p-2 rounded-lg bg-[#F8FBFE] border border-[#D9E8F2] text-[11px] space-y-1">
+              <div className="flex items-center justify-between font-mono font-bold text-[#0B3A66]">
                 <span>{activeIncidentObj.incident_code}</span>
-                <span className="badge badge-danger text-[9px]">{activeIncidentObj.severity}</span>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FFF1F2] text-[#C6283D] border border-[#F5B5BC]">{activeIncidentObj.severity}</span>
               </div>
-              <p className="text-[10px] text-slate-400 truncate">
+              <p className="text-[10px] text-[#5E7183] truncate">
                 Risk: {activeIncidentObj.risk_score || 0}/100 &bull; Area: {activeIncidentObj.spill_area_km2 || 0} km²
               </p>
             </div>
@@ -219,12 +219,12 @@ export default function AIAssistant() {
 
         {/* Past Sessions List */}
         <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
-          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <MessageSquare className="w-3.5 h-3.5 text-ocean-400" />
+          <div className="text-[10px] font-bold text-[#5E7183] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <MessageSquare className="w-3.5 h-3.5 text-[#1268B3]" />
             <span>Recent Sessions</span>
           </div>
           {conversations.length === 0 ? (
-            <p className="text-xs text-slate-500 italic p-2">No prior chat sessions.</p>
+            <p className="text-xs text-[#8A9AA8] italic p-2">No prior chat sessions.</p>
           ) : (
             conversations.map((c) => {
               const isActive = c.id === conversationId;
@@ -234,19 +234,19 @@ export default function AIAssistant() {
                   onClick={() => handleSelectConversation(c.id)}
                   className={`group relative p-2.5 rounded-xl border text-xs cursor-pointer transition flex items-center justify-between ${
                     isActive
-                      ? "bg-ocean-800/80 border-ocean-600 text-white shadow"
-                      : "bg-ocean-900/40 border-ocean-800/60 text-slate-400 hover:bg-ocean-900 hover:text-slate-200"
+                      ? "bg-[#EAF6FF] border-[#1268B3] text-[#0B3A66] shadow-xs"
+                      : "bg-white border-[#D9E8F2] text-[#5E7183] hover:bg-[#F8FBFE] hover:text-[#17324D]"
                   }`}
                 >
                   <div className="truncate pr-2">
-                    <p className="font-semibold truncate">{c.title}</p>
-                    <p className="text-[10px] text-slate-500 font-mono">
+                    <p className="font-semibold truncate text-[#17324D]">{c.title}</p>
+                    <p className="text-[10px] text-[#8A9AA8] font-mono">
                       {c.message_count} msgs &bull; {new Date(c.updated_at).toLocaleDateString([], { month: "short", day: "numeric" })}
                     </p>
                   </div>
                   <button
                     onClick={(e) => handleDeleteConversation(e, c.id)}
-                    className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition"
+                    className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-50 text-[#5E7183] hover:text-[#C6283D] transition"
                     title="Delete session"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -258,9 +258,9 @@ export default function AIAssistant() {
         </div>
 
         {/* Grounding Safety Notice */}
-        <div className="p-2.5 rounded-xl bg-ocean-900/40 border border-ocean-800 text-[10px] text-slate-400 space-y-1">
-          <p className="font-semibold text-slate-300 flex items-center gap-1">
-            <ShieldAlert className="w-3 h-3 text-spill-400" />
+        <div className="p-2.5 rounded-xl bg-[#F8FBFE] border border-[#D9E8F2] text-[10px] text-[#5E7183] space-y-1">
+          <p className="font-semibold text-[#17324D] flex items-center gap-1">
+            <ShieldAlert className="w-3 h-3 text-[#087F68]" />
             <span>Zero Hallucination Protocol</span>
           </p>
           <p>Answers synthesized directly from platform telemetry across all 23 modules. Read-only boundary enforced.</p>
@@ -268,19 +268,19 @@ export default function AIAssistant() {
       </div>
 
       {/* Main Chat Pane */}
-      <div className="flex-1 flex flex-col glass-card rounded-2xl border border-ocean-800/80 bg-ocean-950/60 overflow-hidden">
+      <div className="flex-1 flex flex-col bg-white rounded-2xl border border-[#D9E8F2] overflow-hidden shadow-sm">
         {/* Chat Pane Header */}
-        <div className="px-5 py-3.5 border-b border-ocean-800/80 bg-ocean-950/90 flex items-center justify-between">
+        <div className="px-5 py-3.5 border-b border-[#D9E8F2] bg-white flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-ocean-gradient text-white shadow-glow-blue">
+            <div className="p-2 rounded-xl bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2]">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-sm font-bold text-white flex items-center gap-2">
+              <h1 className="text-sm font-bold text-[#0B3A66] flex items-center gap-2">
                 <span>Oil Spill AI Assistant</span>
-                <span className="badge badge-info text-[9px] font-mono uppercase">Module 24</span>
+                <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2]">Module 24</span>
               </h1>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-[#5E7183]">
                 Grounded conversational copilot across Risk, GIS, Trajectory, Cleanup, and Fleet Telemetry
               </p>
             </div>
@@ -288,13 +288,13 @@ export default function AIAssistant() {
 
           <div className="flex items-center gap-2">
             {activeIncidentObj && (
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-spill-500/10 border border-spill-500/30 text-spill-300 text-xs font-mono">
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFF1F2] border border-[#F5B5BC] text-[#C6283D] text-xs font-mono">
                 <span>Scoped: {activeIncidentObj.incident_code}</span>
               </span>
             )}
             <button
               onClick={handleNewConversation}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-ocean-800 transition"
+              className="p-1.5 rounded-lg text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE] transition"
               title="Clear & start fresh"
             >
               <RefreshCw className="w-4 h-4" />
@@ -303,16 +303,16 @@ export default function AIAssistant() {
         </div>
 
         {/* Message Stream */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 bg-[#F8FBFE]">
           {messages.length === 0 ? (
             /* Welcome Empty State */
             <div className="h-full flex flex-col items-center justify-center text-center max-w-xl mx-auto space-y-4 py-8">
-              <div className="p-4 rounded-2xl bg-ocean-900/80 border border-ocean-700 shadow-glow-blue text-ocean-400">
+              <div className="p-4 rounded-2xl bg-white border border-[#D9E8F2] shadow-sm text-[#1268B3]">
                 <Bot className="w-10 h-10" />
               </div>
               <div>
-                <h2 className="text-base font-bold text-white">How can I assist your maritime operations?</h2>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                <h2 className="text-base font-bold text-[#0B3A66]">How can I assist your maritime operations?</h2>
+                <p className="text-xs text-[#5E7183] mt-1 leading-relaxed">
                   I analyze live oil spill incidents, assess coastal landfall threats, calculate economic losses, and recommend emergency response assets grounded strictly in platform data.
                 </p>
               </div>
@@ -323,10 +323,10 @@ export default function AIAssistant() {
                   <button
                     key={idx}
                     onClick={() => handleSendMessage(prompt)}
-                    className="p-2.5 text-left rounded-xl bg-ocean-900/60 hover:bg-ocean-800/80 border border-ocean-800 hover:border-ocean-600 text-xs text-slate-300 transition flex items-center justify-between group"
+                    className="p-2.5 text-left rounded-xl bg-white hover:bg-[#EAF6FF] border border-[#D9E8F2] hover:border-[#1268B3] text-xs text-[#17324D] hover:text-[#1268B3] shadow-2xs transition flex items-center justify-between group"
                   >
-                    <span className="truncate pr-1">{prompt}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-ocean-400 shrink-0 group-hover:translate-x-0.5 transition" />
+                    <span className="truncate pr-1 font-medium">{prompt}</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#1268B3] shrink-0 group-hover:translate-x-0.5 transition" />
                   </button>
                 ))}
               </div>
@@ -345,8 +345,8 @@ export default function AIAssistant() {
                   <div
                     className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold ${
                       isUser
-                        ? "bg-ocean-600 text-white"
-                        : "bg-ocean-gradient text-white shadow-glow-blue border border-ocean-400/40"
+                        ? "bg-[#0B3A66] text-white"
+                        : "bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2]"
                     }`}
                   >
                     {isUser ? "OP" : <Bot className="w-4 h-4" />}
@@ -356,32 +356,32 @@ export default function AIAssistant() {
                   <div
                     className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-4 text-xs space-y-2.5 ${
                       isUser
-                        ? "bg-ocean-600 text-white rounded-tr-none shadow-md"
-                        : "glass-card bg-ocean-900/90 border border-ocean-700/80 text-slate-200 rounded-tl-none shadow-xl"
+                        ? "bg-[#1268B3] text-white rounded-tr-none shadow-sm"
+                        : "bg-white border border-[#D9E8F2] text-[#17324D] rounded-tl-none shadow-sm"
                     }`}
                   >
                     {/* Content */}
-                    <div className="prose prose-invert prose-xs leading-relaxed whitespace-pre-line">
+                    <div className="leading-relaxed whitespace-pre-line">
                       {msg.content}
                     </div>
 
                     {/* Incident Card if referenced */}
                     {msg.referenced_incident_id && (
-                      <div className="mt-2 p-2.5 rounded-xl bg-ocean-950/90 border border-ocean-700/90 flex flex-wrap items-center justify-between gap-2">
+                      <div className="mt-2 p-2.5 rounded-xl bg-[#F8FBFE] border border-[#D9E8F2] flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <ShieldAlert className="w-4 h-4 text-spill-400 shrink-0" />
+                          <ShieldAlert className="w-4 h-4 text-[#C6283D] shrink-0" />
                           <div>
-                            <span className="font-mono font-bold text-white text-xs">
+                            <span className="font-mono font-bold text-[#0B3A66] text-xs">
                               {msg.referenced_incident_code || "INCIDENT"}
                             </span>
-                            <span className="text-[10px] text-slate-400 ml-2">Active Spill Record</span>
+                            <span className="text-[10px] text-[#5E7183] ml-2">Active Spill Record</span>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-2">
                           <Link
                             to={`/incidents/${msg.referenced_incident_id}`}
-                            className="px-2 py-1 rounded bg-ocean-800 hover:bg-ocean-700 text-[10px] font-semibold text-ocean-300 border border-ocean-600 flex items-center gap-1 transition"
+                            className="px-2 py-1 rounded bg-white hover:bg-[#EAF6FF] text-[10px] font-semibold text-[#1268B3] border border-[#D9E8F2] flex items-center gap-1 transition shadow-xs"
                           >
                             <span>Dossier</span>
                             <ExternalLink className="w-3 h-3" />
@@ -389,7 +389,7 @@ export default function AIAssistant() {
                           {msg.referenced_location && (
                             <Link
                               to={`/map?incidentId=${msg.referenced_incident_id}`}
-                              className="px-2 py-1 rounded bg-emerald-950 hover:bg-emerald-900 text-[10px] font-semibold text-emerald-300 border border-emerald-700 flex items-center gap-1 transition"
+                              className="px-2 py-1 rounded bg-[#E8F8F4] hover:bg-[#D1F2EA] text-[10px] font-semibold text-[#087F68] border border-[#B3E7DA] flex items-center gap-1 transition"
                             >
                               <MapPin className="w-3 h-3" />
                               <span>Map</span>
@@ -401,12 +401,12 @@ export default function AIAssistant() {
 
                     {/* Source Attribution Citations */}
                     {!isUser && msg.sources && msg.sources.length > 0 && (
-                      <div className="pt-2 border-t border-ocean-800/80 flex flex-wrap items-center gap-1.5 text-[10px]">
-                        <span className="text-slate-500 font-medium">Grounding Sources:</span>
+                      <div className="pt-2 border-t border-[#D9E8F2] flex flex-wrap items-center gap-1.5 text-[10px]">
+                        <span className="text-[#5E7183] font-medium">Grounding Sources:</span>
                         {msg.sources.map((src, sIdx) => (
                           <span
                             key={sIdx}
-                            className="px-2 py-0.5 rounded-full bg-ocean-950 border border-ocean-700 text-ocean-300 font-mono text-[9px]"
+                            className="px-2 py-0.5 rounded-full bg-[#F4F9FD] border border-[#D9E8F2] text-[#1268B3] font-mono text-[9px]"
                           >
                             {src}
                           </span>
@@ -422,11 +422,11 @@ export default function AIAssistant() {
           {/* Loading Typing Indicator */}
           {loading && (
             <div className="flex items-start gap-3">
-              <div className="w-7 h-7 rounded-xl bg-ocean-gradient flex items-center justify-center text-white shadow-glow-blue shrink-0">
+              <div className="w-7 h-7 rounded-xl bg-[#EAF6FF] border border-[#D9E8F2] text-[#1268B3] flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="glass-card bg-ocean-900/90 border border-ocean-700/80 rounded-2xl rounded-tl-none p-3.5 flex items-center gap-2 text-xs text-slate-300">
-                <RefreshCw className="w-4 h-4 animate-spin text-ocean-400" />
+              <div className="bg-white border border-[#D9E8F2] rounded-2xl rounded-tl-none p-3.5 flex items-center gap-2 text-xs text-[#5E7183] shadow-sm">
+                <RefreshCw className="w-4 h-4 animate-spin text-[#1268B3]" />
                 <span>Synthesizing platform telemetry...</span>
               </div>
             </div>
@@ -437,16 +437,16 @@ export default function AIAssistant() {
 
         {/* Suggested Follow-Ups Bar */}
         {suggestedFollowups.length > 0 && (
-          <div className="px-4 py-2 bg-ocean-950/90 border-t border-ocean-800/70 flex items-center gap-2 overflow-x-auto">
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0 flex items-center gap-1">
-              <HelpCircle className="w-3 h-3 text-ocean-400" />
+          <div className="px-4 py-2 bg-[#F4F9FD] border-t border-[#D9E8F2] flex items-center gap-2 overflow-x-auto">
+            <span className="text-[10px] font-bold text-[#5E7183] uppercase tracking-wider shrink-0 flex items-center gap-1">
+              <HelpCircle className="w-3 h-3 text-[#1268B3]" />
               <span>Suggested:</span>
             </span>
             {suggestedFollowups.map((q, qIdx) => (
               <button
                 key={qIdx}
                 onClick={() => handleSendMessage(q)}
-                className="px-2.5 py-1 rounded-full bg-ocean-900 hover:bg-ocean-800 border border-ocean-750 text-slate-300 hover:text-white text-[11px] whitespace-nowrap transition"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-[#EAF6FF] border border-[#D9E8F2] text-[#1268B3] hover:text-[#0B3A66] text-[11px] whitespace-nowrap transition shadow-2xs"
               >
                 {q} &rarr;
               </button>
@@ -455,7 +455,7 @@ export default function AIAssistant() {
         )}
 
         {/* Input Bar */}
-        <div className="p-3 sm:p-4 border-t border-ocean-800/80 bg-ocean-950/95">
+        <div className="p-3 sm:p-4 border-t border-[#D9E8F2] bg-white">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -470,18 +470,18 @@ export default function AIAssistant() {
               onChange={(e) => setInputQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask the Oil Spill AI Copilot (e.g. Which incident has the highest priority?)..."
-              className="flex-1 bg-ocean-900/90 border border-ocean-700/80 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-ocean-500 resize-none max-h-24"
+              className="flex-1 bg-white border border-[#D9E8F2] rounded-xl px-3.5 py-2.5 text-xs text-[#17324D] placeholder-[#8A9AA8] focus:outline-none focus:border-[#1268B3] focus:ring-1 focus:ring-[#1268B3] resize-none max-h-24 shadow-sm"
             />
             <button
               type="submit"
               disabled={loading || !inputQuery.trim()}
-              className="px-4 py-2.5 rounded-xl bg-ocean-gradient text-white text-xs font-semibold shadow-glow-blue hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-1.5 shrink-0"
+              className="px-4 py-2.5 rounded-xl bg-[#1268B3] hover:bg-[#0F4C81] text-white text-xs font-semibold shadow-sm hover:shadow-md disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-1.5 shrink-0 cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Send</span>
             </button>
           </form>
-          <div className="mt-1.5 flex items-center justify-between text-[10px] text-slate-500">
+          <div className="mt-1.5 flex items-center justify-between text-[10px] text-[#8A9AA8]">
             <span>Press Enter to send &bull; Shift + Enter for new line</span>
             <span>Read-only telemetry copilot &bull; Zero hallucination</span>
           </div>

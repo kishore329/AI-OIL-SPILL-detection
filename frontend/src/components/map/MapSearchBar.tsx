@@ -35,10 +35,10 @@ export const MapSearchBar: React.FC<MapSearchBarProps> = ({
 
   return (
     <div className="absolute top-6 left-1/2 -translate-x-1/2 z-[1000] w-full max-w-lg px-4 pointer-events-auto">
-      <div className="glass-card border border-ocean-500/25 bg-ocean-950/90 backdrop-blur-md rounded-xl p-2 shadow-2xl flex flex-col gap-2">
+      <div className="bg-white/95 backdrop-blur-md border border-[#D9E8F2] rounded-xl p-2 shadow-xl flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#8A9AA8] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search incidents by code (e.g. DEMO-INC-001) or location..."
@@ -46,12 +46,12 @@ export const MapSearchBar: React.FC<MapSearchBarProps> = ({
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setTimeout(() => setIsFocused(false), 250)}
-              className="w-full pl-9 pr-8 py-1.5 bg-ocean-900/80 border border-ocean-700/60 rounded-lg text-xs text-slate-100 placeholder-slate-400 focus:outline-none focus:border-ocean-400 transition"
+              className="w-full pl-9 pr-8 py-1.5 bg-[#F8FCFF] border border-[#D9E8F2] rounded-lg text-xs text-[#17324D] placeholder-[#8A9AA8] focus:outline-none focus:border-[#1268B3] transition font-medium"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8A9AA8] hover:text-[#17324D] cursor-pointer"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -64,10 +64,10 @@ export const MapSearchBar: React.FC<MapSearchBarProps> = ({
               <button
                 key={sev}
                 onClick={() => onSeverityFilterChange(sev)}
-                className={`text-[10px] px-2 py-1 rounded-md font-semibold uppercase tracking-wider transition ${
+                className={`text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider transition cursor-pointer ${
                   severityFilter === sev
-                    ? "bg-ocean-500 text-white shadow-sm"
-                    : "bg-ocean-900/60 text-slate-400 hover:bg-ocean-800 hover:text-slate-200"
+                    ? "bg-[#1268B3] text-white shadow-xs"
+                    : "bg-[#F3FAFE] text-[#5E7183] hover:bg-[#EAF6FF] hover:text-[#17324D] border border-[#D9E8F2]"
                 }`}
               >
                 {sev === "ALL" ? "All" : sev.slice(0, 4)}
@@ -78,7 +78,7 @@ export const MapSearchBar: React.FC<MapSearchBarProps> = ({
 
         {/* Dropdown for search results when typing */}
         {isFocused && searchTerm.trim().length > 0 && (
-          <div className="bg-ocean-950 border border-ocean-700 rounded-lg max-h-48 overflow-y-auto mt-1 p-1 space-y-1 shadow-2xl">
+          <div className="bg-white border border-[#D9E8F2] rounded-lg max-h-48 overflow-y-auto mt-1 p-1 space-y-1 shadow-2xl">
             {filteredIncidents.length > 0 ? (
               filteredIncidents.map((inc) => (
                 <button
@@ -87,30 +87,35 @@ export const MapSearchBar: React.FC<MapSearchBarProps> = ({
                     onSelectIncident(inc);
                     setSearchTerm("");
                   }}
-                  className={`w-full text-left p-2 rounded-md hover:bg-ocean-800 transition flex items-center justify-between text-xs ${
-                    selectedIncident?.id === inc.id ? "bg-ocean-800/80 border border-ocean-600" : ""
+                  className={`w-full text-left p-2 rounded-md hover:bg-[#F3FAFE] transition flex items-center justify-between text-xs cursor-pointer ${
+                    selectedIncident?.id === inc.id ? "bg-[#EAF6FF] border border-[#A9D9F5]" : ""
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <Flame className={`w-3.5 h-3.5 ${
-                      inc.severity === "CRITICAL" ? "text-red-400" :
-                      inc.severity === "HIGH" ? "text-orange-400" :
-                      inc.severity === "MODERATE" ? "text-amber-400" : "text-cyan-400"
+                      inc.severity === "CRITICAL" ? "text-[#C6283D]" :
+                      inc.severity === "HIGH" ? "text-[#A86A00]" :
+                      inc.severity === "MODERATE" ? "text-[#A86A00]" : "text-[#1268B3]"
                     }`} />
                     <div>
-                      <div className="font-semibold text-slate-200">{inc.incident_code}</div>
-                      <div className="text-[10px] text-slate-400 truncate max-w-xs">{inc.description || "Spill anomaly detected"}</div>
+                      <span className="font-bold text-[#17324D]">{inc.incident_code}</span>
+                      <span className="text-[#5E7183] text-[11px] ml-2">
+                        {inc.latitude?.toFixed(2)}°N, {inc.longitude?.toFixed(2)}°E
+                      </span>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-[10px] font-mono text-ocean-300 font-bold">{inc.risk_score?.toFixed(1)} Risk</span>
-                    <div className="text-[9px] text-slate-500">{inc.spill_area_km2} km²</div>
-                  </div>
+                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded border ${
+                    inc.severity === "CRITICAL" ? "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]" :
+                    inc.severity === "HIGH" ? "bg-[#FFF8E8] text-[#A86A00] border-[#F3D58A]" :
+                    "bg-[#EAF6FF] text-[#1268B3] border-[#A9D9F5]"
+                  }`}>
+                    {inc.severity}
+                  </span>
                 </button>
               ))
             ) : (
-              <div className="p-3 text-center text-xs text-slate-400">
-                No matching incidents found for "{searchTerm}"
+              <div className="p-3 text-center text-xs text-[#5E7183]">
+                No matching incidents found for "{searchTerm}".
               </div>
             )}
           </div>

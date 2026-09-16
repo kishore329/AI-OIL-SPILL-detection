@@ -59,142 +59,142 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
   const getSeverityBadge = (sev: string) => {
     switch (sev) {
       case "CRITICAL":
-        return "bg-red-500/20 text-red-400 border-red-500/30";
+        return "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]";
       case "HIGH":
-        return "bg-orange-500/20 text-orange-400 border-orange-500/30";
+        return "bg-[#FFF8E8] text-[#A86A00] border-[#F3D58A]";
       case "MODERATE":
-        return "bg-amber-500/20 text-amber-400 border-amber-500/30";
+        return "bg-[#FFF8E8] text-[#A86A00] border-[#F3D58A]";
       default:
-        return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
+        return "bg-[#EAF8F4] text-[#087F68] border-[#9ADBC8]";
     }
   };
 
   const getZoneIcon = (type: ZoneType | string) => {
     switch (type) {
       case "PROTECTED_AREA":
-        return <Shield className="w-3.5 h-3.5 text-emerald-400 shrink-0" />;
+        return <Shield className="w-3.5 h-3.5 text-[#087F68] shrink-0" />;
       case "FISHING_ZONE":
-        return <Fish className="w-3.5 h-3.5 text-cyan-400 shrink-0" />;
+        return <Fish className="w-3.5 h-3.5 text-[#168DCC] shrink-0" />;
       case "PORT":
-        return <Anchor className="w-3.5 h-3.5 text-amber-400 shrink-0" />;
+        return <Anchor className="w-3.5 h-3.5 text-[#A86A00] shrink-0" />;
       case "SHIPPING_LANE":
-        return <Compass className="w-3.5 h-3.5 text-purple-400 shrink-0" />;
+        return <Compass className="w-3.5 h-3.5 text-[#0B3A66] shrink-0" />;
       default:
-        return <Trees className="w-3.5 h-3.5 text-blue-400 shrink-0" />;
+        return <Trees className="w-3.5 h-3.5 text-[#1268B3] shrink-0" />;
     }
   };
 
   const getSensitivityColor = (sens: ZoneSensitivity | string) => {
     switch (sens) {
       case "CRITICAL":
-        return "text-red-400 bg-red-500/10 border-red-500/20";
+        return "text-[#C6283D] bg-[#FFF1F2] border-[#F5B5BC]";
       case "HIGH":
-        return "text-orange-400 bg-orange-500/10 border-orange-500/20";
+        return "text-[#A86A00] bg-[#FFF8E8] border-[#F3D58A]";
       case "MODERATE":
-        return "text-amber-400 bg-amber-500/10 border-amber-500/20";
+        return "text-[#A86A00] bg-[#FFF8E8] border-[#F3D58A]";
       default:
-        return "text-cyan-400 bg-cyan-500/10 border-cyan-500/20";
+        return "text-[#087F68] bg-[#EAF8F4] border-[#9ADBC8]";
     }
   };
 
   const radiusOptions = [10, 25, 50, 100, 200];
 
   return (
-    <div className="absolute top-6 left-6 z-[1000] glass-card border border-ocean-500/30 bg-ocean-950/95 backdrop-blur-xl rounded-xl p-4 shadow-2xl w-96 max-w-sm max-h-[calc(100vh-140px)] flex flex-col animate-fade-in">
+    <div className="absolute top-6 left-6 z-[1000] bg-white/95 backdrop-blur-xl border border-[#D9E8F2] rounded-xl p-4 shadow-2xl w-96 max-w-sm max-h-[calc(100vh-140px)] flex flex-col animate-fade-in text-[#17324D]">
       {/* Header */}
-      <div className="flex items-start justify-between pb-2.5 border-b border-ocean-800">
+      <div className="flex items-start justify-between pb-2.5 border-b border-[#EAF3F8]">
         <div>
           <div className="flex items-center gap-2">
-            <Radio className="w-4 h-4 text-ocean-400 animate-pulse" />
-            <h3 className="text-sm font-bold text-slate-100">{incident.incident_code}</h3>
+            <Radio className="w-4 h-4 text-[#1268B3]" />
+            <h3 className="text-sm font-bold text-[#17324D]">{incident.incident_code}</h3>
             <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${getSeverityBadge(incident.severity)}`}>
               {incident.severity}
             </span>
           </div>
-          <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-            <MapPin className="w-3 h-3 text-ocean-400" />
+          <p className="text-[11px] text-[#5E7183] mt-0.5 flex items-center gap-1 font-mono">
+            <MapPin className="w-3 h-3 text-[#1268B3]" />
             {incident.latitude?.toFixed(3)}°N, {incident.longitude?.toFixed(3)}°E
           </p>
         </div>
         <button
           onClick={onClose}
-          className="text-slate-400 hover:text-white p-1 rounded hover:bg-ocean-800 transition"
+          className="text-[#8A9AA8] hover:text-[#17324D] p-1 rounded hover:bg-[#F3FAFE] transition cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
       {/* Incident Quick Metrics */}
-      <div className="grid grid-cols-3 gap-2 py-2 border-b border-ocean-800 text-center">
-        <div className="bg-ocean-900/60 p-1.5 rounded-lg border border-ocean-800/80">
-          <div className="text-[10px] text-slate-400 uppercase">Risk Score</div>
-          <div className="text-sm font-bold text-amber-400 font-mono">
+      <div className="grid grid-cols-3 gap-2 py-2 border-b border-[#EAF3F8] text-center">
+        <div className="bg-[#F8FCFF] p-1.5 rounded-lg border border-[#D9E8F2]">
+          <div className="text-[10px] text-[#5E7183] uppercase font-semibold">Risk Score</div>
+          <div className="text-sm font-black text-[#0B3A66] font-mono">
             {incident.risk_score !== null ? incident.risk_score.toFixed(1) : "N/A"}
           </div>
         </div>
-        <div className="bg-ocean-900/60 p-1.5 rounded-lg border border-ocean-800/80">
-          <div className="text-[10px] text-slate-400 uppercase">Spill Area</div>
-          <div className="text-sm font-bold text-slate-200">
+        <div className="bg-[#F8FCFF] p-1.5 rounded-lg border border-[#D9E8F2]">
+          <div className="text-[10px] text-[#5E7183] uppercase font-semibold">Spill Area</div>
+          <div className="text-sm font-bold text-[#17324D]">
             {incident.spill_area_km2 ? `${incident.spill_area_km2} km²` : "N/A"}
           </div>
         </div>
-        <div className="bg-ocean-900/60 p-1.5 rounded-lg border border-ocean-800/80">
-          <div className="text-[10px] text-slate-400 uppercase">Status</div>
-          <div className="text-[10px] font-bold text-emerald-400 truncate mt-1">
+        <div className="bg-[#F8FCFF] p-1.5 rounded-lg border border-[#D9E8F2]">
+          <div className="text-[10px] text-[#5E7183] uppercase font-semibold">Status</div>
+          <div className="text-[10px] font-bold text-[#087F68] truncate mt-1">
             {incident.status.replace(/_/g, " ")}
           </div>
         </div>
       </div>
 
       {/* Tab Switcher: Sensitive Zones vs Suspect Ships */}
-      <div className="flex border-b border-ocean-800 py-1.5 gap-1">
+      <div className="flex border-b border-[#EAF3F8] py-1.5 gap-1">
         <button
           onClick={() => setActiveTab("vessels")}
-          className={`flex-1 py-1.5 px-2 rounded text-xs font-semibold flex items-center justify-center gap-1.5 transition ${
+          className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer ${
             activeTab === "vessels"
-              ? "bg-red-500/20 text-red-300 border border-red-500/30 shadow-sm"
-              : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900"
+              ? "bg-[#FFF1F2] text-[#C6283D] border border-[#F5B5BC] shadow-xs"
+              : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
           }`}
         >
-          <Navigation className="w-3.5 h-3.5 text-red-400" />
+          <Navigation className="w-3.5 h-3.5 text-[#C6283D]" />
           <span>Suspect Ships</span>
-          <span className="text-[10px] px-1 py-0.2 rounded-full bg-red-500/30 text-red-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#FFF1F2] text-[#C6283D] font-mono font-black">
             {suspectData?.total_suspects ?? 0}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab("zones")}
-          className={`flex-1 py-1.5 px-2 rounded text-xs font-semibold flex items-center justify-center gap-1.5 transition ${
+          className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer ${
             activeTab === "zones"
-              ? "bg-ocean-600/30 text-cyan-300 border border-ocean-500/40 shadow-sm"
-              : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900"
+              ? "bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5] shadow-xs"
+              : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
           }`}
         >
-          <Shield className="w-3.5 h-3.5 text-cyan-400" />
+          <Shield className="w-3.5 h-3.5 text-[#1268B3]" />
           <span>Marine Zones</span>
-          <span className="text-[10px] px-1 py-0.2 rounded-full bg-ocean-800 text-slate-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#EAF6FF] text-[#1268B3] font-mono font-black">
             {nearbyData?.total_nearby ?? 0}
           </span>
         </button>
       </div>
 
-      {/* Tab 1: Suspect Ships (Leak Attribution Priority) */}
+      {/* Tab 1: Suspect Ships */}
       {activeTab === "vessels" && (
         <div className="flex-1 overflow-y-auto my-2 pr-1 space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-300">
-            <span className="font-semibold flex items-center gap-1">
-              <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-              AIS Passage & Leak Attribution
+          <div className="flex items-center justify-between text-xs text-[#17324D]">
+            <span className="font-bold flex items-center gap-1">
+              <AlertTriangle className="w-3.5 h-3.5 text-[#A86A00]" />
+              AIS Passage &amp; Leak Attribution
             </span>
-            <span className="text-[10px] text-slate-400 font-mono">
+            <span className="text-[10px] text-[#5E7183] font-mono font-medium">
               {loadingSuspects ? "Correlating AIS..." : `${suspectData?.total_suspects ?? 0} ships`}
             </span>
           </div>
 
           {loadingSuspects ? (
-            <div className="py-6 flex flex-col items-center justify-center text-slate-400 text-xs">
-              <div className="w-5 h-5 border-2 border-red-400 border-t-transparent rounded-full animate-spin mb-2" />
+            <div className="py-6 flex flex-col items-center justify-center text-[#5E7183] text-xs">
+              <div className="w-5 h-5 border-2 border-[#C6283D] border-t-transparent rounded-full animate-spin mb-2" />
               <span>Matching AIS transponder trajectories...</span>
             </div>
           ) : suspectData && suspectData.suspects.length > 0 ? (
@@ -205,46 +205,46 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
               return (
                 <div
                   key={vessel.id}
-                  className={`rounded-lg p-2.5 transition border ${
+                  className={`rounded-xl p-3 transition border ${
                     isPrimary
-                      ? "bg-red-950/40 border-red-500/50 shadow-md shadow-red-950/50"
-                      : "bg-ocean-900/70 border-ocean-700/60"
-                  } ${isSelected ? "ring-2 ring-sky-400" : ""}`}
+                      ? "bg-white border-2 border-[#F5B5BC] shadow-sm"
+                      : "bg-[#F8FCFF] border border-[#D9E8F2]"
+                  } ${isSelected ? "ring-2 ring-[#1268B3]" : ""}`}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-white truncate">{vessel.name}</span>
-                        <span className="text-[10px] text-slate-400 font-mono">{vessel.flag}</span>
+                        <span className="text-xs font-bold text-[#17324D] truncate">{vessel.name}</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono">{vessel.flag}</span>
                       </div>
-                      <div className="text-[10px] text-slate-300 mt-0.5">{vessel.vessel_type}</div>
+                      <div className="text-[10px] text-[#5E7183] mt-0.5 font-medium">{vessel.vessel_type}</div>
                     </div>
 
                     <div className="text-right shrink-0">
                       <span
-                        className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded border ${
+                        className={`text-[10px] font-black px-1.5 py-0.5 rounded border ${
                           isPrimary
-                            ? "bg-red-500/20 text-red-400 border-red-500/40 animate-pulse"
-                            : "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                            ? "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]"
+                            : "bg-[#FFF8E8] text-[#A86A00] border-[#F3D58A]"
                         }`}
                       >
                         Rank #{vessel.suspicion_rank}
                       </span>
-                      <div className="text-xs font-mono font-black text-amber-300 mt-1">
+                      <div className="text-xs font-mono font-black text-[#C6283D] mt-1">
                         {vessel.leak_probability_score.toFixed(1)}% Leak Prob
                       </div>
                     </div>
                   </div>
 
                   {/* Passage details */}
-                  <div className="mt-2 grid grid-cols-2 gap-1.5 text-[10px] bg-ocean-950/60 p-1.5 rounded border border-ocean-800">
+                  <div className="mt-2 grid grid-cols-2 gap-1.5 text-[10px] bg-[#F3FAFE] p-2 rounded-lg border border-[#D9E8F2]">
                     <div>
-                      <span className="text-slate-400">Closest Approach: </span>
-                      <span className="font-mono text-cyan-300 font-bold">{vessel.closest_approach_km} km</span>
+                      <span className="text-[#5E7183]">Closest Approach: </span>
+                      <span className="font-mono text-[#0B3A66] font-bold">{vessel.closest_approach_km} km</span>
                     </div>
                     <div>
-                      <span className="text-slate-400">Speed at Spill: </span>
-                      <span className="font-mono text-amber-300 font-bold">{vessel.speed_at_incident} kn</span>
+                      <span className="text-[#5E7183]">Speed at Spill: </span>
+                      <span className="font-mono text-[#0B3A66] font-bold">{vessel.speed_at_incident} kn</span>
                     </div>
                   </div>
 
@@ -252,8 +252,8 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
                   {vessel.anomaly_indicators.length > 0 && (
                     <div className="mt-1.5 space-y-0.5">
                       {vessel.anomaly_indicators.slice(0, 2).map((anomaly, idx) => (
-                        <div key={idx} className="text-[10px] text-red-300 flex items-start gap-1">
-                          <span className="text-red-500 mt-0.5">•</span>
+                        <div key={idx} className="text-[10px] text-[#C6283D] flex items-start gap-1">
+                          <span className="text-[#C6283D] mt-0.5 font-bold">•</span>
                           <span className="leading-tight">{anomaly}</span>
                         </div>
                       ))}
@@ -261,18 +261,18 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
                   )}
 
                   {/* Tactical Action Buttons */}
-                  <div className="mt-2.5 pt-2 border-t border-ocean-800 flex items-center justify-between gap-1.5">
+                  <div className="mt-2.5 pt-2 border-t border-[#EAF3F8] flex items-center justify-between gap-1.5">
                     <button
                       onClick={() => onHighlightVessel?.(vessel.id)}
-                      className="flex-1 py-1 px-2 bg-ocean-800 hover:bg-ocean-700 text-slate-200 rounded text-[10px] font-semibold transition flex items-center justify-center gap-1"
+                      className="flex-1 py-1.5 px-2 bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#D9E8F2] rounded-lg text-[10px] font-bold transition flex items-center justify-center gap-1 cursor-pointer"
                     >
-                      <Eye className="w-3 h-3 text-sky-400" />
+                      <Eye className="w-3 h-3 text-[#1268B3]" />
                       <span>{isSelected ? "Route Active" : "View Route"}</span>
                     </button>
                     {isPrimary && (
                       <button
                         onClick={() => onAlertVessel?.(vessel.id)}
-                        className="py-1 px-2.5 bg-red-600 hover:bg-red-500 text-white rounded text-[10px] font-bold transition flex items-center gap-1 shadow-sm shadow-red-600/50"
+                        className="py-1.5 px-2.5 bg-[#C6283D] hover:bg-[#A31F31] text-white rounded-lg text-[10px] font-bold transition flex items-center gap-1 shadow-xs cursor-pointer"
                       >
                         <Send className="w-2.5 h-2.5" />
                         <span>MRCC Alert</span>
@@ -283,8 +283,8 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
               );
             })
           ) : (
-            <div className="py-6 text-center text-slate-400 text-xs bg-ocean-900/40 rounded-lg border border-ocean-800">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto mb-1.5" />
+            <div className="py-6 text-center text-[#5E7183] text-xs bg-[#F3FAFE] rounded-lg border border-[#D9E8F2]">
+              <CheckCircle2 className="w-5 h-5 text-[#087F68] mx-auto mb-1.5" />
               <span>No commercial vessels detected within timeframe buffer</span>
             </div>
           )}
@@ -295,13 +295,13 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
       {activeTab === "zones" && (
         <>
           {/* Spatial Proximity Filter */}
-          <div className="py-2 border-b border-ocean-800">
+          <div className="py-2 border-b border-[#EAF3F8]">
             <div className="flex items-center justify-between text-xs mb-1.5">
-              <span className="font-semibold text-ocean-300 flex items-center gap-1">
-                <Sliders className="w-3 h-3 text-ocean-400" />
+              <span className="font-bold text-[#1268B3] flex items-center gap-1">
+                <Sliders className="w-3 h-3 text-[#1268B3]" />
                 Proximity Radius:
               </span>
-              <span className="font-mono text-xs font-bold text-ocean-300 bg-ocean-800/80 px-2 py-0.5 rounded">
+              <span className="font-mono text-xs font-bold text-[#1268B3] bg-[#EAF6FF] px-2 py-0.5 rounded border border-[#A9D9F5]">
                 {radiusKm} km
               </span>
             </div>
@@ -310,10 +310,10 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
                 <button
                   key={r}
                   onClick={() => onRadiusChange(r)}
-                  className={`text-[11px] py-1 rounded font-medium transition ${
+                  className={`text-[11px] py-1 rounded font-bold transition cursor-pointer ${
                     radiusKm === r
-                      ? "bg-ocean-500 text-white font-bold shadow-sm shadow-ocean-500/50"
-                      : "bg-ocean-900 text-slate-400 hover:bg-ocean-800 hover:text-slate-200"
+                      ? "bg-[#1268B3] text-white shadow-xs"
+                      : "bg-[#F3FAFE] text-[#5E7183] hover:bg-[#EAF6FF] border border-[#D9E8F2]"
                   }`}
                 >
                   {r}k
@@ -324,49 +324,49 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
 
           <div className="flex-1 overflow-y-auto my-2 pr-1 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-300">
+              <span className="font-bold text-[#17324D]">
                 Nearby Sensitive Zones
               </span>
-              <span className="text-[10px] text-slate-400 font-mono">
+              <span className="text-[10px] text-[#5E7183] font-mono">
                 {loading ? "Querying PostGIS..." : `${nearbyData?.total_nearby ?? 0} detected`}
               </span>
             </div>
 
             {loading ? (
-              <div className="py-6 flex flex-col items-center justify-center text-slate-400 text-xs">
-                <div className="w-5 h-5 border-2 border-ocean-400 border-t-transparent rounded-full animate-spin mb-2" />
+              <div className="py-6 flex flex-col items-center justify-center text-[#5E7183] text-xs">
+                <div className="w-5 h-5 border-2 border-[#1268B3] border-t-transparent rounded-full animate-spin mb-2" />
                 <span>Calculating geodesic proximity...</span>
               </div>
             ) : nearbyData && nearbyData.zones.length > 0 ? (
               nearbyData.zones.map((zone) => (
                 <div
                   key={zone.zone_id}
-                  className="bg-ocean-900/70 border border-ocean-700/60 rounded-lg p-2 hover:border-ocean-500 transition"
+                  className="bg-[#F8FCFF] border border-[#D9E8F2] rounded-lg p-2.5 hover:border-[#1268B3] transition"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-1.5 min-w-0">
                       {getZoneIcon(zone.zone_type)}
-                      <span className="text-xs font-medium text-slate-200 truncate" title={zone.name}>
+                      <span className="text-xs font-bold text-[#17324D] truncate" title={zone.name}>
                         {zone.name}
                       </span>
                     </div>
-                    <span className="text-xs font-mono font-bold text-ocean-300 shrink-0">
+                    <span className="text-xs font-mono font-bold text-[#1268B3] shrink-0">
                       {zone.distance_km} km
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1.5 text-[10px]">
-                    <span className="text-slate-400 capitalize">
+                    <span className="text-[#5E7183] capitalize">
                       {zone.zone_type.toLowerCase().replace(/_/g, " ")}
                     </span>
-                    <span className={`px-1.5 py-0.2 rounded border font-semibold ${getSensitivityColor(zone.sensitivity)}`}>
+                    <span className={`px-1.5 py-0.5 rounded border font-bold ${getSensitivityColor(zone.sensitivity)}`}>
                       {zone.sensitivity} Sensitivity
                     </span>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="py-6 text-center text-slate-400 text-xs bg-ocean-900/40 rounded-lg border border-ocean-800">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto mb-1.5" />
+              <div className="py-6 text-center text-[#5E7183] text-xs bg-[#F3FAFE] rounded-lg border border-[#D9E8F2]">
+                <CheckCircle2 className="w-5 h-5 text-[#087F68] mx-auto mb-1.5" />
                 <span>No sensitive marine zones within {radiusKm} km buffer</span>
               </div>
             )}
@@ -375,16 +375,15 @@ export const SpatialAnalysisPanel: React.FC<SpatialAnalysisPanelProps> = ({
       )}
 
       {/* Footer Navigation */}
-      <div className="pt-2 border-t border-ocean-800 flex items-center justify-between gap-2">
+      <div className="pt-2 border-t border-[#EAF3F8] flex items-center justify-between gap-2">
         <Link
           to={`/incidents?selected=${incident.id}`}
-          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-ocean-600 hover:bg-ocean-500 text-white rounded-lg text-xs font-semibold transition"
+          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#1268B3] hover:bg-[#0F4C81] text-white rounded-lg text-xs font-bold transition shadow-xs"
         >
-          <span>View Incident Profile & Suspect Dossier</span>
+          <span>View Incident Profile &amp; Suspect Dossier</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </Link>
       </div>
     </div>
   );
 };
-

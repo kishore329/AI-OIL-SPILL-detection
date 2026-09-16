@@ -315,9 +315,9 @@ export default function MapView() {
       )}
 
       {/* Oceanic Region Quick Jumper */}
-      <div className="absolute top-16 left-4 z-[1000] hidden md:flex items-center gap-1 p-1 rounded-xl glass-card border border-ocean-700/80 bg-ocean-950/90 shadow-xl backdrop-blur-md">
-        <span className="text-[10px] uppercase font-bold text-ocean-400 px-2 select-none flex items-center gap-1">
-          <Globe className="w-3 h-3 text-ocean-400" />
+      <div className="absolute top-16 left-4 z-[1000] hidden md:flex items-center gap-1 p-1 rounded-xl bg-white/95 border border-[#D9E8F2] shadow-xl backdrop-blur-md">
+        <span className="text-[10px] uppercase font-bold text-[#1268B3] px-2 select-none flex items-center gap-1">
+          <Globe className="w-3 h-3 text-[#1268B3]" />
           Ocean Basin:
         </span>
         {REGION_PRESETS.map((r) => (
@@ -327,7 +327,7 @@ export default function MapView() {
               setMapCenter(r.center);
               setMapZoom(r.zoom);
             }}
-            className="px-2 py-1 rounded-lg text-[10px] font-medium text-slate-300 hover:text-white hover:bg-ocean-800 transition cursor-pointer"
+            className="px-2 py-1 rounded-lg text-[10px] font-semibold text-[#5E7183] hover:text-[#1268B3] hover:bg-[#F3FAFE] transition cursor-pointer"
           >
             {r.label}
           </button>
@@ -368,8 +368,8 @@ export default function MapView() {
 
       {/* Alert toast notification */}
       {alertSuccess && (
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-[1300] bg-emerald-950/95 border border-emerald-500/80 text-emerald-200 px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur-md flex items-center gap-2 text-xs font-semibold animate-fade-in">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-[1300] bg-white border-2 border-[#087F68] text-[#087F68] px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur-md flex items-center gap-2 text-xs font-bold animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#087F68] shrink-0" />
           <span>{alertSuccess}</span>
         </div>
       )}
@@ -379,12 +379,12 @@ export default function MapView() {
 
       {/* Loading Overlay */}
       {loading && (
-        <div className="absolute inset-0 z-[1200] bg-ocean-950/80 backdrop-blur-sm flex flex-col items-center justify-center text-slate-200 gap-3">
-          <div className="w-10 h-10 border-4 border-ocean-400 border-t-transparent rounded-full animate-spin" />
-          <div className="text-sm font-semibold tracking-wide">
+        <div className="absolute inset-0 z-[1200] bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center text-[#17324D] gap-3">
+          <div className="w-10 h-10 border-4 border-[#1268B3] border-t-transparent rounded-full animate-spin" />
+          <div className="text-sm font-bold tracking-wide">
             Initializing GIS Geographic Intelligence Engine...
           </div>
-          <div className="text-xs text-slate-400">
+          <div className="text-xs text-[#5E7183]">
             Querying PostGIS spill polygons &amp; maritime zones
           </div>
         </div>
@@ -392,10 +392,10 @@ export default function MapView() {
 
       {/* Error state */}
       {error && !loading && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1200] glass-card p-6 max-w-md text-center border border-red-500/30">
-          <AlertTriangle className="w-10 h-10 text-red-400 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white mb-2">GIS Data Error</h3>
-          <p className="text-xs text-slate-300 mb-4">{error}</p>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1200] bg-white p-6 max-w-md text-center border border-[#F5B5BC] rounded-2xl shadow-2xl">
+          <AlertTriangle className="w-10 h-10 text-[#C6283D] mx-auto mb-3" />
+          <h3 className="text-base font-bold text-[#17324D] mb-2">GIS Data Error</h3>
+          <p className="text-xs text-[#5E7183] mb-4">{error}</p>
           <button
             onClick={fetchLayers}
             className="btn-primary inline-flex items-center gap-2 text-xs"
@@ -407,36 +407,36 @@ export default function MapView() {
       )}
 
       {/* Basemap Switcher (Bottom Left) */}
-      <div className="absolute bottom-6 left-6 z-[1000] glass-card p-1 rounded-xl flex items-center gap-1 border border-ocean-700/80 bg-ocean-950/90 shadow-2xl backdrop-blur-md">
-        <span className="text-[10px] uppercase font-bold text-slate-400 px-2 select-none">
+      <div className="absolute bottom-6 left-6 z-[1000] p-1 rounded-xl flex items-center gap-1 border border-[#D9E8F2] bg-white/95 shadow-xl backdrop-blur-md">
+        <span className="text-[10px] uppercase font-bold text-[#5E7183] px-2 select-none">
           Basemap:
         </span>
         <button
           onClick={() => setBasemap("dark")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
             basemap === "dark"
-              ? "bg-ocean-600 text-white shadow-sm"
-              : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900"
+              ? "bg-[#1268B3] text-white shadow-xs"
+              : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
           }`}
         >
           Dark Tactical
         </button>
         <button
           onClick={() => setBasemap("satellite")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
             basemap === "satellite"
-              ? "bg-ocean-600 text-white shadow-sm"
-              : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900"
+              ? "bg-[#1268B3] text-white shadow-xs"
+              : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
           }`}
         >
           Satellite Imagery
         </button>
         <button
           onClick={() => setBasemap("osm")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
             basemap === "osm"
-              ? "bg-ocean-600 text-white shadow-sm"
-              : "text-slate-400 hover:text-slate-200 hover:bg-ocean-900"
+              ? "bg-[#1268B3] text-white shadow-xs"
+              : "text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE]"
           }`}
         >
           Street Map

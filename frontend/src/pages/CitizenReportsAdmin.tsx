@@ -132,31 +132,31 @@ export default function CitizenReportsAdmin() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "VERIFIED":
-        return "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
+        return "bg-[#E8F8F4] text-[#087F68] border-[#B3E7DA]";
       case "REJECTED":
-        return "bg-rose-500/20 text-rose-300 border-rose-500/40";
+        return "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]";
       case "UNDER_REVIEW":
-        return "bg-amber-500/20 text-amber-300 border-amber-500/40";
+        return "bg-[#FFF9EB] text-[#A86A00] border-[#F6D88E]";
       case "AI_ASSISTED_VERIFICATION":
-        return "bg-purple-500/20 text-purple-300 border-purple-500/40";
+        return "bg-[#EAF6FF] text-[#1268B3] border-[#D9E8F2]";
       default:
-        return "bg-blue-500/20 text-blue-300 border-blue-500/40";
+        return "bg-[#F4F9FD] text-[#5E7183] border-[#D9E8F2]";
     }
   };
 
   return (
     <div className="space-y-6 animate-fade-in p-4 sm:p-6 pb-24">
       {/* Top Banner & Quick Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-ocean-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#D9E8F2]">
         <div>
-          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <FileText className="w-6 h-6 text-cyan-400" />
+          <h1 className="text-xl sm:text-2xl font-black text-[#0B3A66] tracking-tight flex items-center gap-2.5">
+            <FileText className="w-6 h-6 text-[#1268B3]" />
             <span>Citizen &amp; Fisherman Field Reports</span>
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30">
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAF6FF] text-[#1268B3] font-mono border border-[#D9E8F2]">
               Module 19
             </span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[#5E7183] mt-1">
             Incoming crowd-sourced field observations with AI-assisted verification and emergency incident escalation
           </p>
         </div>
@@ -165,16 +165,16 @@ export default function CitizenReportsAdmin() {
           <button
             onClick={fetchReports}
             disabled={loading}
-            className="px-3 py-1.5 rounded-lg bg-ocean-800 hover:bg-ocean-700 text-slate-200 border border-ocean-700 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-white hover:bg-[#F3FAFE] text-[#17324D] border border-[#D9E8F2] text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shadow-sm"
           >
-            <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${loading ? "animate-spin" : ""}`} />
+            <RefreshCw className={`w-3.5 h-3.5 text-[#1268B3] ${loading ? "animate-spin" : ""}`} />
             <span>Refresh</span>
           </button>
           <Link
             to="/report"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-sm"
+            className="px-3.5 py-1.5 rounded-lg bg-[#1268B3] hover:bg-[#0F4C81] text-white text-xs font-bold flex items-center gap-1.5 transition shadow-sm"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             <span>Open Public Mobile Form</span>
@@ -183,15 +183,15 @@ export default function CitizenReportsAdmin() {
       </div>
 
       {error && (
-        <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-500/60 text-rose-300 text-xs flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+        <div className="p-3 rounded-xl bg-[#FFF1F2] border border-[#F5B5BC] text-[#C6283D] text-xs flex items-center gap-2">
+          <AlertTriangle className="w-4 h-4 text-[#C6283D] shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {actionSuccess && (
-        <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/60 text-emerald-300 text-xs flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="p-3 rounded-xl bg-[#E8F8F4] border border-[#B3E7DA] text-[#087F68] text-xs flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#087F68] shrink-0" />
           <span>{actionSuccess}</span>
         </div>
       )}
@@ -200,77 +200,77 @@ export default function CitizenReportsAdmin() {
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
         <div
           onClick={() => setStatusFilter("ALL")}
-          className={`p-3 rounded-xl border cursor-pointer transition ${
-            statusFilter === "ALL" ? "bg-cyan-950/40 border-cyan-500/50" : "bg-ocean-900/60 border-ocean-800"
+          className={`p-3 rounded-xl border cursor-pointer transition shadow-sm ${
+            statusFilter === "ALL" ? "bg-[#EAF6FF] border-[#1268B3]" : "bg-white border-[#D9E8F2] hover:bg-[#F8FBFE]"
           }`}
         >
-          <span className="text-[10px] text-slate-400 uppercase font-semibold">Total Reports</span>
-          <div className="text-xl font-black font-mono text-white mt-0.5">{counts.all}</div>
+          <span className="text-[10px] text-[#5E7183] uppercase font-semibold">Total Reports</span>
+          <div className="text-xl font-black font-mono text-[#0B3A66] mt-0.5">{counts.all}</div>
         </div>
 
         <div
           onClick={() => setStatusFilter("SUBMITTED")}
-          className={`p-3 rounded-xl border cursor-pointer transition ${
-            statusFilter === "SUBMITTED" ? "bg-blue-950/40 border-blue-500/50" : "bg-ocean-900/60 border-ocean-800"
+          className={`p-3 rounded-xl border cursor-pointer transition shadow-sm ${
+            statusFilter === "SUBMITTED" ? "bg-[#EAF6FF] border-[#1268B3]" : "bg-white border-[#D9E8F2] hover:bg-[#F8FBFE]"
           }`}
         >
-          <span className="text-[10px] text-blue-300 uppercase font-semibold">New Submitted</span>
-          <div className="text-xl font-black font-mono text-blue-300 mt-0.5">{counts.submitted}</div>
+          <span className="text-[10px] text-[#1268B3] uppercase font-semibold">New Submitted</span>
+          <div className="text-xl font-black font-mono text-[#1268B3] mt-0.5">{counts.submitted}</div>
         </div>
 
         <div
           onClick={() => setStatusFilter("UNDER_REVIEW")}
-          className={`p-3 rounded-xl border cursor-pointer transition ${
-            statusFilter === "UNDER_REVIEW" ? "bg-amber-950/40 border-amber-500/50" : "bg-ocean-900/60 border-ocean-800"
+          className={`p-3 rounded-xl border cursor-pointer transition shadow-sm ${
+            statusFilter === "UNDER_REVIEW" ? "bg-[#FFF9EB] border-[#F6D88E]" : "bg-white border-[#D9E8F2] hover:bg-[#F8FBFE]"
           }`}
         >
-          <span className="text-[10px] text-amber-300 uppercase font-semibold">Under Review</span>
-          <div className="text-xl font-black font-mono text-amber-300 mt-0.5">{counts.underReview}</div>
+          <span className="text-[10px] text-[#A86A00] uppercase font-semibold">Under Review</span>
+          <div className="text-xl font-black font-mono text-[#A86A00] mt-0.5">{counts.underReview}</div>
         </div>
 
         <div
           onClick={() => setStatusFilter("VERIFIED")}
-          className={`p-3 rounded-xl border cursor-pointer transition ${
-            statusFilter === "VERIFIED" ? "bg-emerald-950/40 border-emerald-500/50" : "bg-ocean-900/60 border-ocean-800"
+          className={`p-3 rounded-xl border cursor-pointer transition shadow-sm ${
+            statusFilter === "VERIFIED" ? "bg-[#E8F8F4] border-[#B3E7DA]" : "bg-white border-[#D9E8F2] hover:bg-[#F8FBFE]"
           }`}
         >
-          <span className="text-[10px] text-emerald-300 uppercase font-semibold">Verified Spills</span>
-          <div className="text-xl font-black font-mono text-emerald-300 mt-0.5">{counts.verified}</div>
+          <span className="text-[10px] text-[#087F68] uppercase font-semibold">Verified Spills</span>
+          <div className="text-xl font-black font-mono text-[#087F68] mt-0.5">{counts.verified}</div>
         </div>
 
         <div
           onClick={() => setStatusFilter("REJECTED")}
-          className={`p-3 rounded-xl border cursor-pointer transition ${
-            statusFilter === "REJECTED" ? "bg-rose-950/40 border-rose-500/50" : "bg-ocean-900/60 border-ocean-800"
+          className={`p-3 rounded-xl border cursor-pointer transition shadow-sm ${
+            statusFilter === "REJECTED" ? "bg-[#FFF1F2] border-[#F5B5BC]" : "bg-white border-[#D9E8F2] hover:bg-[#F8FBFE]"
           }`}
         >
-          <span className="text-[10px] text-rose-300 uppercase font-semibold">False Alarms</span>
-          <div className="text-xl font-black font-mono text-rose-300 mt-0.5">{counts.rejected}</div>
+          <span className="text-[10px] text-[#C6283D] uppercase font-semibold">False Alarms</span>
+          <div className="text-xl font-black font-mono text-[#C6283D] mt-0.5">{counts.rejected}</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-ocean-900/70 p-3 rounded-xl border border-ocean-800">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3 rounded-xl border border-[#D9E8F2] shadow-sm">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+          <Search className="w-4 h-4 text-[#8A9AA8] absolute left-3 top-2.5" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search report code, description, location..."
-            className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-ocean-950 border border-ocean-700 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+            className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-white border border-[#D9E8F2] text-xs text-[#17324D] placeholder:text-[#8A9AA8] focus:outline-none focus:border-[#1268B3]"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <span className="text-xs text-slate-400 font-semibold flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="text-xs text-[#5E7183] font-semibold flex items-center gap-1">
+            <Filter className="w-3.5 h-3.5 text-[#1268B3]" />
             Category:
           </span>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-2.5 py-1.5 rounded-lg bg-ocean-950 border border-ocean-700 text-xs text-slate-200 focus:outline-none focus:border-cyan-400"
+            className="px-2.5 py-1.5 rounded-lg bg-white border border-[#D9E8F2] text-xs text-[#17324D] focus:outline-none focus:border-[#1268B3]"
           >
             <option value="ALL">All Categories</option>
             <option value="SURFACE_SHEEN">Rainbow Sheen</option>
@@ -285,21 +285,21 @@ export default function CitizenReportsAdmin() {
 
       {/* Reports Table & List */}
       {loading ? (
-        <div className="p-12 text-center text-xs text-slate-400 flex items-center justify-center gap-2">
-          <RefreshCw className="w-4 h-4 animate-spin text-cyan-400" />
+        <div className="p-12 text-center text-xs text-[#5E7183] flex items-center justify-center gap-2">
+          <RefreshCw className="w-4 h-4 animate-spin text-[#1268B3]" />
           <span>Loading citizen field reports...</span>
         </div>
       ) : filteredReports.length === 0 ? (
-        <div className="p-12 rounded-xl bg-ocean-900/40 border border-ocean-800 text-center text-xs text-slate-400 space-y-2">
+        <div className="p-12 rounded-xl bg-white border border-[#D9E8F2] text-center text-xs text-[#5E7183] space-y-2 shadow-sm">
           <p>No citizen reports matching current filter criteria.</p>
-          <Link to="/report" target="_blank" className="text-cyan-400 hover:underline">
+          <Link to="/report" target="_blank" className="text-[#1268B3] hover:underline">
             Submit a test report via the mobile form →
           </Link>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-ocean-800 bg-ocean-900/60 shadow-lg">
-          <table className="w-full text-left text-xs text-slate-200">
-            <thead className="bg-ocean-950/80 text-slate-400 font-mono text-[10px] uppercase border-b border-ocean-800">
+        <div className="overflow-x-auto rounded-xl border border-[#D9E8F2] bg-white shadow-sm">
+          <table className="w-full text-left text-xs text-[#17324D]">
+            <thead className="bg-[#F4F9FD] text-[#5E7183] font-mono text-[10px] uppercase border-b border-[#D9E8F2]">
               <tr>
                 <th className="px-3.5 py-3">Photo</th>
                 <th className="px-3.5 py-3">Report Code</th>
@@ -311,9 +311,9 @@ export default function CitizenReportsAdmin() {
                 <th className="px-3.5 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ocean-800/60 font-mono">
+            <tbody className="divide-y divide-[#D9E8F2] font-mono">
               {filteredReports.map((rep) => (
-                <tr key={rep.id} className="hover:bg-ocean-850/60 transition">
+                <tr key={rep.id} className="hover:bg-[#F3FAFE] transition">
                   {/* Photo Thumbnail */}
                   <td className="px-3.5 py-2.5">
                     {rep.photo_url ? (
@@ -321,10 +321,10 @@ export default function CitizenReportsAdmin() {
                         src={rep.photo_url}
                         alt="Evidence"
                         onClick={() => handleOpenReview(rep)}
-                        className="w-10 h-10 rounded-lg object-cover border border-ocean-700 hover:border-cyan-400 transition cursor-pointer shadow-sm"
+                        className="w-10 h-10 rounded-lg object-cover border border-[#D9E8F2] hover:border-[#1268B3] transition cursor-pointer shadow-sm"
                       />
                     ) : (
-                      <div className="w-10 h-10 rounded-lg bg-ocean-950 border border-ocean-800 text-slate-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-[#F8FBFE] border border-[#D9E8F2] text-[#8A9AA8] flex items-center justify-center">
                         <Camera className="w-4 h-4" />
                       </div>
                     )}
@@ -332,34 +332,34 @@ export default function CitizenReportsAdmin() {
 
                   {/* Report Code & Timestamp */}
                   <td className="px-3.5 py-2.5">
-                    <span className="font-bold text-cyan-300 block">{rep.report_code}</span>
-                    <span className="text-[10px] text-slate-400 font-normal">
+                    <span className="font-bold text-[#1268B3] block">{rep.report_code}</span>
+                    <span className="text-[10px] text-[#5E7183] font-normal">
                       {new Date(rep.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </span>
                   </td>
 
                   {/* Category */}
                   <td className="px-3.5 py-2.5 font-sans">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-ocean-950 border border-ocean-800 text-slate-200">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#F8FBFE] border border-[#D9E8F2] text-[#17324D]">
                       {rep.incident_category.replace(/_/g, " ")}
                     </span>
                   </td>
 
                   {/* Location */}
                   <td className="px-3.5 py-2.5 font-sans text-xs">
-                    <div className="flex items-center gap-1 font-mono text-[11px] text-slate-300">
-                      <MapPin className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <div className="flex items-center gap-1 font-mono text-[11px] text-[#17324D]">
+                      <MapPin className="w-3 h-3 text-[#087F68] shrink-0" />
                       <span>{rep.latitude.toFixed(4)}°N, {rep.longitude.toFixed(4)}°E</span>
                     </div>
                     {rep.location_description && (
-                      <span className="text-[10px] text-slate-400 block truncate max-w-[150px]">
+                      <span className="text-[10px] text-[#5E7183] block truncate max-w-[150px]">
                         {rep.location_description}
                       </span>
                     )}
                   </td>
 
                   {/* Description preview */}
-                  <td className="px-3.5 py-2.5 font-sans text-xs max-w-xs truncate text-slate-300">
+                  <td className="px-3.5 py-2.5 font-sans text-xs max-w-xs truncate text-[#5E7183]">
                     {rep.description}
                   </td>
 
@@ -367,10 +367,10 @@ export default function CitizenReportsAdmin() {
                   <td className="px-3.5 py-2.5 font-mono">
                     <span className={`text-xs font-bold ${
                       rep.verification_confidence >= 65
-                        ? "text-emerald-400"
+                        ? "text-[#087F68]"
                         : rep.verification_confidence >= 45
-                        ? "text-amber-400"
-                        : "text-slate-400"
+                        ? "text-[#A86A00]"
+                        : "text-[#5E7183]"
                     }`}>
                       {rep.verification_confidence.toFixed(0)}%
                     </span>
@@ -387,7 +387,7 @@ export default function CitizenReportsAdmin() {
                   <td className="px-3.5 py-2.5 text-right font-sans">
                     <button
                       onClick={() => handleOpenReview(rep)}
-                      className="px-2.5 py-1 rounded bg-ocean-800 hover:bg-ocean-700 text-cyan-300 border border-cyan-800/60 text-xs font-semibold transition cursor-pointer"
+                      className="px-2.5 py-1 rounded bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3] text-xs font-semibold transition cursor-pointer shadow-xs"
                     >
                       Review
                     </button>
@@ -401,13 +401,13 @@ export default function CitizenReportsAdmin() {
 
       {/* Review & Triage Drawer / Modal */}
       {showReviewModal && selectedReport && (
-        <div className="fixed inset-0 bg-ocean-950/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6 animate-fade-in">
-          <div className="bg-ocean-900 border border-ocean-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4">
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6 animate-fade-in">
+          <div className="bg-white border border-[#D9E8F2] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 text-[#17324D]">
             {/* Modal Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-ocean-800">
+            <div className="flex items-center justify-between pb-3 border-b border-[#D9E8F2]">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-extrabold text-white">
-                  Report Dossier: <span className="text-cyan-300 font-mono">{selectedReport.report_code}</span>
+                <span className="text-sm font-extrabold text-[#0B3A66]">
+                  Report Dossier: <span className="text-[#1268B3] font-mono">{selectedReport.report_code}</span>
                 </span>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${getStatusBadge(selectedReport.status)}`}>
                   {selectedReport.status}
@@ -415,7 +415,7 @@ export default function CitizenReportsAdmin() {
               </div>
               <button
                 onClick={() => setShowReviewModal(false)}
-                className="p-1 rounded text-slate-400 hover:text-white transition cursor-pointer"
+                className="p-1 rounded text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE] transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -424,7 +424,7 @@ export default function CitizenReportsAdmin() {
             {/* Photo Preview & GPS Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Photo */}
-              <div className="bg-ocean-950 p-2 rounded-xl border border-ocean-800 flex items-center justify-center">
+              <div className="bg-[#F8FBFE] p-2 rounded-xl border border-[#D9E8F2] flex items-center justify-center">
                 {selectedReport.photo_url ? (
                   <div className="relative group w-full">
                     <img
@@ -436,14 +436,14 @@ export default function CitizenReportsAdmin() {
                       href={selectedReport.photo_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/70 backdrop-blur-sm text-[10px] text-cyan-300 flex items-center gap-1 hover:text-white"
+                      className="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#4DB8E8] flex items-center gap-1 hover:text-white"
                     >
                       <ExternalLink className="w-3 h-3" />
                       <span>Full Res</span>
                     </a>
                   </div>
                 ) : (
-                  <div className="h-48 flex flex-col items-center justify-center text-slate-500 space-y-1">
+                  <div className="h-48 flex flex-col items-center justify-center text-[#8A9AA8] space-y-1">
                     <Camera className="w-8 h-8 opacity-40" />
                     <span className="text-xs">No photographic evidence attached</span>
                   </div>
@@ -452,44 +452,44 @@ export default function CitizenReportsAdmin() {
 
               {/* Observation & Reporter Info */}
               <div className="space-y-2.5 text-xs">
-                <div className="p-3 rounded-lg bg-ocean-950 border border-ocean-800 space-y-1.5 font-mono">
-                  <div className="flex items-center justify-between text-slate-400">
+                <div className="p-3 rounded-lg bg-[#F8FBFE] border border-[#D9E8F2] space-y-1.5 font-mono">
+                  <div className="flex items-center justify-between text-[#5E7183]">
                     <span>GPS Coordinates:</span>
-                    <span className="text-slate-200 font-bold">
+                    <span className="text-[#17324D] font-bold">
                       {selectedReport.latitude.toFixed(5)}°N, {selectedReport.longitude.toFixed(5)}°E
                     </span>
                   </div>
                   {selectedReport.location_description && (
-                    <div className="flex items-center justify-between text-slate-400">
+                    <div className="flex items-center justify-between text-[#5E7183]">
                       <span>Area / Landmark:</span>
-                      <span className="text-cyan-300">{selectedReport.location_description}</span>
+                      <span className="text-[#1268B3]">{selectedReport.location_description}</span>
                     </div>
                   )}
-                  <div className="flex items-center justify-between text-slate-400">
+                  <div className="flex items-center justify-between text-[#5E7183]">
                     <span>Observed At:</span>
-                    <span className="text-slate-200">{new Date(selectedReport.observed_at).toLocaleString()}</span>
+                    <span className="text-[#17324D]">{new Date(selectedReport.observed_at).toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-400">
+                  <div className="flex items-center justify-between text-[#5E7183]">
                     <span>Estimated Spread:</span>
-                    <span className="text-slate-200">{selectedReport.estimated_spill_size || "Not specified"}</span>
+                    <span className="text-[#17324D]">{selectedReport.estimated_spill_size || "Not specified"}</span>
                   </div>
                 </div>
 
                 {/* Reporter Identity (Protected / Private view for Command) */}
-                <div className="p-3 rounded-lg bg-blue-950/30 border border-blue-500/30 space-y-1">
-                  <div className="flex items-center justify-between text-[10px] font-semibold text-blue-300 uppercase">
+                <div className="p-3 rounded-lg bg-[#F4F9FD] border border-[#D9E8F2] space-y-1">
+                  <div className="flex items-center justify-between text-[10px] font-semibold text-[#1268B3] uppercase">
                     <span className="flex items-center gap-1">
                       <Shield className="w-3 h-3" />
                       Protected Reporter Profile
                     </span>
                     <span>{selectedReport.reporter_affiliation || "CITIZEN"}</span>
                   </div>
-                  <div className="text-slate-200 font-medium">
+                  <div className="text-[#17324D] font-medium">
                     Name: {selectedReport.reporter_name || "Anonymous Observer"}
                   </div>
                   {selectedReport.reporter_contact && (
-                    <div className="text-cyan-300 font-mono flex items-center gap-1">
-                      <Phone className="w-3 h-3 text-cyan-400" />
+                    <div className="text-[#1268B3] font-mono flex items-center gap-1">
+                      <Phone className="w-3 h-3 text-[#1268B3]" />
                       {selectedReport.reporter_contact}
                     </div>
                   )}
@@ -498,41 +498,41 @@ export default function CitizenReportsAdmin() {
             </div>
 
             {/* Full Description */}
-            <div className="p-3 rounded-xl bg-ocean-950 border border-ocean-800 space-y-1">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+            <div className="p-3 rounded-xl bg-[#F8FBFE] border border-[#D9E8F2] space-y-1">
+              <span className="text-[10px] font-bold text-[#5E7183] uppercase tracking-wider block">
                 Visual Description &amp; Field Notes:
               </span>
-              <p className="text-xs text-slate-200 leading-relaxed font-sans">
+              <p className="text-xs text-[#17324D] leading-relaxed font-sans">
                 "{selectedReport.description}"
               </p>
             </div>
 
             {/* AI Multi-Factor Verification Analysis */}
-            <div className="p-3 rounded-xl bg-purple-950/20 border border-purple-500/40 space-y-2">
+            <div className="p-3 rounded-xl bg-[#F8FBFE] border border-[#D9E8F2] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
+                <span className="text-xs font-bold text-[#1268B3] uppercase tracking-wider flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-[#1268B3]" />
                   <span>AI Multi-Factor Verification Engine</span>
                 </span>
-                <span className="text-sm font-extrabold font-mono text-purple-300">
+                <span className="text-sm font-extrabold font-mono text-[#0B3A66]">
                   {selectedReport.verification_confidence.toFixed(1)}% Confidence
                 </span>
               </div>
               {selectedReport.ai_analysis_notes ? (
-                <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                <p className="text-xs text-[#5E7183] font-sans leading-relaxed">
                   {selectedReport.ai_analysis_notes}
                 </p>
               ) : (
-                <p className="text-xs text-slate-400 italic">
+                <p className="text-xs text-[#8A9AA8] italic">
                   Not yet evaluated by AI verification engine.
                 </p>
               )}
 
               {selectedReport.linked_incident_id && (
-                <div className="flex items-center gap-2 pt-1 font-mono text-xs text-emerald-400">
+                <div className="flex items-center gap-2 pt-1 font-mono text-xs text-[#087F68]">
                   <Link2 className="w-3.5 h-3.5" />
                   <span>Linked Active Incident ID: {selectedReport.linked_incident_id}</span>
-                  <Link to={`/incidents/${selectedReport.linked_incident_id}`} className="text-cyan-400 underline ml-auto">
+                  <Link to={`/incidents/${selectedReport.linked_incident_id}`} className="text-[#1268B3] underline ml-auto">
                     View Incident Dossier →
                   </Link>
                 </div>
@@ -540,8 +540,8 @@ export default function CitizenReportsAdmin() {
             </div>
 
             {/* Operational Review Actions */}
-            <div className="space-y-3 pt-2 border-t border-ocean-800">
-              <span className="text-xs font-bold text-slate-200 uppercase tracking-wider block">
+            <div className="space-y-3 pt-2 border-t border-[#D9E8F2]">
+              <span className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider block">
                 Command Workflow Controls
               </span>
 
@@ -550,7 +550,7 @@ export default function CitizenReportsAdmin() {
                   type="button"
                   disabled={actionLoading}
                   onClick={() => handleUpdateStatus("UNDER_REVIEW")}
-                  className="px-3 py-2 rounded-lg bg-amber-950 hover:bg-amber-900 text-amber-300 border border-amber-600/60 text-xs font-bold transition cursor-pointer"
+                  className="px-3 py-2 rounded-lg bg-white hover:bg-[#FFF9EB] text-[#A86A00] border border-[#F6D88E] text-xs font-bold transition cursor-pointer shadow-xs"
                 >
                   Mark Under Review
                 </button>
@@ -559,7 +559,7 @@ export default function CitizenReportsAdmin() {
                   type="button"
                   disabled={actionLoading}
                   onClick={() => handleRunAiVerify(false)}
-                  className="px-3 py-2 rounded-lg bg-purple-950 hover:bg-purple-900 text-purple-300 border border-purple-600/60 text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1"
+                  className="px-3 py-2 rounded-lg bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3] text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1 shadow-xs"
                 >
                   <Sparkles className="w-3 h-3" />
                   Run AI Verify
@@ -569,7 +569,7 @@ export default function CitizenReportsAdmin() {
                   type="button"
                   disabled={actionLoading}
                   onClick={() => handleRunAiVerify(true)}
-                  className="px-3 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold transition cursor-pointer shadow-md flex items-center justify-center gap-1"
+                  className="px-3 py-2 rounded-lg bg-[#087F68] hover:bg-[#066452] text-white text-xs font-bold transition cursor-pointer shadow-md flex items-center justify-center gap-1"
                 >
                   <Check className="w-3.5 h-3.5" />
                   Verify &amp; Escalate
@@ -579,7 +579,7 @@ export default function CitizenReportsAdmin() {
                   type="button"
                   disabled={actionLoading}
                   onClick={() => handleUpdateStatus("REJECTED")}
-                  className="px-3 py-2 rounded-lg bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-600/60 text-xs font-bold transition cursor-pointer"
+                  className="px-3 py-2 rounded-lg bg-[#C6283D] hover:bg-[#A31D30] text-white text-xs font-bold transition cursor-pointer shadow-md"
                 >
                   Reject / False Alarm
                 </button>

@@ -61,100 +61,100 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
     {
       key: "incidents",
       label: "Oil Spill Incidents",
-      icon: <Flame className="w-4 h-4 text-red-400" />,
-      color: "text-red-400",
+      icon: <Flame className="w-4 h-4 text-[#C6283D]" />,
+      color: "text-[#C6283D]",
       count: counts.incidents,
     },
     {
       key: "movementPrediction",
       label: "Spill Movement (+24h)",
-      icon: <Compass className="w-4 h-4 text-fuchsia-400" />,
-      color: "text-fuchsia-400",
+      icon: <Compass className="w-4 h-4 text-[#1268B3]" />,
+      color: "text-[#1268B3]",
     },
     {
       key: "vessels",
       label: "Vessels & AIS Tracks",
-      icon: <Navigation className="w-4 h-4 text-emerald-400" />,
-      color: "text-emerald-400",
+      icon: <Navigation className="w-4 h-4 text-[#087F68]" />,
+      color: "text-[#087F68]",
       count: counts.vessels ?? 0,
     },
     {
       key: "spillPolygons",
       label: "Spill Geometry Polygons",
-      icon: <Flame className="w-4 h-4 text-orange-400" />,
-      color: "text-orange-400",
+      icon: <Flame className="w-4 h-4 text-[#A86A00]" />,
+      color: "text-[#A86A00]",
       count: counts.incidents,
     },
     {
       key: "protectedAreas",
       label: "Protected Marine Areas",
-      icon: <Shield className="w-4 h-4 text-emerald-400" />,
-      color: "text-emerald-400",
+      icon: <Shield className="w-4 h-4 text-[#087F68]" />,
+      color: "text-[#087F68]",
       count: counts.protectedAreas,
     },
     {
       key: "fishingZones",
       label: "Fishing & Trawling Zones",
-      icon: <Fish className="w-4 h-4 text-cyan-400" />,
-      color: "text-cyan-400",
+      icon: <Fish className="w-4 h-4 text-[#168DCC]" />,
+      color: "text-[#168DCC]",
       count: counts.fishingZones,
     },
     {
       key: "ports",
       label: "Major Commercial Ports",
-      icon: <Anchor className="w-4 h-4 text-amber-400" />,
-      color: "text-amber-400",
+      icon: <Anchor className="w-4 h-4 text-[#A86A00]" />,
+      color: "text-[#A86A00]",
       count: counts.ports,
     },
     {
       key: "shippingLanes",
       label: "Shipping Transit Routes",
-      icon: <Navigation className="w-4 h-4 text-purple-400" />,
-      color: "text-purple-400",
+      icon: <Navigation className="w-4 h-4 text-[#0B3A66]" />,
+      color: "text-[#0B3A66]",
       count: counts.shippingLanes,
     },
     {
       key: "ecosystemRisk",
       label: "Ecosystem Risk Zones",
-      icon: <Leaf className="w-4 h-4 text-green-400" />,
-      color: "text-green-400",
+      icon: <Leaf className="w-4 h-4 text-[#087F68]" />,
+      color: "text-[#087F68]",
     },
     {
       key: "coastalImpact",
       label: "Coastal Impact & ETA",
-      icon: <Zap className="w-4 h-4 text-cyan-400" />,
-      color: "text-cyan-400",
+      icon: <Zap className="w-4 h-4 text-[#1268B3]" />,
+      color: "text-[#1268B3]",
     },
     {
       key: "responseRouting",
       label: "Vessel Response Route (M14)",
-      icon: <Navigation className="w-4 h-4 text-emerald-400" />,
-      color: "text-emerald-400",
+      icon: <Navigation className="w-4 h-4 text-[#087F68]" />,
+      color: "text-[#087F68]",
     },
     {
       key: "sourceAnalysis",
       label: "Probable Source Region (M18)",
-      icon: <Crosshair className="w-4 h-4 text-indigo-400" />,
-      color: "text-indigo-400",
+      icon: <Crosshair className="w-4 h-4 text-[#1268B3]" />,
+      color: "text-[#1268B3]",
     },
     {
       key: "coastline",
       label: "Coastal Perimeter Reference",
-      icon: <Globe className="w-4 h-4 text-sky-400" />,
-      color: "text-sky-400",
+      icon: <Globe className="w-4 h-4 text-[#168DCC]" />,
+      color: "text-[#168DCC]",
     },
   ];
 
   return (
-    <div className="absolute top-6 right-6 z-[1000] glass-card border border-ocean-500/20 bg-ocean-950/90 backdrop-blur-md rounded-xl p-3.5 shadow-2xl w-64">
-      <div className="flex items-center justify-between pb-2 border-b border-ocean-700/50">
-        <span className="text-xs font-semibold uppercase tracking-wider text-ocean-300 flex items-center gap-1.5">
+    <div className="absolute top-6 right-6 z-[1000] bg-white/95 backdrop-blur-md border border-[#D9E8F2] rounded-xl p-3.5 shadow-xl w-64 text-[#17324D]">
+      <div className="flex items-center justify-between pb-2 border-b border-[#EAF3F8]">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#0B3A66] flex items-center gap-1.5">
           GIS Layer Toggles
         </span>
         <button
           onClick={onResetView}
           title="Reset map view to Indian Ocean overview"
-          className="text-slate-400 hover:text-ocean-300 p-1 rounded hover:bg-ocean-800 transition flex items-center gap-1 text-[10px]"
+          className="text-[#5E7183] hover:text-[#1268B3] p-1 rounded hover:bg-[#F3FAFE] transition flex items-center gap-1 text-[10px] font-semibold cursor-pointer"
         >
           <Maximize2 className="w-3.5 h-3.5" />
           <span>Reset</span>
@@ -168,27 +168,27 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
             <button
               key={key}
               onClick={() => onChange(key)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition duration-150 ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition duration-150 cursor-pointer ${
                 isActive
-                  ? "bg-ocean-800/80 text-slate-100 font-medium"
-                  : "text-slate-400 hover:bg-ocean-900/60 hover:text-slate-200"
+                  ? "bg-[#EAF6FF] text-[#1268B3] font-bold border border-[#A9D9F5]"
+                  : "text-[#5E7183] hover:bg-[#F8FCFF] hover:text-[#17324D]"
               }`}
             >
               <div className="flex items-center gap-2">
                 {isActive ? (
-                  <CheckSquare className="w-3.5 h-3.5 text-ocean-400 shrink-0" />
+                  <CheckSquare className="w-3.5 h-3.5 text-[#1268B3] shrink-0" />
                 ) : (
-                  <Square className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                  <Square className="w-3.5 h-3.5 text-[#8A9AA8] shrink-0" />
                 )}
                 <span className="shrink-0">{icon}</span>
                 <span className="truncate max-w-[130px]">{label}</span>
               </div>
               {count !== undefined && (
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-semibold ${
                     isActive
-                      ? "bg-ocean-700 text-ocean-200"
-                      : "bg-ocean-900 text-slate-500"
+                      ? "bg-[#1268B3] text-white"
+                      : "bg-[#F3FAFE] text-[#8A9AA8] border border-[#D9E8F2]"
                   }`}
                 >
                   {count}

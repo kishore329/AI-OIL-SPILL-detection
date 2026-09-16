@@ -387,22 +387,22 @@ export default function Simulator() {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-ocean-800 pb-5">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 shadow-lg shadow-cyan-950/40">
+            <div className="p-2.5 rounded-xl bg-[#EAF6FF] border border-[#D9E8F2] text-[#1268B3] shadow-sm">
               <Waves className="w-6 h-6 animate-pulse" />
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <h1 className="text-2xl font-bold tracking-tight text-white font-mono">
+                <h1 className="text-2xl font-bold tracking-tight text-[#0B3A66] font-mono">
                   WHAT-IF OIL SPILL SIMULATOR
                 </h1>
-                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-cyan-950 text-cyan-400 border border-cyan-700/60 uppercase">
+                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2] uppercase">
                   Module 20
                 </span>
-                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-950/80 text-emerald-400 border border-emerald-700/60 uppercase">
+                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#E8F8F4] text-[#087F68] border border-[#B3E7DA] uppercase">
                   Isolated Environment
                 </span>
               </div>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="text-sm text-[#5E7183] mt-1">
                 Hypothetical multi-domain consequence simulation (Movement, Ecosystem, Coastal Landfall, Risk, Economic, Response).
               </p>
             </div>
@@ -415,7 +415,7 @@ export default function Simulator() {
             <select
               value={activeRun?.id || ""}
               onChange={(e) => e.target.value && handleSelectRun(e.target.value)}
-              className="bg-ocean-900/90 text-slate-200 border border-ocean-700 text-xs rounded-lg px-3 py-2 font-mono focus:border-cyan-500 focus:outline-none"
+              className="bg-white text-[#17324D] border border-[#D9E8F2] text-xs rounded-lg px-3 py-2 font-mono focus:border-[#1268B3] focus:outline-none shadow-sm"
               disabled={loadingRuns}
             >
               <option value="" disabled>Select Saved Scenario...</option>
@@ -430,7 +430,7 @@ export default function Simulator() {
                 type="button"
                 onClick={(e) => handleDeleteRun(activeRun.id, e)}
                 title="Delete this scenario"
-                className="p-2 rounded-lg bg-ocean-900/90 hover:bg-rose-950/80 text-slate-400 hover:text-rose-300 border border-ocean-700 hover:border-rose-700 transition cursor-pointer"
+                className="p-2 rounded-lg bg-white hover:bg-red-50 text-[#5E7183] hover:text-[#C6283D] border border-[#D9E8F2] hover:border-red-300 transition cursor-pointer shadow-sm"
               >
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
@@ -445,17 +445,17 @@ export default function Simulator() {
                 setCompareId2(runs[1].id);
               }
             }}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-ocean-800 hover:bg-ocean-700 text-cyan-300 border border-cyan-800/60 text-xs font-semibold font-mono transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3] text-xs font-semibold font-mono transition cursor-pointer shadow-sm"
           >
-            <Scale className="w-3.5 h-3.5 text-cyan-400" />
+            <Scale className="w-3.5 h-3.5 text-[#1268B3]" />
             Compare Scenarios
           </button>
         </div>
       </div>
 
       {/* ── Mandatory Decision-Support Disclaimer Banner ── */}
-      <div className="bg-amber-950/40 border border-amber-500/40 rounded-xl p-3.5 flex items-start gap-3 text-amber-200 text-xs shadow-md">
-        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+      <div className="bg-[#FFF9EB] border border-[#F6D88E] rounded-xl p-3.5 flex items-start gap-3 text-[#8C5800] text-xs shadow-sm">
+        <AlertTriangle className="w-4 h-4 text-[#A86A00] shrink-0 mt-0.5" />
         <div>
           <span className="font-bold tracking-wide uppercase font-mono mr-1">
             Probabilistic Scenario Model — Decision Support Only:
@@ -465,12 +465,12 @@ export default function Simulator() {
       </div>
 
       {errorMessage && (
-        <div className="bg-red-950/40 border border-red-500/50 rounded-xl p-3 flex items-center justify-between text-red-200 text-xs">
+        <div className="bg-[#FFF1F2] border border-[#F5B5BC] rounded-xl p-3 flex items-center justify-between text-[#C6283D] text-xs">
           <div className="flex items-center gap-2">
-            <XCircle className="w-4 h-4 text-red-400 shrink-0" />
+            <XCircle className="w-4 h-4 text-[#C6283D] shrink-0" />
             <span>{errorMessage}</span>
           </div>
-          <button onClick={() => setErrorMessage(null)} className="text-red-400 hover:text-red-200">
+          <button onClick={() => setErrorMessage(null)} className="text-[#C6283D] hover:opacity-75">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -479,20 +479,20 @@ export default function Simulator() {
       {/* ── Main Workspace: 2-Column Layout ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* ── LEFT COLUMN: Scenario Builder Form ── */}
-        <div className="lg:col-span-4 glass-card p-5 rounded-xl border border-ocean-800/80 shadow-xl space-y-5">
-          <div className="flex items-center justify-between border-b border-ocean-800 pb-3">
+        <div className="lg:col-span-4 bg-white p-5 rounded-xl border border-[#D9E8F2] shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-[#D9E8F2] pb-3">
             <div className="flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-cyan-400" />
-              <h2 className="text-sm font-bold text-slate-100 font-mono uppercase tracking-wide">
+              <Sliders className="w-4 h-4 text-[#1268B3]" />
+              <h2 className="text-sm font-bold text-[#0B3A66] font-mono uppercase tracking-wide">
                 Scenario Builder
               </h2>
             </div>
-            <span className="text-[10px] font-mono text-slate-400">Step 1 of 2</span>
+            <span className="text-[10px] font-mono text-[#5E7183]">Step 1 of 2</span>
           </div>
 
           {/* Quick Presets */}
           <div>
-            <label className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2">
+            <label className="text-[11px] font-mono uppercase tracking-wider text-[#5E7183] block mb-2 font-semibold">
               Quick Preset Scenarios
             </label>
             <div className="grid grid-cols-2 gap-1.5">
@@ -501,12 +501,12 @@ export default function Simulator() {
                   key={idx}
                   type="button"
                   onClick={() => handleApplyPreset(p)}
-                  className="text-left p-2 rounded-lg bg-ocean-950/70 hover:bg-ocean-800 border border-ocean-800 hover:border-cyan-700/60 transition group cursor-pointer"
+                  className="text-left p-2 rounded-lg bg-[#F8FBFE] hover:bg-[#EAF6FF] border border-[#D9E8F2] hover:border-[#1268B3] transition group cursor-pointer"
                 >
-                  <div className="text-[11px] font-bold text-slate-200 truncate group-hover:text-cyan-300">
+                  <div className="text-[11px] font-bold text-[#17324D] truncate group-hover:text-[#1268B3]">
                     {p.name.split("(")[0]}
                   </div>
-                  <div className="text-[10px] text-slate-400 font-mono">
+                  <div className="text-[10px] text-[#5E7183] font-mono">
                     {p.spillSize} {p.unit} • {p.oilType.split("_")[0]}
                   </div>
                 </button>
@@ -518,7 +518,7 @@ export default function Simulator() {
           <form onSubmit={handleRunSimulation} className="space-y-4">
             {/* Scenario Title */}
             <div>
-              <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300 block mb-1">
+              <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] block mb-1 font-semibold">
                 Scenario Name
               </label>
               <input
@@ -526,7 +526,7 @@ export default function Simulator() {
                 value={scenarioName}
                 onChange={(e) => setScenarioName(e.target.value)}
                 required
-                className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-sans focus:outline-none focus:border-cyan-500"
+                className="w-full bg-white border border-[#D9E8F2] rounded-lg px-3 py-2 text-xs text-[#17324D] font-sans focus:outline-none focus:border-[#1268B3] shadow-sm"
                 placeholder="e.g. Tanker Collision Scenario A"
               />
             </div>
@@ -534,7 +534,7 @@ export default function Simulator() {
             {/* Geographic Coordinates */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] font-semibold">
                   Hypothetical Spill Origin
                 </label>
                 <button
@@ -542,8 +542,8 @@ export default function Simulator() {
                   onClick={() => setPickOnMap(!pickOnMap)}
                   className={`text-[10px] font-mono px-2 py-0.5 rounded border transition cursor-pointer ${
                     pickOnMap
-                      ? "bg-cyan-500 text-ocean-950 border-cyan-400 font-bold"
-                      : "bg-ocean-800 text-cyan-300 border-cyan-800/60 hover:bg-ocean-700"
+                      ? "bg-[#1268B3] text-white border-[#1268B3] font-bold"
+                      : "bg-white text-[#1268B3] border border-[#1268B3] hover:bg-[#F3FAFE]"
                   }`}
                 >
                   {pickOnMap ? "Click on map active" : "Select on map"}
@@ -551,7 +551,7 @@ export default function Simulator() {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Latitude</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Latitude</span>
                   <input
                     type="number"
                     step="0.0001"
@@ -560,11 +560,11 @@ export default function Simulator() {
                     value={lat}
                     onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
                     required
-                    className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-[#D9E8F2] rounded-lg px-2.5 py-1.5 text-xs text-[#17324D] font-mono focus:outline-none focus:border-[#1268B3] shadow-sm"
                   />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Longitude</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Longitude</span>
                   <input
                     type="number"
                     step="0.0001"
@@ -573,7 +573,7 @@ export default function Simulator() {
                     value={lon}
                     onChange={(e) => setLon(parseFloat(e.target.value) || 0)}
                     required
-                    className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-[#D9E8F2] rounded-lg px-2.5 py-1.5 text-xs text-[#17324D] font-mono focus:outline-none focus:border-[#1268B3] shadow-sm"
                   />
                 </div>
               </div>
@@ -582,7 +582,7 @@ export default function Simulator() {
             {/* Spill Magnitude & Unit */}
             <div className="grid grid-cols-12 gap-2">
               <div className="col-span-7">
-                <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300 block mb-1">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] block mb-1 font-semibold">
                   Spill Size
                 </label>
                 <input
@@ -592,17 +592,17 @@ export default function Simulator() {
                   value={spillSize}
                   onChange={(e) => setSpillSize(parseFloat(e.target.value) || 1)}
                   required
-                  className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-[#D9E8F2] rounded-lg px-3 py-2 text-xs text-[#17324D] font-mono focus:outline-none focus:border-[#1268B3] shadow-sm"
                 />
               </div>
               <div className="col-span-5">
-                <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300 block mb-1">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] block mb-1 font-semibold">
                   Unit
                 </label>
                 <select
                   value={spillUnit}
                   onChange={(e) => setSpillUnit(e.target.value as SpillSizeUnit)}
-                  className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-2.5 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-[#D9E8F2] rounded-lg px-2.5 py-2 text-xs text-[#17324D] font-mono focus:outline-none focus:border-[#1268B3] shadow-sm"
                 >
                   <option value="BARRELS">Barrels (bbl)</option>
                   <option value="TONS">Metric Tons</option>
@@ -613,13 +613,13 @@ export default function Simulator() {
 
             {/* Oil Type */}
             <div>
-              <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300 block mb-1">
+              <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] block mb-1 font-semibold">
                 Oil Type & Hydrocarbon Grade
               </label>
               <select
                 value={oilType}
                 onChange={(e) => setOilType(e.target.value as OilType)}
-                className="w-full bg-ocean-950/90 border border-ocean-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                className="w-full bg-white border border-[#D9E8F2] rounded-lg px-3 py-2 text-xs text-[#17324D] font-mono focus:outline-none focus:border-[#1268B3] shadow-sm"
               >
                 <option value="LIGHT_CRUDE">Light Crude Oil (API ~38°, High Evap)</option>
                 <option value="HEAVY_CRUDE">Heavy Crude Oil (API ~22°, Persistent Mousse)</option>
@@ -629,47 +629,47 @@ export default function Simulator() {
             </div>
 
             {/* Atmospheric & Oceanic Conditions */}
-            <div className="p-3 bg-ocean-950/80 rounded-lg border border-ocean-800 space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono font-bold text-slate-300">
+            <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2] space-y-3">
+              <div className="flex items-center justify-between text-xs font-mono font-bold text-[#17324D]">
                 <span className="flex items-center gap-1.5">
-                  <Wind className="w-3.5 h-3.5 text-cyan-400" /> Wind Conditions
+                  <Wind className="w-3.5 h-3.5 text-[#1268B3]" /> Wind Conditions
                 </span>
-                <span className="text-cyan-400 font-bold">{windSpeed} km/h • {degreesToCardinal(windDir)} ({windDir}°)</span>
+                <span className="text-[#1268B3] font-bold">{windSpeed} km/h • {degreesToCardinal(windDir)} ({windDir}°)</span>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Speed (km/h)</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Speed (km/h)</span>
                   <input
                     type="range"
                     min="0"
                     max="100"
                     value={windSpeed}
                     onChange={(e) => setWindSpeed(parseFloat(e.target.value))}
-                    className="w-full accent-cyan-400"
+                    className="w-full accent-[#1268B3]"
                   />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Direction ({windDir}°)</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Direction ({windDir}°)</span>
                   <input
                     type="range"
                     min="0"
                     max="359"
                     value={windDir}
                     onChange={(e) => setWindDir(parseInt(e.target.value))}
-                    className="w-full accent-cyan-400"
+                    className="w-full accent-[#1268B3]"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs font-mono font-bold text-slate-300 pt-1 border-t border-ocean-800/80">
+              <div className="flex items-center justify-between text-xs font-mono font-bold text-[#17324D] pt-1 border-t border-[#D9E8F2]">
                 <span className="flex items-center gap-1.5">
-                  <Compass className="w-3.5 h-3.5 text-teal-400" /> Ocean Current
+                  <Compass className="w-3.5 h-3.5 text-[#087F68]" /> Ocean Current
                 </span>
-                <span className="text-teal-400 font-bold">{currentSpeed} kts • {degreesToCardinal(currentDir)} ({currentDir}°)</span>
+                <span className="text-[#087F68] font-bold">{currentSpeed} kts • {degreesToCardinal(currentDir)} ({currentDir}°)</span>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Speed (knots)</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Speed (knots)</span>
                   <input
                     type="range"
                     min="0"
@@ -677,18 +677,18 @@ export default function Simulator() {
                     step="0.1"
                     value={currentSpeed}
                     onChange={(e) => setCurrentSpeed(parseFloat(e.target.value))}
-                    className="w-full accent-teal-400"
+                    className="w-full accent-[#087F68]"
                   />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-mono block">Direction ({currentDir}°)</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">Direction ({currentDir}°)</span>
                   <input
                     type="range"
                     min="0"
                     max="359"
                     value={currentDir}
                     onChange={(e) => setCurrentDir(parseInt(e.target.value))}
-                    className="w-full accent-teal-400"
+                    className="w-full accent-[#087F68]"
                   />
                 </div>
               </div>
@@ -696,7 +696,7 @@ export default function Simulator() {
 
             {/* Simulation Horizon */}
             <div>
-              <label className="text-[11px] font-mono uppercase tracking-wider text-slate-300 block mb-1">
+              <label className="text-[11px] font-mono uppercase tracking-wider text-[#17324D] block mb-1 font-semibold">
                 Simulation Duration Horizon
               </label>
               <div className="grid grid-cols-5 gap-1.5">
@@ -707,8 +707,8 @@ export default function Simulator() {
                     onClick={() => setDuration(hrs)}
                     className={`py-1.5 text-xs font-mono font-bold rounded-lg border transition cursor-pointer ${
                       duration === hrs
-                        ? "bg-cyan-500 text-ocean-950 border-cyan-400 shadow-md"
-                        : "bg-ocean-950 text-slate-300 border-ocean-700 hover:bg-ocean-800"
+                        ? "bg-[#1268B3] text-white border-[#1268B3] shadow-sm"
+                        : "bg-white text-[#17324D] border border-[#D9E8F2] hover:bg-[#F8FBFE]"
                     }`}
                   >
                     {hrs}h
@@ -721,7 +721,7 @@ export default function Simulator() {
             <button
               type="submit"
               disabled={runningSim}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white font-bold font-mono text-sm tracking-wide shadow-lg shadow-cyan-950/50 flex items-center justify-center gap-2 transition cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-[#1268B3] hover:bg-[#0F4C81] text-white font-bold font-mono text-sm tracking-wide shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition cursor-pointer disabled:opacity-50"
             >
               {runningSim ? (
                 <>
@@ -744,43 +744,43 @@ export default function Simulator() {
           {activeRun?.outputs && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {/* Risk Gauge */}
-              <div className="glass-card p-3.5 rounded-xl border border-ocean-800">
-                <div className="flex items-center justify-between text-slate-400 text-[11px] font-mono uppercase">
+              <div className="bg-white p-3.5 rounded-xl border border-[#D9E8F2] shadow-sm">
+                <div className="flex items-center justify-between text-[#5E7183] text-[11px] font-mono uppercase">
                   <span>Simulated Risk</span>
-                  <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
+                  <ShieldAlert className="w-3.5 h-3.5 text-[#C6283D]" />
                 </div>
                 <div className="mt-1.5 flex items-baseline gap-2">
                   <span className={`text-2xl font-bold font-mono ${
                     activeRun.outputs.risk.level === "CRITICAL"
-                      ? "text-rose-400"
+                      ? "text-[#C6283D]"
                       : activeRun.outputs.risk.level === "HIGH"
-                      ? "text-amber-400"
-                      : "text-cyan-400"
+                      ? "text-[#A86A00]"
+                      : "text-[#1268B3]"
                   }`}>
                     {activeRun.outputs.risk.score}/100
                   </span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-ocean-950 border border-ocean-800 text-slate-300">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#F8FBFE] border border-[#D9E8F2] text-[#17324D]">
                     {activeRun.outputs.risk.level}
                   </span>
                 </div>
               </div>
 
               {/* Coastal Landfall ETA */}
-              <div className="glass-card p-3.5 rounded-xl border border-ocean-800">
-                <div className="flex items-center justify-between text-slate-400 text-[11px] font-mono uppercase">
+              <div className="bg-white p-3.5 rounded-xl border border-[#D9E8F2] shadow-sm">
+                <div className="flex items-center justify-between text-[#5E7183] text-[11px] font-mono uppercase">
                   <span>Shoreline Landfall</span>
-                  <Clock className="w-3.5 h-3.5 text-amber-400" />
+                  <Clock className="w-3.5 h-3.5 text-[#A86A00]" />
                 </div>
                 <div className="mt-1.5 flex items-baseline gap-1.5">
                   {activeRun.outputs.coastal_impact.shoreline_impacted ? (
                     <>
-                      <span className="text-2xl font-bold font-mono text-amber-400">
+                      <span className="text-2xl font-bold font-mono text-[#A86A00]">
                         {activeRun.outputs.coastal_impact.time_to_shore_hours?.toFixed(1)}h
                       </span>
-                      <span className="text-[10px] text-amber-300 font-mono">until impact</span>
+                      <span className="text-[10px] text-[#5E7183] font-mono">until impact</span>
                     </>
                   ) : (
-                    <span className="text-sm font-bold font-mono text-emerald-400">
+                    <span className="text-sm font-bold font-mono text-[#087F68]">
                       Offshore Clear ({activeRun.outputs.coastal_impact.closest_distance_to_coast_km}km)
                     </span>
                   )}
@@ -788,31 +788,31 @@ export default function Simulator() {
               </div>
 
               {/* Financial Exposure */}
-              <div className="glass-card p-3.5 rounded-xl border border-ocean-800">
-                <div className="flex items-center justify-between text-slate-400 text-[11px] font-mono uppercase">
+              <div className="bg-white p-3.5 rounded-xl border border-[#D9E8F2] shadow-sm">
+                <div className="flex items-center justify-between text-[#5E7183] text-[11px] font-mono uppercase">
                   <span>Est. Economic Loss</span>
-                  <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+                  <DollarSign className="w-3.5 h-3.5 text-[#087F68]" />
                 </div>
                 <div className="mt-1.5">
-                  <span className="text-xl font-bold font-mono text-emerald-300">
+                  <span className="text-xl font-bold font-mono text-[#087F68]">
                     ${(activeRun.outputs.economic_estimate.total_expected_usd / 1000).toFixed(0)}k
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono block">USD exposure</span>
+                  <span className="text-[10px] text-[#5E7183] font-mono block">USD exposure</span>
                 </div>
               </div>
 
               {/* Response Tier */}
-              <div className="glass-card p-3.5 rounded-xl border border-ocean-800">
-                <div className="flex items-center justify-between text-slate-400 text-[11px] font-mono uppercase">
+              <div className="bg-white p-3.5 rounded-xl border border-[#D9E8F2] shadow-sm">
+                <div className="flex items-center justify-between text-[#5E7183] text-[11px] font-mono uppercase">
                   <span>Response Tier</span>
-                  <Anchor className="w-3.5 h-3.5 text-cyan-400" />
+                  <Anchor className="w-3.5 h-3.5 text-[#1268B3]" />
                 </div>
                 <div className="mt-1.5 flex items-baseline gap-1.5">
-                  <span className="text-sm font-bold font-mono text-cyan-300">
+                  <span className="text-sm font-bold font-mono text-[#0B3A66]">
                     {activeRun.outputs.recommendations.response_tier.replace(/_/g, " ")}
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-mono truncate block">
+                <span className="text-[10px] text-[#5E7183] font-mono truncate block">
                   {activeRun.outputs.recommendations.overall_strategy.replace(/_/g, " ")}
                 </span>
               </div>
@@ -820,20 +820,20 @@ export default function Simulator() {
           )}
 
           {/* ── Leaflet Interactive Simulation Map ── */}
-          <div className="glass-card rounded-xl border border-ocean-800 overflow-hidden shadow-xl">
-            <div className="p-3 bg-ocean-950/80 border-b border-ocean-800 flex items-center justify-between">
+          <div className="bg-white rounded-xl border border-[#D9E8F2] overflow-hidden shadow-sm">
+            <div className="p-3 bg-[#F8FBFE] border-b border-[#D9E8F2] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold text-slate-200 font-mono uppercase">
+                <MapPin className="w-4 h-4 text-[#1268B3]" />
+                <span className="text-xs font-bold text-[#0B3A66] font-mono uppercase">
                   Trajectory & Spreading Projection Map
                 </span>
                 {pickOnMap && (
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500 text-ocean-950 animate-pulse">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#FFF9EB] text-[#8C5800] border border-[#F6D88E] animate-pulse">
                     Click anywhere on map to set spill coordinates
                   </span>
                 )}
               </div>
-              <div className="text-[11px] font-mono text-slate-400">
+              <div className="text-[11px] font-mono text-[#5E7183]">
                 {mapWaypoints.length} waypoints • {duration}h forecast
               </div>
             </div>
@@ -929,9 +929,9 @@ export default function Simulator() {
 
           {/* ── Domain Results Tabs ── */}
           {activeRun?.outputs && (
-            <div className="glass-card rounded-xl border border-ocean-800 overflow-hidden shadow-xl">
+            <div className="bg-white rounded-xl border border-[#D9E8F2] overflow-hidden shadow-sm">
               {/* Tab Navigation */}
-              <div className="flex border-b border-ocean-800 bg-ocean-950/60 overflow-x-auto text-xs font-mono font-bold">
+              <div className="flex border-b border-[#D9E8F2] bg-[#F8FBFE] overflow-x-auto text-xs font-mono font-bold">
                 {[
                   { id: "movement", label: "Movement", icon: Wind },
                   { id: "risk", label: "Risk Assessment", icon: ShieldAlert },
@@ -947,8 +947,8 @@ export default function Simulator() {
                       onClick={() => setActiveTab(tab.id as any)}
                       className={`flex items-center gap-2 px-4 py-3 border-b-2 transition cursor-pointer whitespace-nowrap ${
                         activeTab === tab.id
-                          ? "border-cyan-400 text-cyan-300 bg-ocean-900/50"
-                          : "border-transparent text-slate-400 hover:text-slate-200 hover:bg-ocean-900/30"
+                          ? "border-[#1268B3] text-[#1268B3] bg-white"
+                          : "border-transparent text-[#5E7183] hover:text-[#17324D] hover:bg-white/60"
                       }`}
                     >
                       <Icon className="w-3.5 h-3.5" />
@@ -964,44 +964,44 @@ export default function Simulator() {
                 {activeTab === "movement" && (
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                      <div className="p-3 bg-ocean-950/70 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Drift Velocity</span>
-                        <span className="text-base font-bold font-mono text-cyan-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Drift Velocity</span>
+                        <span className="text-base font-bold font-mono text-[#0B3A66]">
                           {activeRun.outputs.predicted_movement.drift_speed_kmh} km/h
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">
+                        <span className="text-[10px] text-[#5E7183] font-mono block">
                           ({activeRun.outputs.predicted_movement.drift_speed_knots} kts)
                         </span>
                       </div>
-                      <div className="p-3 bg-ocean-950/70 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Drift Heading</span>
-                        <span className="text-base font-bold font-mono text-teal-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Drift Heading</span>
+                        <span className="text-base font-bold font-mono text-[#087F68]">
                           {activeRun.outputs.predicted_movement.drift_heading_deg}° ({degreesToCardinal(activeRun.outputs.predicted_movement.drift_heading_deg)})
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">Lagrangian Vector</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono block">Lagrangian Vector</span>
                       </div>
-                      <div className="p-3 bg-ocean-950/70 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Fay Spreading Area</span>
-                        <span className="text-base font-bold font-mono text-emerald-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Fay Spreading Area</span>
+                        <span className="text-base font-bold font-mono text-[#1268B3]">
                           {activeRun.outputs.predicted_movement.final_area_km2} km²
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">
+                        <span className="text-[10px] text-[#5E7183] font-mono block">
                           from {activeRun.outputs.predicted_movement.initial_area_km2} km²
                         </span>
                       </div>
-                      <div className="p-3 bg-ocean-950/70 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Evaporation (24h)</span>
-                        <span className="text-base font-bold font-mono text-amber-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Evaporation (24h)</span>
+                        <span className="text-base font-bold font-mono text-[#A86A00]">
                           ~{activeRun.outputs.predicted_movement.evaporated_percentage.toFixed(0)}%
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">Natural weather decay</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono block">Natural weather decay</span>
                       </div>
                     </div>
 
                     {/* Hourly Waypoints Table */}
-                    <div className="overflow-x-auto max-h-60 overflow-y-auto border border-ocean-800 rounded-lg">
-                      <table className="w-full text-left text-xs text-slate-300 font-mono">
-                        <thead className="bg-ocean-950 text-slate-400 uppercase text-[10px] sticky top-0">
+                    <div className="overflow-x-auto max-h-60 overflow-y-auto border border-[#D9E8F2] rounded-lg">
+                      <table className="w-full text-left text-xs text-[#17324D] font-mono">
+                        <thead className="bg-[#F4F9FD] text-[#5E7183] uppercase text-[10px] sticky top-0 border-b border-[#D9E8F2]">
                           <tr>
                             <th className="p-2.5">Horizon</th>
                             <th className="p-2.5">Latitude</th>
@@ -1011,14 +1011,14 @@ export default function Simulator() {
                             <th className="p-2.5">Distance</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-ocean-800/60 bg-ocean-950/40">
+                        <tbody className="divide-y divide-[#D9E8F2] bg-white">
                           {mapWaypoints.map((wp) => (
-                            <tr key={wp.step} className="hover:bg-ocean-800/40">
-                              <td className="p-2 text-cyan-300 font-bold">+{wp.hour}h</td>
+                            <tr key={wp.step} className="hover:bg-[#F3FAFE]">
+                              <td className="p-2 text-[#1268B3] font-bold">+{wp.hour}h</td>
                               <td className="p-2">{wp.latitude.toFixed(4)}°N</td>
                               <td className="p-2">{wp.longitude.toFixed(4)}°E</td>
-                              <td className="p-2 text-emerald-300">{wp.slick_area_km2} km²</td>
-                              <td className="p-2 text-slate-400">±{wp.uncertainty_radius_km} km</td>
+                              <td className="p-2 text-[#087F68] font-semibold">{wp.slick_area_km2} km²</td>
+                              <td className="p-2 text-[#5E7183]">±{wp.uncertainty_radius_km} km</td>
                               <td className="p-2">{wp.distance_from_origin_km} km</td>
                             </tr>
                           ))}
@@ -1031,26 +1031,26 @@ export default function Simulator() {
                 {/* 2. RISK TAB */}
                 {activeTab === "risk" && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-ocean-950/70 rounded-xl border border-ocean-800">
+                    <div className="flex items-center justify-between p-4 bg-[#F8FBFE] rounded-xl border border-[#D9E8F2]">
                       <div>
-                        <div className="text-xs font-mono uppercase text-slate-400">Calculated Multi-Factor Risk Score</div>
-                        <div className="text-3xl font-bold font-mono text-white mt-1">
-                          {activeRun.outputs.risk.score} <span className="text-sm font-normal text-slate-400">/ 100</span>
+                        <div className="text-xs font-mono uppercase text-[#5E7183]">Calculated Multi-Factor Risk Score</div>
+                        <div className="text-3xl font-bold font-mono text-[#0B3A66] mt-1">
+                          {activeRun.outputs.risk.score} <span className="text-sm font-normal text-[#5E7183]">/ 100</span>
                         </div>
                       </div>
                       <span className={`px-3 py-1.5 rounded-lg text-xs font-bold font-mono uppercase border ${
                         activeRun.outputs.risk.level === "CRITICAL"
-                          ? "bg-rose-950 text-rose-300 border-rose-700"
+                          ? "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]"
                           : activeRun.outputs.risk.level === "HIGH"
-                          ? "bg-amber-950 text-amber-300 border-amber-700"
-                          : "bg-cyan-950 text-cyan-300 border-cyan-700"
+                          ? "bg-[#FFF9EB] text-[#A86A00] border-[#F6D88E]"
+                          : "bg-[#EAF6FF] text-[#1268B3] border-[#D9E8F2]"
                       }`}>
                         {activeRun.outputs.risk.level} SEVERITY
                       </span>
                     </div>
 
                     <div className="space-y-2.5">
-                      <div className="text-xs font-mono font-bold text-slate-300 uppercase">Risk Factor Breakdown</div>
+                      <div className="text-xs font-mono font-bold text-[#17324D] uppercase">Risk Factor Breakdown</div>
                       {[
                         { label: "Spill Volume & Mass Factor", score: activeRun.outputs.risk.factors.spill_volume_score, max: 25 },
                         { label: "Coastal Proximity & Shoreline Landfall", score: activeRun.outputs.risk.factors.coastal_proximity_score, max: 25 },
@@ -1060,12 +1060,12 @@ export default function Simulator() {
                       ].map((item, i) => (
                         <div key={i} className="space-y-1">
                           <div className="flex justify-between text-xs font-mono">
-                            <span className="text-slate-400">{item.label}</span>
-                            <span className="text-cyan-300 font-bold">{item.score} / {item.max} pts</span>
+                            <span className="text-[#5E7183]">{item.label}</span>
+                            <span className="text-[#1268B3] font-bold">{item.score} / {item.max} pts</span>
                           </div>
-                          <div className="w-full h-2 bg-ocean-950 rounded-full overflow-hidden border border-ocean-800">
+                          <div className="w-full h-2 bg-[#EAF3F8] rounded-full overflow-hidden border border-[#D9E8F2]">
                             <div
-                              className="h-full bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full"
+                              className="h-full bg-[#1268B3] rounded-full"
                               style={{ width: `${(item.score / item.max) * 100}%` }}
                             />
                           </div>
@@ -1073,7 +1073,7 @@ export default function Simulator() {
                       ))}
                     </div>
 
-                    <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800 text-xs text-slate-300">
+                    <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2] text-xs text-[#17324D]">
                       <strong>Analysis Summary:</strong> {activeRun.outputs.risk.explanation}
                     </div>
                   </div>
@@ -1082,39 +1082,39 @@ export default function Simulator() {
                 {/* 3. ECOSYSTEM TAB */}
                 {activeTab === "ecosystem" && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3.5 bg-ocean-950/70 rounded-xl border border-ocean-800">
+                    <div className="flex items-center justify-between p-3.5 bg-[#F8FBFE] rounded-xl border border-[#D9E8F2]">
                       <div>
-                        <div className="text-xs font-mono uppercase text-slate-400">Ecosystem Vulnerability Index</div>
-                        <div className="text-2xl font-bold font-mono text-cyan-300 mt-0.5">
+                        <div className="text-xs font-mono uppercase text-[#5E7183]">Ecosystem Vulnerability Index</div>
+                        <div className="text-2xl font-bold font-mono text-[#1268B3] mt-0.5">
                           {activeRun.outputs.ecosystem_impact.vulnerability_score}/100
                         </div>
                       </div>
-                      <div className="text-xs font-mono text-slate-400 text-right">
+                      <div className="text-xs font-mono text-[#5E7183] text-right">
                         <div>{activeRun.outputs.ecosystem_impact.vulnerable_biomes_count} biomes within decay radius</div>
                       </div>
                     </div>
 
-                    <p className="text-xs text-slate-300">
+                    <p className="text-xs text-[#17324D]">
                       {activeRun.outputs.ecosystem_impact.ecological_summary}
                     </p>
 
                     <div className="space-y-2">
-                      <div className="text-xs font-mono font-bold text-slate-300 uppercase">Identified Marine Biomes at Risk</div>
-                      <div className="divide-y divide-ocean-800 border border-ocean-800 rounded-lg overflow-hidden">
+                      <div className="text-xs font-mono font-bold text-[#17324D] uppercase">Identified Marine Biomes at Risk</div>
+                      <div className="divide-y divide-[#D9E8F2] border border-[#D9E8F2] rounded-lg overflow-hidden bg-white">
                         {activeRun.outputs.ecosystem_impact.zones.map((z, idx) => (
-                          <div key={idx} className="p-3 bg-ocean-950/40 flex items-center justify-between text-xs">
+                          <div key={idx} className="p-3 bg-white hover:bg-[#F8FBFE] flex items-center justify-between text-xs">
                             <div>
-                              <div className="font-bold text-slate-200">{z.name}</div>
-                              <div className="text-[11px] text-slate-400 font-mono">
+                              <div className="font-bold text-[#17324D]">{z.name}</div>
+                              <div className="text-[11px] text-[#5E7183] font-mono">
                                 Category: {z.type.replace(/_/g, " ")} • Proximity: {z.distance_km} km
                               </div>
                             </div>
                             <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
                               z.vulnerability_tier === "CRITICAL"
-                                ? "bg-rose-950 text-rose-300 border-rose-700"
+                                ? "bg-[#FFF1F2] text-[#C6283D] border-[#F5B5BC]"
                                 : z.vulnerability_tier === "HIGH"
-                                ? "bg-amber-950 text-amber-300 border-amber-700"
-                                : "bg-cyan-950 text-cyan-300 border-cyan-700"
+                                ? "bg-[#FFF9EB] text-[#A86A00] border-[#F6D88E]"
+                                : "bg-[#EAF6FF] text-[#1268B3] border-[#D9E8F2]"
                             }`}>
                               {z.vulnerability_tier}
                             </span>
@@ -1128,16 +1128,16 @@ export default function Simulator() {
                 {/* 4. COASTAL IMPACT TAB */}
                 {activeTab === "coastal" && (
                   <div className="space-y-4">
-                    <div className="p-4 bg-ocean-950/70 rounded-xl border border-ocean-800">
+                    <div className="p-4 bg-[#F8FBFE] rounded-xl border border-[#D9E8F2]">
                       <div className="flex items-center gap-2 mb-2">
-                        <Anchor className="w-4 h-4 text-cyan-400" />
-                        <h3 className="text-sm font-bold font-mono text-slate-200 uppercase">Shoreline Landfall Assessment</h3>
+                        <Anchor className="w-4 h-4 text-[#1268B3]" />
+                        <h3 className="text-sm font-bold font-mono text-[#0B3A66] uppercase">Shoreline Landfall Assessment</h3>
                       </div>
-                      <p className="text-xs text-slate-300">
+                      <p className="text-xs text-[#17324D]">
                         {activeRun.outputs.coastal_impact.shoreline_threat_summary}
                       </p>
                       {landfallCoords && (
-                        <div className="mt-3 p-2.5 bg-ocean-900/60 rounded-lg border border-ocean-700/60 text-xs font-mono text-cyan-300 flex items-center justify-between">
+                        <div className="mt-3 p-2.5 bg-white rounded-lg border border-[#D9E8F2] text-xs font-mono text-[#0B3A66] flex items-center justify-between">
                           <span>Earliest Landfall Point:</span>
                           <strong>{landfallCoords.latitude.toFixed(4)}°N, {landfallCoords.longitude.toFixed(4)}°E</strong>
                         </div>
@@ -1145,25 +1145,25 @@ export default function Simulator() {
                     </div>
 
                     <div className="space-y-2">
-                      <div className="text-xs font-mono font-bold text-slate-300 uppercase">Threatened Coastal Assets & Ports</div>
+                      <div className="text-xs font-mono font-bold text-[#17324D] uppercase">Threatened Coastal Assets & Ports</div>
                       {activeRun.outputs.coastal_impact.threatened_assets.length > 0 ? (
-                        <div className="divide-y divide-ocean-800 border border-ocean-800 rounded-lg overflow-hidden">
+                        <div className="divide-y divide-[#D9E8F2] border border-[#D9E8F2] rounded-lg overflow-hidden bg-white">
                           {activeRun.outputs.coastal_impact.threatened_assets.map((asset, idx) => (
-                            <div key={idx} className="p-3 bg-ocean-950/40 flex items-center justify-between text-xs">
+                            <div key={idx} className="p-3 bg-white hover:bg-[#F8FBFE] flex items-center justify-between text-xs">
                               <div>
-                                <div className="font-bold text-slate-200">{asset.name}</div>
-                                <div className="text-[11px] text-slate-400 font-mono">
+                                <div className="font-bold text-[#17324D]">{asset.name}</div>
+                                <div className="text-[11px] text-[#5E7183] font-mono">
                                   {asset.risk_notes}
                                 </div>
                               </div>
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-950 text-amber-300 border border-amber-700">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-[#FFF9EB] text-[#A86A00] border border-[#F6D88E]">
                                 {asset.sensitivity}
                               </span>
                             </div>
                           ))}
                         </div>
                       ) : (
-                        <div className="p-3 bg-ocean-950/40 rounded-lg border border-ocean-800 text-xs text-slate-400">
+                        <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2] text-xs text-[#5E7183]">
                           No major commercial ports or populated recreational shorelines within immediate landfall path.
                         </div>
                       )}
@@ -1174,44 +1174,44 @@ export default function Simulator() {
                 {/* 5. ECONOMIC TAB */}
                 {activeTab === "economic" && (
                   <div className="space-y-4">
-                    <div className="p-4 bg-ocean-950/70 rounded-xl border border-ocean-800">
-                      <div className="text-xs font-mono uppercase text-slate-400">Total Projected Financial Exposure</div>
-                      <div className="text-3xl font-bold font-mono text-emerald-300 mt-1">
-                        ${activeRun.outputs.economic_estimate.total_expected_usd.toLocaleString()} <span className="text-xs font-sans text-slate-400 font-normal">USD</span>
+                    <div className="p-4 bg-[#F8FBFE] rounded-xl border border-[#D9E8F2]">
+                      <div className="text-xs font-mono uppercase text-[#5E7183]">Total Projected Financial Exposure</div>
+                      <div className="text-3xl font-bold font-mono text-[#087F68] mt-1">
+                        ${activeRun.outputs.economic_estimate.total_expected_usd.toLocaleString()} <span className="text-xs font-sans text-[#5E7183] font-normal">USD</span>
                       </div>
-                      <div className="text-xs font-mono text-slate-400 mt-1">
+                      <div className="text-xs font-mono text-[#5E7183] mt-1">
                         Confidence Range: ${activeRun.outputs.economic_estimate.low_estimate_usd.toLocaleString()} — ${activeRun.outputs.economic_estimate.high_estimate_usd.toLocaleString()} USD
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="p-3 bg-ocean-950/50 rounded-lg border border-ocean-800">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase">Commercial Fisheries Loss</div>
-                        <div className="text-base font-bold font-mono text-slate-100 mt-1">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <div className="text-[10px] text-[#5E7183] font-mono uppercase">Commercial Fisheries Loss</div>
+                        <div className="text-base font-bold font-mono text-[#0B3A66] mt-1">
                           ${activeRun.outputs.economic_estimate.pillars.commercial_fisheries_usd.toLocaleString()}
                         </div>
                       </div>
-                      <div className="p-3 bg-ocean-950/50 rounded-lg border border-ocean-800">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase">Port & Shipping Delays</div>
-                        <div className="text-base font-bold font-mono text-slate-100 mt-1">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <div className="text-[10px] text-[#5E7183] font-mono uppercase">Port & Shipping Delays</div>
+                        <div className="text-base font-bold font-mono text-[#0B3A66] mt-1">
                           ${activeRun.outputs.economic_estimate.pillars.port_shipping_delays_usd.toLocaleString()}
                         </div>
                       </div>
-                      <div className="p-3 bg-ocean-950/50 rounded-lg border border-ocean-800">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase">Shoreline Remediation</div>
-                        <div className="text-base font-bold font-mono text-slate-100 mt-1">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <div className="text-[10px] text-[#5E7183] font-mono uppercase">Shoreline Remediation</div>
+                        <div className="text-base font-bold font-mono text-[#0B3A66] mt-1">
                           ${activeRun.outputs.economic_estimate.pillars.shoreline_cleanup_remediation_usd.toLocaleString()}
                         </div>
                       </div>
-                      <div className="p-3 bg-ocean-950/50 rounded-lg border border-ocean-800">
-                        <div className="text-[10px] text-slate-400 font-mono uppercase">Containment Operations Opex</div>
-                        <div className="text-base font-bold font-mono text-slate-100 mt-1">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <div className="text-[10px] text-[#5E7183] font-mono uppercase">Containment Operations Opex</div>
+                        <div className="text-base font-bold font-mono text-[#0B3A66] mt-1">
                           ${activeRun.outputs.economic_estimate.pillars.containment_operational_opex_usd.toLocaleString()}
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800 text-xs text-slate-300">
+                    <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2] text-xs text-[#17324D]">
                       <strong>Economic Notes:</strong> {activeRun.outputs.economic_estimate.economic_notes}
                     </div>
                   </div>
@@ -1221,46 +1221,46 @@ export default function Simulator() {
                 {activeTab === "response" && (
                   <div className="space-y-4">
                     <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Containment Booming</span>
-                        <span className="text-base font-bold font-mono text-cyan-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Containment Booming</span>
+                        <span className="text-base font-bold font-mono text-[#0B3A66]">
                           {activeRun.outputs.recommendations.containment_boom_meters.toLocaleString()} m
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">Curtain/fence booms</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono block">Curtain/fence booms</span>
                       </div>
-                      <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Skimmer Capacity</span>
-                        <span className="text-base font-bold font-mono text-teal-300">
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Skimmer Capacity</span>
+                        <span className="text-base font-bold font-mono text-[#087F68]">
                           {activeRun.outputs.recommendations.daily_skimmer_capacity_m3.toFixed(1)} m³/day
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">Mechanical recovery</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono block">Mechanical recovery</span>
                       </div>
-                      <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800">
-                        <span className="text-[10px] text-slate-400 font-mono uppercase block">Dispersant Viability</span>
+                      <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2]">
+                        <span className="text-[10px] text-[#5E7183] font-mono uppercase block">Dispersant Viability</span>
                         <span className={`text-base font-bold font-mono ${
-                          activeRun.outputs.recommendations.dispersant_suitable ? "text-emerald-400" : "text-amber-400"
+                          activeRun.outputs.recommendations.dispersant_suitable ? "text-[#087F68]" : "text-[#A86A00]"
                         }`}>
                           {activeRun.outputs.recommendations.dispersant_suitable ? "SUITABLE" : "RESTRICTED"}
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono block">Benthic safeguards</span>
+                        <span className="text-[10px] text-[#5E7183] font-mono block">Benthic safeguards</span>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-ocean-950/60 rounded-lg border border-ocean-800 text-xs text-slate-300">
+                    <div className="p-3 bg-[#F8FBFE] rounded-lg border border-[#D9E8F2] text-xs text-[#17324D]">
                       <strong>Dispersant Rule:</strong> {activeRun.outputs.recommendations.dispersant_guidance}
                     </div>
 
                     <div className="space-y-2">
-                      <div className="text-xs font-mono font-bold text-slate-300 uppercase">Recommended Response Checklist</div>
+                      <div className="text-xs font-mono font-bold text-[#17324D] uppercase">Recommended Response Checklist</div>
                       <div className="space-y-2">
                         {activeRun.outputs.recommendations.tactical_actions.map((act) => (
-                          <div key={act.priority} className="p-3 bg-ocean-950/50 rounded-lg border border-ocean-800 flex items-start gap-3">
-                            <span className="w-5 h-5 rounded-full bg-cyan-950 border border-cyan-700 text-cyan-300 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <div key={act.priority} className="p-3 bg-white rounded-lg border border-[#D9E8F2] flex items-start gap-3 shadow-xs">
+                            <span className="w-5 h-5 rounded-full bg-[#EAF6FF] border border-[#D9E8F2] text-[#1268B3] font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                               {act.priority}
                             </span>
                             <div className="text-xs">
-                              <div className="font-bold text-slate-200">{act.title}</div>
-                              <div className="text-slate-400 mt-0.5">{act.detail}</div>
+                              <div className="font-bold text-[#17324D]">{act.title}</div>
+                              <div className="text-[#5E7183] mt-0.5">{act.detail}</div>
                             </div>
                           </div>
                         ))}
@@ -1276,18 +1276,18 @@ export default function Simulator() {
 
       {/* ── Scenario Comparison Modal ── */}
       {showCompareModal && (
-        <div className="fixed inset-0 bg-ocean-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-ocean-900 border border-ocean-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
-            <div className="p-4 bg-ocean-950 border-b border-ocean-800 flex items-center justify-between">
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-[#D9E8F2] rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div className="p-4 bg-[#F8FBFE] border-b border-[#D9E8F2] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Scale className="w-5 h-5 text-cyan-400" />
-                <h2 className="text-base font-bold font-mono text-white">
+                <Scale className="w-5 h-5 text-[#1268B3]" />
+                <h2 className="text-base font-bold font-mono text-[#0B3A66]">
                   Hypothetical Scenario Comparison
                 </h2>
               </div>
               <button
                 onClick={() => setShowCompareModal(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-ocean-800 transition"
+                className="p-1 rounded-lg text-[#5E7183] hover:text-[#17324D] hover:bg-[#F3FAFE] transition"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1297,11 +1297,11 @@ export default function Simulator() {
               {/* Scenario Pickers */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-mono uppercase text-slate-400 block mb-1">Scenario A</label>
+                  <label className="text-xs font-mono uppercase text-[#5E7183] block mb-1 font-semibold">Scenario A</label>
                   <select
                     value={compareId1}
                     onChange={(e) => setCompareId1(e.target.value)}
-                    className="w-full bg-ocean-950 border border-ocean-700 rounded-lg p-2 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-[#D9E8F2] rounded-lg p-2 text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                   >
                     {runs.map((r) => (
                       <option key={r.id} value={r.id}>{r.name}</option>
@@ -1309,11 +1309,11 @@ export default function Simulator() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs font-mono uppercase text-slate-400 block mb-1">Scenario B</label>
+                  <label className="text-xs font-mono uppercase text-[#5E7183] block mb-1 font-semibold">Scenario B</label>
                   <select
                     value={compareId2}
                     onChange={(e) => setCompareId2(e.target.value)}
-                    className="w-full bg-ocean-950 border border-ocean-700 rounded-lg p-2 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-[#D9E8F2] rounded-lg p-2 text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                   >
                     {runs.map((r) => (
                       <option key={r.id} value={r.id}>{r.name}</option>
@@ -1326,7 +1326,7 @@ export default function Simulator() {
                 <button
                   onClick={handleRunComparison}
                   disabled={compareLoading}
-                  className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold transition cursor-pointer"
+                  className="px-5 py-2 rounded-lg bg-[#1268B3] hover:bg-[#0F4C81] text-white font-mono text-xs font-bold transition cursor-pointer shadow-sm"
                 >
                   {compareLoading ? "Analyzing..." : "Compare Scenarios"}
                 </button>
@@ -1335,37 +1335,37 @@ export default function Simulator() {
               {/* Comparative Results Table */}
               {compareData && (
                 <div className="space-y-4">
-                  <div className="overflow-x-auto border border-ocean-800 rounded-xl">
+                  <div className="overflow-x-auto border border-[#D9E8F2] rounded-xl shadow-xs">
                     <table className="w-full text-left text-xs font-mono">
-                      <thead className="bg-ocean-950 text-slate-400 uppercase text-[10px]">
+                      <thead className="bg-[#F4F9FD] text-[#5E7183] uppercase text-[10px] border-b border-[#D9E8F2]">
                         <tr>
                           <th className="p-3">Metric</th>
                           {compareData.scenarios.map((s) => (
-                            <th key={s.id} className="p-3 text-cyan-300 font-bold">{s.name}</th>
+                            <th key={s.id} className="p-3 text-[#1268B3] font-bold">{s.name}</th>
                           ))}
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-ocean-800 text-slate-300">
+                      <tbody className="divide-y divide-[#D9E8F2] text-[#17324D] bg-white">
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Oil Type</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Oil Type</td>
                           {compareData.scenarios.map((s) => (
                             <td key={s.id} className="p-3">{s.oil_type.replace(/_/g, " ")}</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Spill Volume</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Spill Volume</td>
                           {compareData.scenarios.map((s) => (
-                            <td key={s.id} className="p-3">{s.spill_size_barrels.toLocaleString()} bbl</td>
+                            <td key={s.id} className="p-3 font-semibold">{s.spill_size_barrels.toLocaleString()} bbl</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Risk Score</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Risk Score</td>
                           {compareData.scenarios.map((s) => (
-                            <td key={s.id} className="p-3 font-bold text-white">{s.risk_score}/100 ({s.risk_level})</td>
+                            <td key={s.id} className="p-3 font-bold text-[#0B3A66]">{s.risk_score}/100 ({s.risk_level})</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Shoreline Landfall</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Shoreline Landfall</td>
                           {compareData.scenarios.map((s) => (
                             <td key={s.id} className="p-3">
                               {s.shoreline_impacted ? `${s.time_to_shore_hours?.toFixed(1)}h` : "No Landfall"}
@@ -1373,27 +1373,27 @@ export default function Simulator() {
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Ecosystem Vulnerability</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Ecosystem Vulnerability</td>
                           {compareData.scenarios.map((s) => (
-                            <td key={s.id} className="p-3">{s.ecosystem_vulnerability_score}/100</td>
+                            <td key={s.id} className="p-3 font-semibold">{s.ecosystem_vulnerability_score}/100</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Est. Total Economic Loss</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Est. Total Economic Loss</td>
                           {compareData.scenarios.map((s) => (
-                            <td key={s.id} className="p-3 font-bold text-emerald-300">${s.total_economic_usd.toLocaleString()} USD</td>
+                            <td key={s.id} className="p-3 font-bold text-[#087F68]">${s.total_economic_usd.toLocaleString()} USD</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Response Tier</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Response Tier</td>
                           {compareData.scenarios.map((s) => (
                             <td key={s.id} className="p-3">{s.response_tier.replace(/_/g, " ")}</td>
                           ))}
                         </tr>
                         <tr>
-                          <td className="p-3 font-bold text-slate-400">Boom Requirement</td>
+                          <td className="p-3 font-bold text-[#5E7183]">Boom Requirement</td>
                           {compareData.scenarios.map((s) => (
-                            <td key={s.id} className="p-3">{s.containment_boom_meters.toLocaleString()} m</td>
+                            <td key={s.id} className="p-3 font-semibold">{s.containment_boom_meters.toLocaleString()} m</td>
                           ))}
                         </tr>
                       </tbody>
@@ -1401,8 +1401,8 @@ export default function Simulator() {
                   </div>
 
                   {compareData.delta_summary && (
-                    <div className="p-3.5 bg-ocean-950/70 rounded-xl border border-ocean-800 text-xs font-mono text-slate-300 space-y-1">
-                      <div className="font-bold text-cyan-300 uppercase">Delta Comparison Analysis:</div>
+                    <div className="p-3.5 bg-[#F8FBFE] rounded-xl border border-[#D9E8F2] text-xs font-mono text-[#17324D] space-y-1">
+                      <div className="font-bold text-[#1268B3] uppercase">Delta Comparison Analysis:</div>
                       <div>• Risk Score Difference: <strong>{compareData.delta_summary.risk_score_diff > 0 ? `+${compareData.delta_summary.risk_score_diff}` : compareData.delta_summary.risk_score_diff} pts</strong></div>
                       <div>• Economic Loss Variance: <strong>${Math.abs(compareData.delta_summary.economic_usd_diff || 0).toLocaleString()} USD</strong></div>
                       <div>• Spill Volume Ratio: <strong>{compareData.delta_summary.spill_volume_ratio}x</strong></div>

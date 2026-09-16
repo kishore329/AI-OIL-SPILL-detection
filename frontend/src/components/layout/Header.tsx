@@ -11,10 +11,13 @@ import {
   Database,
   Sliders,
   Bot,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { useHealth } from "../../hooks/useHealth";
 import { useLocation, Link } from "react-router-dom";
 import apiService from "../../services/api";
+import { useTheme } from "../../context/ThemeContext";
 import type { SmartAlertItem } from "../../types";
 
 const ROUTE_TITLES: Record<string, string> = {
@@ -139,19 +142,21 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
   };
 
   const statusConfig = {
-    loading:   { Icon: Loader2,  color: "text-slate-400", label: "Connecting...", spin: true },
-    healthy:   { Icon: Wifi,     color: "text-success-400", label: "API Online",  spin: false },
-    unhealthy: { Icon: WifiOff,  color: "text-danger-400",  label: "API Offline", spin: false },
+    loading:   { Icon: Loader2,  color: "text-[#5E7183]", label: "Connecting...", spin: true },
+    healthy:   { Icon: Wifi,     color: "text-[#087F68]", label: "API Online",  spin: false },
+    unhealthy: { Icon: WifiOff,  color: "text-[#C6283D]",  label: "API Offline", spin: false },
   } as const;
 
   const { Icon, color, label, spin } = statusConfig[healthStatus];
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
       <header
         className="sticky top-0 z-30 flex items-center justify-between
-                   px-4 sm:px-6 py-3.5 border-b border-ocean-800/50
-                   bg-ocean-900/80 backdrop-blur-xl"
+                   px-4 sm:px-6 py-3.5 border-b border-[#D9E8F2]
+                   bg-white/95 backdrop-blur-xl shadow-sm"
         role="banner"
       >
         {/* Left: Mobile hamburger + Page title */}
@@ -159,56 +164,72 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
           {/* Mobile hamburger menu button */}
           <button
             onClick={onToggleMobileNav}
-            className="p-2 -ml-1 rounded-lg text-slate-400 hover:text-white hover:bg-ocean-800 md:hidden transition"
+            className="p-2 -ml-1 rounded-lg text-[#5E7183] hover:text-[#17324D] hover:bg-[#F0F7FC] md:hidden transition"
             aria-label="Open navigation menu"
           >
             <Menu className="w-5 h-5" />
           </button>
 
           <div>
-            <h1 className="text-base sm:text-lg font-bold text-slate-100 tracking-tight flex items-center gap-2">
+            <h1 className="text-base sm:text-lg font-extrabold text-[#17324D] tracking-tight flex items-center gap-2">
               <span>{pageTitle}</span>
               <span className="hidden lg:inline badge badge-info text-[9px] font-mono uppercase tracking-wider">
                 SIH 2024
               </span>
             </h1>
-            <p className="text-[11px] text-slate-400 hidden sm:block">
+            <p className="text-[11px] text-[#5E7183] hidden sm:block font-medium">
               AI-Powered Maritime Oil Spill Surveillance &amp; Response
             </p>
           </div>
         </div>
 
-        {/* Right controls */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* API health indicator badge */}
+        {/* Right: API health + AI Copilot + Theme Toggle + Notifs + Settings + Profile */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Live System Health Pill */}
           <div
             id="health-indicator"
-            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 sm:px-3 py-1.5
-                        rounded-full border transition-all duration-300 ${
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-mono transition-all ${
               healthStatus === "healthy"
-                ? "border-success-500/30 bg-success-500/10 text-success-400"
+                ? "border-[#9ADBC8] bg-[#EAF8F4] text-[#087F68]"
                 : healthStatus === "unhealthy"
-                ? "border-danger-500/30 bg-danger-500/10 text-danger-400"
-                : "border-slate-600/30 bg-slate-600/10 text-slate-400"
+                ? "border-[#F5B5BC] bg-[#FFF1F2] text-[#C6283D]"
+                : "border-[#D9E8F2] bg-[#F3FAFE] text-[#5E7183]"
             }`}
             title={`Backend Status: ${label}`}
             aria-label={`API status: ${label}`}
           >
             <Icon className={`w-3.5 h-3.5 ${spin ? "animate-spin" : ""} ${color}`} />
-            <span className="text-[11px] font-semibold hidden md:inline">{label}</span>
+            <span className="text-[11px] font-bold hidden md:inline">{label}</span>
           </div>
 
           {/* AI Assistant Copilot quick button */}
           <Link
             to="/assistant"
             className="w-8 h-8 rounded-lg flex items-center justify-center
-                       text-ocean-400 hover:text-white hover:bg-ocean-800
-                       transition-all duration-200 cursor-pointer"
+                       text-[#1268B3] hover:bg-[#EAF6FF]
+                       transition-all duration-200 cursor-pointer border border-[#D9E8F2]"
             title="Open Oil Spill AI Copilot"
             aria-label="Open Oil Spill AI Copilot"
           >
-            <Bot className="w-4 h-4 text-ocean-300" />
+            <Bot className="w-4 h-4 text-[#1268B3]" />
           </Link>
+
+          {/* Theme Switcher Toggle (Light ☀ / Dark 🌙) */}
+          <button
+            id="theme-switcher-btn"
+            onClick={toggleTheme}
+            className="w-8 h-8 rounded-lg flex items-center justify-center
+                       text-[#5E7183] hover:text-[#1268B3] hover:bg-[#F0F7FC]
+                       transition-all duration-200 cursor-pointer border border-[#D9E8F2]"
+            title={theme === "dark" ? "Switch to Light Theme (☀)" : "Switch to Dark Theme (🌙)"}
+            aria-label={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme"}
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4 text-[#FFD073]" />
+            ) : (
+              <Moon className="w-4 h-4 text-[#1268B3]" />
+            )}
+          </button>
 
           {/* Notifications button & popover */}
           <div className="relative" ref={notifRef}>
@@ -216,7 +237,7 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
               id="notifications-btn"
               onClick={() => setShowNotifications((prev) => !prev)}
               className="relative w-8 h-8 rounded-lg flex items-center justify-center
-                         text-slate-400 hover:text-slate-100 hover:bg-ocean-800
+                         text-[#5E7183] hover:text-[#1268B3] hover:bg-[#F0F7FC] border border-[#D9E8F2]
                          transition-all duration-200 cursor-pointer"
               aria-label={`Notifications (${unreadCount} unread)`}
               aria-expanded={showNotifications}
@@ -224,8 +245,7 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
               <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
                 <span
-                  className="absolute top-1 right-1 w-2 h-2 rounded-full bg-spill-400
-                             shadow-[0_0_6px_rgba(255,191,26,0.8)]"
+                  className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#C6283D] live-dot-pulse"
                   aria-hidden="true"
                 />
               )}
@@ -233,11 +253,11 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
 
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl glass-card border border-ocean-700/80 bg-ocean-950/95 shadow-2xl p-4 z-50 animate-fade-in space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-ocean-800">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white border border-[#D9E8F2] shadow-xl p-4 z-50 animate-fade-in space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-[#D9E8F2]">
                   <div className="flex items-center gap-2">
-                    <Bell className="w-4 h-4 text-ocean-400" />
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">
+                    <Bell className="w-4 h-4 text-[#1268B3]" />
+                    <span className="text-xs font-bold text-[#17324D] uppercase tracking-wider">
                       System Notifications
                     </span>
                     {unreadCount > 0 && (
@@ -249,7 +269,7 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllRead}
-                      className="text-[10px] text-ocean-400 hover:text-ocean-300 font-semibold transition"
+                      className="text-[10px] text-[#1268B3] hover:text-[#0F4C81] font-bold transition"
                     >
                       Mark all read
                     </button>
@@ -259,42 +279,42 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
                 <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
                   {/* Live Smart Alerts Section */}
                   {liveAlerts.length > 0 && (
-                    <div className="space-y-1.5 pb-2 border-b border-ocean-800/80">
-                      <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider flex items-center justify-between">
+                    <div className="space-y-1.5 pb-2 border-b border-[#D9E8F2]">
+                      <div className="text-[10px] font-bold text-[#C6283D] uppercase tracking-wider flex items-center justify-between">
                         <span>Active Spill Alerts ({liveAlerts.length})</span>
-                        <span className="font-mono text-[9px] text-slate-500">M23 System</span>
+                        <span className="font-mono text-[9px] text-[#5E7183]">M23 System</span>
                       </div>
                       {liveAlerts.map((alert) => (
                         <div
                           key={alert.id}
                           className={`p-2 rounded-xl border text-xs ${
                             alert.severity === "CRITICAL"
-                              ? "bg-red-950/40 border-red-500/40 text-red-200"
-                              : "bg-amber-950/30 border-amber-500/40 text-amber-200"
+                              ? "bg-[#FFF1F2] border-[#F5B5BC] text-[#17324D]"
+                              : "bg-[#FFF8E8] border-[#F3D58A] text-[#17324D]"
                           }`}
                         >
                           <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="font-bold text-xs flex items-center gap-1 text-white">
-                              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                            <span className="font-bold text-xs flex items-center gap-1 text-[#17324D]">
+                              <span className="w-2 h-2 rounded-full bg-[#C6283D] animate-pulse" />
                               {alert.title}
                             </span>
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-ocean-900 border border-ocean-700">
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-white border border-[#D9E8F2] text-[#17324D]">
                               {alert.severity}
                             </span>
                           </div>
-                          <p className="text-[11px] text-slate-300 leading-snug">{alert.message}</p>
+                          <p className="text-[11px] text-[#5E7183] leading-snug">{alert.message}</p>
                           {alert.recommended_restriction && (
-                            <p className="text-[10px] text-spill-300 mt-1 font-mono">
+                            <p className="text-[10px] text-[#A86A00] mt-1 font-mono font-semibold">
                               &bull; Advisory: {alert.recommended_restriction}
                             </p>
                           )}
-                          <div className="mt-1.5 flex items-center justify-between pt-1 border-t border-ocean-800/50 text-[10px]">
-                            <span className="text-slate-400 font-mono">
+                          <div className="mt-1.5 flex items-center justify-between pt-1 border-t border-[#D9E8F2] text-[10px]">
+                            <span className="text-[#5E7183] font-mono">
                               ETA: {alert.eta_hours !== null && alert.eta_hours !== undefined ? `${alert.eta_hours.toFixed(1)}h` : "Immediate"}
                             </span>
                             <button
                               onClick={() => handleInlineAcknowledge(alert.id)}
-                              className="px-2 py-0.5 rounded bg-ocean-800 hover:bg-ocean-700 text-slate-200 font-semibold border border-ocean-600 transition"
+                              className="px-2 py-0.5 rounded bg-[#1268B3] hover:bg-[#0F4C81] text-white font-semibold transition text-[10px]"
                             >
                               Quick Ack
                             </button>
@@ -310,35 +330,35 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
                       key={notif.id}
                       className={`p-2 rounded-xl border text-xs transition ${
                         notif.read
-                          ? "bg-ocean-900/40 border-ocean-800/60 text-slate-400"
-                          : "bg-ocean-900/90 border-ocean-700 text-slate-200"
+                          ? "bg-[#F3FAFE] border-[#D9E8F2] text-[#5E7183]"
+                          : "bg-white border-[#D9E8F2] text-[#17324D] shadow-sm"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-semibold text-slate-200 flex items-center gap-1.5">
+                        <span className="font-bold text-[#17324D] flex items-center gap-1.5">
                           {!notif.read && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-spill-400 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#1268B3] shrink-0" />
                           )}
                           {notif.title}
                         </span>
-                        <span className="text-[9px] text-slate-500">{notif.time}</span>
+                        <span className="text-[9px] text-[#5E7183] font-mono">{notif.time}</span>
                       </div>
-                      <p className="text-[11px] text-slate-300 leading-relaxed">
+                      <p className="text-[11px] text-[#5E7183] leading-relaxed">
                         {notif.message}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-2 border-t border-ocean-800/80 flex items-center justify-between text-[10px]">
+                <div className="pt-2 border-t border-[#D9E8F2] flex items-center justify-between text-[10px]">
                   <Link
                     to="/alerts"
                     onClick={() => setShowNotifications(false)}
-                    className="text-ocean-400 hover:text-ocean-300 font-semibold flex items-center gap-1 transition"
+                    className="text-[#1268B3] hover:text-[#0F4C81] font-bold flex items-center gap-1 transition"
                   >
                     <span>Open Alerts Command Center &rarr;</span>
                   </Link>
-                  <span className="text-emerald-400 font-mono">Active Channel</span>
+                  <span className="text-[#087F68] font-mono font-bold">Active Channel</span>
                 </div>
               </div>
             )}
@@ -349,7 +369,7 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
             id="settings-btn"
             onClick={() => setShowSettings(true)}
             className="w-8 h-8 rounded-lg flex items-center justify-center
-                       text-slate-400 hover:text-slate-100 hover:bg-ocean-800
+                       text-[#5E7183] hover:text-[#1268B3] hover:bg-[#F0F7FC] border border-[#D9E8F2]
                        transition-all duration-200 cursor-pointer"
             aria-label="Open system settings and diagnostics"
           >
@@ -361,8 +381,8 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
             <button
               id="user-avatar"
               onClick={() => setShowProfile((prev) => !prev)}
-              className="w-8 h-8 rounded-full bg-ocean-gradient flex items-center justify-center
-                         text-xs font-bold text-white shadow-glow-blue cursor-pointer border border-ocean-400/40"
+              className="w-8 h-8 rounded-full bg-[#0B3A66] flex items-center justify-center
+                         text-xs font-bold text-white shadow-sm cursor-pointer border border-[#D9E8F2]"
               aria-label="User profile: Emergency Operations Commander"
               aria-expanded={showProfile}
             >
@@ -371,36 +391,36 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
 
             {/* Profile popover */}
             {showProfile && (
-              <div className="absolute right-0 mt-2 w-64 rounded-2xl glass-card border border-ocean-700/80 bg-ocean-950/95 shadow-2xl p-4 z-50 animate-fade-in space-y-3 text-xs">
-                <div className="flex items-center gap-3 pb-3 border-b border-ocean-800">
-                  <div className="w-9 h-9 rounded-full bg-ocean-gradient flex items-center justify-center font-bold text-white shadow-glow-blue shrink-0">
+              <div className="absolute right-0 mt-2 w-64 rounded-2xl bg-white border border-[#D9E8F2] shadow-xl p-4 z-50 animate-fade-in space-y-3 text-xs">
+                <div className="flex items-center gap-3 pb-3 border-b border-[#D9E8F2]">
+                  <div className="w-9 h-9 rounded-full bg-[#0B3A66] flex items-center justify-center font-bold text-white shrink-0">
                     SIH
                   </div>
                   <div>
-                    <div className="font-bold text-white">Emergency Officer</div>
-                    <div className="text-[10px] text-slate-400">Maritime Operations EOC</div>
+                    <div className="font-bold text-[#17324D]">Emergency Officer</div>
+                    <div className="text-[10px] text-[#5E7183]">Maritime Operations EOC</div>
                   </div>
                 </div>
 
-                <div className="space-y-1.5 text-[11px] text-slate-300">
+                <div className="space-y-1.5 text-[11px] text-[#17324D]">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Station:</span>
-                    <span className="font-mono text-slate-200">MRCC Chennai Sector</span>
+                    <span className="text-[#5E7183]">Station:</span>
+                    <span className="font-mono text-[#17324D] font-semibold">MRCC Chennai Sector</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Access Level:</span>
+                    <span className="text-[#5E7183]">Access Level:</span>
                     <span className="badge badge-success text-[9px]">Tier-1 Lead</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Operation:</span>
-                    <span className="text-amber-400 font-semibold">SIH 2024 Demo</span>
+                    <span className="text-[#5E7183]">Operation:</span>
+                    <span className="text-[#1268B3] font-bold">SIH 2024 Demo</span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-ocean-800 flex justify-end">
+                <div className="pt-2 border-t border-[#D9E8F2] flex justify-end">
                   <button
                     onClick={() => setShowProfile(false)}
-                    className="text-[10px] text-slate-400 hover:text-white transition"
+                    className="text-[10px] text-[#5E7183] hover:text-[#17324D] font-semibold transition"
                   >
                     Close
                   </button>
@@ -413,21 +433,21 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
 
       {/* System Settings & Diagnostics Modal */}
       {showSettings && (
-        <div className="fixed inset-0 bg-ocean-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div className="glass-card border border-ocean-700 bg-ocean-950/95 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-ocean-800">
+        <div className="fixed inset-0 bg-[#17324D]/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white border border-[#D9E8F2] rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-[#D9E8F2]">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-ocean-800 border border-ocean-700 flex items-center justify-center text-ocean-300">
+                <div className="w-8 h-8 rounded-lg bg-[#EAF6FF] border border-[#A9D9F5] flex items-center justify-center text-[#1268B3]">
                   <Settings className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white">System Diagnostics &amp; Engine Config</h3>
-                  <p className="text-[10px] text-slate-400">AI Oil Spill Intelligence System • v0.1.0</p>
+                  <h3 className="text-sm font-bold text-[#17324D]">System Diagnostics &amp; Engine Config</h3>
+                  <p className="text-[10px] text-[#5E7183]">AI Oil Spill Intelligence System • v0.1.0</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowSettings(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-ocean-800 transition"
+                className="p-1 rounded-lg text-[#5E7183] hover:text-[#17324D] hover:bg-[#F0F7FC] transition"
                 aria-label="Close settings modal"
               >
                 <X className="w-4 h-4" />
@@ -436,63 +456,63 @@ export function Header({ onToggleMobileNav }: HeaderProps) {
 
             {/* Diagnostics Cards */}
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-xl bg-ocean-900/80 border border-ocean-800 space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#F3FAFE] border border-[#D9E8F2] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                    <Cpu className="w-3.5 h-3.5 text-ocean-400" />
+                  <span className="font-bold text-[#17324D] flex items-center gap-1.5">
+                    <Cpu className="w-3.5 h-3.5 text-[#1268B3]" />
                     AI Detection Engine
                   </span>
                   <span className="badge badge-success text-[10px]">DeepLabV3+ Active</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-300 pt-1">
-                  <div>Model: <span className="font-mono text-slate-200">SAR UNet / ResNet50</span></div>
-                  <div>Inference: <span className="font-mono text-emerald-400">~120 ms</span></div>
-                  <div>Confidence Gate: <span className="font-mono text-amber-400">&gt; 70%</span></div>
-                  <div>Output: <span className="font-mono text-slate-200">GeoJSON Polygon</span></div>
+                <div className="grid grid-cols-2 gap-2 text-[11px] text-[#5E7183] pt-1">
+                  <div>Model: <span className="font-mono text-[#17324D] font-semibold">SAR UNet / ResNet50</span></div>
+                  <div>Inference: <span className="font-mono text-[#087F68] font-bold">~120 ms</span></div>
+                  <div>Confidence Gate: <span className="font-mono text-[#A86A00] font-bold">&gt; 70%</span></div>
+                  <div>Output: <span className="font-mono text-[#17324D] font-semibold">GeoJSON Polygon</span></div>
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-ocean-900/80 border border-ocean-800 space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#F3FAFE] border border-[#D9E8F2] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                    <Database className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="font-bold text-[#17324D] flex items-center gap-1.5">
+                    <Database className="w-3.5 h-3.5 text-[#1268B3]" />
                     Spatial Database &amp; GIS
                   </span>
                   <span className="badge badge-success text-[10px]">PostGIS Connected</span>
                 </div>
-                <div className="text-[11px] text-slate-300 space-y-1">
-                  <div>Host: <span className="font-mono text-slate-200">localhost:5432 / oilspill_db</span></div>
-                  <div>Proximity Buffer: <span className="font-mono text-slate-200">50 km maritime search radius</span></div>
+                <div className="text-[11px] text-[#5E7183] space-y-1">
+                  <div>Host: <span className="font-mono text-[#17324D] font-semibold">localhost:5432 / oilspill_db</span></div>
+                  <div>Proximity Buffer: <span className="font-mono text-[#17324D] font-semibold">50 km maritime search radius</span></div>
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-ocean-900/80 border border-ocean-800 space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#F3FAFE] border border-[#D9E8F2] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                    <Sliders className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="font-bold text-[#17324D] flex items-center gap-1.5">
+                    <Sliders className="w-3.5 h-3.5 text-[#A86A00]" />
                     Transparent Risk Model Weights
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400">Normalized 0-100</span>
+                  <span className="text-[10px] font-mono text-[#5E7183]">Normalized 0-100</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center text-[10px]">
-                  <div className="p-1.5 rounded bg-ocean-950 border border-ocean-800/80">
-                    <div className="text-slate-400">Coast Proximity</div>
-                    <div className="font-bold text-amber-300 font-mono mt-0.5">30%</div>
+                  <div className="p-2 rounded-lg bg-white border border-[#D9E8F2]">
+                    <div className="text-[#5E7183]">Coast Proximity</div>
+                    <div className="font-bold text-[#0B3A66] font-mono mt-0.5 text-xs">30%</div>
                   </div>
-                  <div className="p-1.5 rounded bg-ocean-950 border border-ocean-800/80">
-                    <div className="text-slate-400">Spill Volume</div>
-                    <div className="font-bold text-amber-300 font-mono mt-0.5">25%</div>
+                  <div className="p-2 rounded-lg bg-white border border-[#D9E8F2]">
+                    <div className="text-[#5E7183]">Spill Volume</div>
+                    <div className="font-bold text-[#0B3A66] font-mono mt-0.5 text-xs">25%</div>
                   </div>
-                  <div className="p-1.5 rounded bg-ocean-950 border border-ocean-800/80">
-                    <div className="text-slate-400">Protected Areas</div>
-                    <div className="font-bold text-amber-300 font-mono mt-0.5">20%</div>
+                  <div className="p-2 rounded-lg bg-white border border-[#D9E8F2]">
+                    <div className="text-[#5E7183]">Protected Areas</div>
+                    <div className="font-bold text-[#0B3A66] font-mono mt-0.5 text-xs">20%</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-ocean-800/80 flex items-center justify-between text-xs">
-              <span className="text-[11px] text-slate-400">Smart India Hackathon 2024</span>
+            <div className="pt-3 border-t border-[#D9E8F2] flex items-center justify-between text-xs">
+              <span className="text-[11px] text-[#5E7183]">Smart India Hackathon 2024</span>
               <button
                 onClick={() => setShowSettings(false)}
                 className="btn-primary text-xs py-1.5 px-4"

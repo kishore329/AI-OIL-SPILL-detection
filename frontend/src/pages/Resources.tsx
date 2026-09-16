@@ -113,17 +113,17 @@ export default function Resources() {
     switch (category) {
       case "RESPONSE_VESSEL":
       case "SKIMMER_VESSEL":
-        return <Anchor className="w-4 h-4 text-cyan-400" />;
+        return <Anchor className="w-4 h-4 text-[#1268B3]" />;
       case "CONTAINMENT_BOOM":
-        return <ShieldCheck className="w-4 h-4 text-amber-400" />;
+        return <ShieldCheck className="w-4 h-4 text-[#A86A00]" />;
       case "ABSORBENT_MATERIALS":
-        return <Boxes className="w-4 h-4 text-emerald-400" />;
+        return <Boxes className="w-4 h-4 text-[#087F68]" />;
       case "PERSONNEL":
-        return <Users className="w-4 h-4 text-purple-400" />;
+        return <Users className="w-4 h-4 text-[#1268B3]" />;
       case "MONITORING_TEAM":
-        return <Eye className="w-4 h-4 text-sky-400" />;
+        return <Eye className="w-4 h-4 text-[#168DCC]" />;
       default:
-        return <Truck className="w-4 h-4 text-blue-400" />;
+        return <Truck className="w-4 h-4 text-[#1268B3]" />;
     }
   };
 
@@ -131,35 +131,35 @@ export default function Resources() {
     switch (status) {
       case "AVAILABLE":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-950/70 text-emerald-400 border border-emerald-800/80">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EAF8F4] text-[#087F68] border border-[#9ADBC8]">
+            <span className="w-2 h-2 rounded-full bg-[#087F68]"></span>
             AVAILABLE
           </span>
         );
       case "ASSIGNED":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-950/70 text-blue-400 border border-blue-800/80">
-            <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5]">
+            <span className="w-2 h-2 rounded-full bg-[#1268B3]"></span>
             ASSIGNED
           </span>
         );
       case "DEPLOYED":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-950/70 text-cyan-300 border border-cyan-700/80">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EAF6FF] text-[#168DCC] border border-[#A9D9F5]">
+            <span className="w-2 h-2 rounded-full bg-[#168DCC] animate-ping"></span>
             DEPLOYED ON-SCENE
           </span>
         );
       case "MAINTENANCE":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-950/70 text-amber-400 border border-amber-800/80">
-            <Wrench className="w-3 h-3 text-amber-400" />
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#FFF8E8] text-[#A86A00] border border-[#F3D58A]">
+            <Wrench className="w-3 h-3 text-[#A86A00]" />
             MAINTENANCE
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#F3FAFE] text-[#5E7183] border border-[#D9E8F2]">
             <XCircle className="w-3 h-3" />
             {status}
           </span>
@@ -168,22 +168,22 @@ export default function Resources() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in p-2 sm:p-4">
+    <div className="space-y-6 animate-fade-in p-2 sm:p-4 max-w-7xl mx-auto">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-ocean-800/80 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-[#D9E8F2] pb-5">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-500/30 text-cyan-400">
+            <div className="p-2.5 rounded-xl bg-[#EAF6FF] border border-[#A9D9F5] text-[#1268B3]">
               <Boxes className="w-7 h-7" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white tracking-wide flex items-center gap-2">
+              <h1 className="text-2xl font-bold text-[#17324D] tracking-wide flex items-center gap-2">
                 Response Resource Allocation &amp; Inventory
-                <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-ocean-800/80 text-cyan-300 border border-ocean-700">
+                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5]">
                   MODULE 16
                 </span>
               </h1>
-              <p className="text-sm text-slate-400 mt-0.5">
+              <p className="text-sm text-[#5E7183] mt-0.5">
                 Strategic fleet &amp; equipment management, containment assets, and human-in-the-loop dispatch coordination.
               </p>
             </div>
@@ -194,19 +194,19 @@ export default function Resources() {
           <button
             onClick={fetchResources}
             disabled={loading}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-ocean-900/90 hover:bg-ocean-800 text-slate-200 border border-ocean-700/80 transition text-sm font-medium disabled:opacity-50"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3] transition text-xs font-semibold shadow-xs disabled:opacity-50 cursor-pointer"
           >
-            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin text-cyan-400" : ""}`} />
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
             Refresh Inventory
           </button>
         </div>
       </div>
 
       {/* Human-in-the-Loop Protocol Alert */}
-      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-700/70 text-slate-300 text-xs sm:text-sm backdrop-blur-sm">
-        <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F3FAFE] border border-[#D9E8F2] text-[#17324D] text-xs sm:text-sm">
+        <ShieldCheck className="w-5 h-5 text-[#1268B3] shrink-0 mt-0.5" />
         <div className="flex-1">
-          <span className="font-semibold text-white">
+          <span className="font-bold text-[#0B3A66]">
             Human-in-the-Loop Dispatch Policy Active:
           </span>{" "}
           Algorithmic allocation scores guide decision support. Resources are never automatically committed
@@ -215,14 +215,14 @@ export default function Resources() {
       </div>
 
       {actionSuccess && (
-        <div className="p-3 rounded-lg bg-emerald-950/80 border border-emerald-700/80 text-emerald-300 text-sm flex items-center gap-2 animate-fade-in">
+        <div className="p-3 rounded-lg bg-[#EAF8F4] border border-[#9ADBC8] text-[#087F68] text-sm flex items-center gap-2 animate-fade-in font-medium">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{actionSuccess}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 rounded-lg bg-rose-950/80 border border-rose-800/80 text-rose-300 text-sm flex items-center gap-2">
+        <div className="p-4 rounded-lg bg-[#FFF1F2] border border-[#F5B5BC] text-[#C6283D] text-sm flex items-center gap-2 font-medium">
           <AlertTriangle className="w-5 h-5 shrink-0" />
           <span>{error}</span>
         </div>
@@ -231,71 +231,71 @@ export default function Resources() {
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
         {/* Total Assets */}
-        <div className="p-4 rounded-xl bg-ocean-900/50 border border-ocean-800/80 backdrop-blur-sm relative overflow-hidden">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-white border border-[#D9E8F2] shadow-sm relative overflow-hidden hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between text-[#5E7183] text-xs font-medium">
             <span>Total Tracked Assets</span>
-            <Layers className="w-4 h-4 text-slate-400" />
+            <Layers className="w-4 h-4 text-[#1268B3]" />
           </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-bold text-white font-mono">
+          <div className="mt-2 text-2xl sm:text-3xl font-black text-[#0B3A66] font-mono">
             {totalResources}
           </div>
-          <div className="mt-1 text-xs text-slate-400">
+          <div className="mt-1 text-xs text-[#8A9AA8]">
             Across 7 emergency categories
           </div>
         </div>
 
         {/* Available Ready */}
-        <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-800/40 backdrop-blur-sm relative overflow-hidden">
-          <div className="flex items-center justify-between text-emerald-300 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-white border border-[#9ADBC8] shadow-sm relative overflow-hidden hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between text-[#087F68] text-xs font-medium">
             <span>Available / Ready</span>
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-[#087F68]" />
           </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-bold text-emerald-400 font-mono">
+          <div className="mt-2 text-2xl sm:text-3xl font-black text-[#087F68] font-mono">
             {availableCount}
           </div>
-          <div className="mt-1 text-xs text-emerald-400/80">
+          <div className="mt-1 text-xs text-[#087F68]/80">
             Immediate dispatch capability
           </div>
         </div>
 
         {/* Assigned */}
-        <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-800/40 backdrop-blur-sm relative overflow-hidden">
-          <div className="flex items-center justify-between text-blue-300 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-white border border-[#D9E8F2] shadow-sm relative overflow-hidden hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between text-[#1268B3] text-xs font-medium">
             <span>Assigned</span>
-            <Anchor className="w-4 h-4 text-blue-400" />
+            <Anchor className="w-4 h-4 text-[#1268B3]" />
           </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-bold text-blue-400 font-mono">
+          <div className="mt-2 text-2xl sm:text-3xl font-black text-[#1268B3] font-mono">
             {assignedCount}
           </div>
-          <div className="mt-1 text-xs text-blue-400/80">
+          <div className="mt-1 text-xs text-[#5E7183]">
             En route or preparing staging
           </div>
         </div>
 
         {/* Deployed */}
-        <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-800/40 backdrop-blur-sm relative overflow-hidden">
-          <div className="flex items-center justify-between text-cyan-300 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-white border border-[#D9E8F2] shadow-sm relative overflow-hidden hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between text-[#168DCC] text-xs font-medium">
             <span>Deployed On-Scene</span>
-            <Activity className="w-4 h-4 text-cyan-400" />
+            <Activity className="w-4 h-4 text-[#168DCC]" />
           </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-bold text-cyan-300 font-mono">
+          <div className="mt-2 text-2xl sm:text-3xl font-black text-[#168DCC] font-mono">
             {deployedCount}
           </div>
-          <div className="mt-1 text-xs text-cyan-300/80">
+          <div className="mt-1 text-xs text-[#5E7183]">
             Active spill containment
           </div>
         </div>
 
         {/* Fleet Utilization */}
-        <div className="p-4 rounded-xl bg-purple-950/20 border border-purple-800/40 backdrop-blur-sm relative overflow-hidden col-span-2 lg:col-span-1">
-          <div className="flex items-center justify-between text-purple-300 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-white border border-[#D9E8F2] shadow-sm relative overflow-hidden col-span-2 lg:col-span-1 hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between text-[#0B3A66] text-xs font-medium">
             <span>Fleet Utilization</span>
-            <Sparkles className="w-4 h-4 text-purple-400" />
+            <Sparkles className="w-4 h-4 text-[#1268B3]" />
           </div>
-          <div className="mt-2 text-2xl sm:text-3xl font-bold text-purple-300 font-mono">
+          <div className="mt-2 text-2xl sm:text-3xl font-black text-[#0B3A66] font-mono">
             {utilizationRate}%
           </div>
-          <div className="mt-1 text-xs text-purple-400/80">
+          <div className="mt-1 text-xs text-[#8A9AA8]">
             {assignedCount + deployedCount} active / {maintenanceCount} maint.
           </div>
         </div>
@@ -303,55 +303,55 @@ export default function Resources() {
 
       {/* Active Deployments Overview Banner if any */}
       {deployedOrAssignedResources.length > 0 && (
-        <div className="rounded-xl bg-gradient-to-r from-ocean-950 via-ocean-900 to-ocean-950 border border-cyan-800/40 p-4">
+        <div className="rounded-xl bg-white border border-[#D9E8F2] p-4 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-semibold text-cyan-300 uppercase tracking-wider flex items-center gap-2">
-              <Activity className="w-4 h-4 text-cyan-400" />
+            <h2 className="text-sm font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-2">
+              <Activity className="w-4 h-4 text-[#1268B3]" />
               Active Field Engagements ({deployedOrAssignedResources.length})
             </h2>
-            <span className="text-xs text-slate-400 font-mono">Live Sync</span>
+            <span className="text-xs text-[#1268B3] font-mono font-medium bg-[#EAF6FF] px-2 py-0.5 rounded border border-[#A9D9F5]">Live Sync</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {deployedOrAssignedResources.map((resource) => (
               <div
                 key={resource.id}
-                className="p-3 rounded-lg bg-ocean-950/80 border border-ocean-700/80 flex flex-col justify-between text-xs space-y-2"
+                className="p-3 rounded-lg bg-[#F8FCFF] border border-[#D9E8F2] flex flex-col justify-between text-xs space-y-2"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <div className="font-semibold text-white text-sm">
+                    <div className="font-bold text-[#17324D] text-sm">
                       {resource.name}
                     </div>
-                    <div className="text-slate-400 flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3 h-3 text-cyan-400" />
+                    <div className="text-[#5E7183] flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3 text-[#1268B3]" />
                       {resource.location_name}
                     </div>
                   </div>
                   <span
                     className={`px-2 py-0.5 rounded text-[11px] font-bold ${
                       resource.status === "DEPLOYED"
-                        ? "bg-cyan-950 text-cyan-300 border border-cyan-700"
-                        : "bg-blue-950 text-blue-300 border border-blue-700"
+                        ? "bg-[#EAF6FF] text-[#168DCC] border border-[#A9D9F5]"
+                        : "bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5]"
                     }`}
                   >
                     {resource.status}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between text-slate-400 pt-1 border-t border-ocean-800">
+                <div className="flex items-center justify-between text-[#5E7183] pt-1 border-t border-[#EAF3F8]">
                   <span>
-                    Stock: <strong className="text-white">{resource.quantity} {resource.unit}</strong>
+                    Stock: <strong className="text-[#17324D]">{resource.quantity} {resource.unit}</strong>
                   </span>
                   {resource.current_incident_id ? (
                     <Link
                       to={`/incidents/${resource.current_incident_id}`}
-                      className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-medium"
+                      className="text-[#1268B3] hover:text-[#0B3A66] flex items-center gap-1 font-semibold"
                     >
                       Incident <ExternalLink className="w-3 h-3" />
                     </Link>
                   ) : (
-                    <span className="text-slate-500">Committed</span>
+                    <span className="text-[#8A9AA8]">Committed</span>
                   )}
                 </div>
               </div>
@@ -361,7 +361,7 @@ export default function Resources() {
       )}
 
       {/* Filter and Search Bar */}
-      <div className="rounded-xl bg-ocean-900/60 border border-ocean-800/80 p-4 space-y-4">
+      <div className="rounded-xl bg-white border border-[#D9E8F2] p-4 space-y-4 shadow-sm">
         <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
           {/* Status Tabs */}
           <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
@@ -369,10 +369,10 @@ export default function Resources() {
               <button
                 key={st}
                 onClick={() => setSelectedStatus(st)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
                   selectedStatus === st
-                    ? "bg-cyan-500 text-ocean-950 font-bold shadow-md shadow-cyan-500/20"
-                    : "bg-ocean-950/70 hover:bg-ocean-800 text-slate-300 border border-ocean-700/60"
+                    ? "bg-[#1268B3] text-white shadow-xs"
+                    : "bg-[#F3FAFE] hover:bg-[#EAF6FF] text-[#5E7183] border border-[#D9E8F2]"
                 }`}
               >
                 {st}
@@ -383,18 +383,18 @@ export default function Resources() {
           {/* Search Input */}
           <form onSubmit={handleSearchSubmit} className="w-full md:w-72 flex gap-2">
             <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+              <Search className="w-4 h-4 text-[#8A9AA8] absolute left-3 top-2.5" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search resource, base, specs..."
-                className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-ocean-950 text-slate-200 border border-ocean-700/80 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#F8FCFF] text-[#17324D] border border-[#D9E8F2] text-xs focus:outline-none focus:border-[#1268B3]"
               />
             </div>
             <button
               type="submit"
-              className="px-3 py-1.5 rounded-lg bg-ocean-800 hover:bg-ocean-700 text-slate-200 text-xs font-medium border border-ocean-700"
+              className="px-3.5 py-1.5 rounded-lg bg-[#1268B3] hover:bg-[#0F4C81] text-white text-xs font-semibold transition shadow-xs cursor-pointer"
             >
               Find
             </button>
@@ -402,16 +402,16 @@ export default function Resources() {
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-ocean-800/60">
-          <span className="text-xs text-slate-400 flex items-center gap-1 mr-2">
-            <Filter className="w-3.5 h-3.5" /> Category:
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#EAF3F8]">
+          <span className="text-xs text-[#5E7183] flex items-center gap-1 mr-2 font-medium">
+            <Filter className="w-3.5 h-3.5 text-[#1268B3]" /> Category:
           </span>
           <button
             onClick={() => setSelectedCategory("ALL")}
-            className={`px-2.5 py-1 rounded-md text-xs font-medium ${
+            className={`px-2.5 py-1 rounded-md text-xs font-semibold transition cursor-pointer ${
               selectedCategory === "ALL"
-                ? "bg-ocean-700 text-white font-bold"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-[#1268B3] text-white shadow-xs"
+                : "text-[#5E7183] hover:text-[#17324D]"
             }`}
           >
             All Categories
@@ -428,10 +428,10 @@ export default function Resources() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-2.5 py-1 rounded-md text-xs font-medium transition ${
+              className={`px-2.5 py-1 rounded-md text-xs font-medium transition cursor-pointer ${
                 selectedCategory === cat.id
-                  ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold"
-                  : "bg-ocean-950/40 hover:bg-ocean-800/50 text-slate-400 border border-transparent"
+                  ? "bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5] font-bold"
+                  : "bg-[#F3FAFE] hover:bg-[#EAF6FF] text-[#5E7183] border border-transparent"
               }`}
             >
               {cat.label}
@@ -440,30 +440,30 @@ export default function Resources() {
         </div>
       </div>
 
-      {/* Resource Inventory Table / Grid */}
-      <div className="rounded-xl bg-ocean-900/50 border border-ocean-800/80 overflow-hidden shadow-xl">
-        <div className="p-4 border-b border-ocean-800/80 flex items-center justify-between">
+      {/* Resource Inventory Table */}
+      <div className="rounded-xl bg-white border border-[#D9E8F2] overflow-hidden shadow-sm">
+        <div className="p-4 border-b border-[#EAF3F8] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h2 className="text-base font-semibold text-white">
+            <h2 className="text-base font-bold text-[#17324D]">
               Inventory Catalog
             </h2>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-ocean-800 text-slate-300 font-mono">
+            <span className="text-xs px-2 py-0.5 rounded-full bg-[#EAF6FF] text-[#1268B3] border border-[#A9D9F5] font-mono font-semibold">
               {resources.length} of {totalResources} items
             </span>
           </div>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-[#5E7183]">
             Showing all strategic Indian coastal stations
           </span>
         </div>
 
         {loading ? (
-          <div className="p-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-3">
-            <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin" />
-            <p className="text-sm">Loading response fleet and equipment inventory...</p>
+          <div className="p-12 text-center text-[#5E7183] flex flex-col items-center justify-center space-y-3">
+            <RefreshCw className="w-8 h-8 text-[#1268B3] animate-spin" />
+            <p className="text-sm font-medium">Loading response fleet and equipment inventory...</p>
           </div>
         ) : resources.length === 0 ? (
-          <div className="p-12 text-center text-slate-400 space-y-2">
-            <SlidersHorizontal className="w-8 h-8 mx-auto text-slate-500" />
+          <div className="p-12 text-center text-[#5E7183] space-y-2">
+            <SlidersHorizontal className="w-8 h-8 mx-auto text-[#8A9AA8]" />
             <p className="text-sm font-medium">No resources match the selected criteria.</p>
             <button
               onClick={() => {
@@ -471,15 +471,15 @@ export default function Resources() {
                 setSelectedStatus("ALL");
                 setSearchQuery("");
               }}
-              className="text-xs text-cyan-400 hover:underline"
+              className="text-xs text-[#1268B3] hover:underline font-semibold cursor-pointer"
             >
               Reset filters
             </button>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-ocean-950/90 text-slate-400 uppercase tracking-wider text-[11px] font-semibold border-b border-ocean-800">
+            <table className="w-full text-left text-xs text-[#17324D]">
+              <thead className="bg-[#F3FAFE] text-[#5E7183] uppercase tracking-wider text-[11px] font-semibold border-b border-[#D9E8F2]">
                 <tr>
                   <th className="py-3 px-4">Resource &amp; Category</th>
                   <th className="py-3 px-4">Base Location</th>
@@ -490,23 +490,23 @@ export default function Resources() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ocean-800/60">
+              <tbody className="divide-y divide-[#EAF3F8]">
                 {resources.map((item) => (
                   <tr
                     key={item.id}
-                    className="hover:bg-ocean-800/40 transition duration-150"
+                    className="hover:bg-[#F8FCFF] transition duration-150"
                   >
                     {/* Resource & Category */}
                     <td className="py-3.5 px-4">
                       <div className="flex items-start gap-2.5">
-                        <div className="p-2 rounded-lg bg-ocean-950 border border-ocean-700/60 mt-0.5">
+                        <div className="p-2 rounded-lg bg-[#EAF6FF] border border-[#A9D9F5] mt-0.5">
                           {getCategoryIcon(item.resource_category)}
                         </div>
                         <div>
-                          <div className="font-semibold text-white text-sm">
+                          <div className="font-bold text-[#17324D] text-sm">
                             {item.name}
                           </div>
-                          <div className="text-[11px] text-slate-400">
+                          <div className="text-[11px] text-[#5E7183]">
                             {item.resource_category.replace(/_/g, " ")}
                           </div>
                           {item.capabilities && item.capabilities.length > 0 && (
@@ -514,13 +514,13 @@ export default function Resources() {
                               {item.capabilities.slice(0, 3).map((cap, idx) => (
                                 <span
                                   key={idx}
-                                  className="text-[10px] px-1.5 py-0.2 rounded bg-ocean-950 text-cyan-300 border border-ocean-800"
+                                  className="text-[10px] px-1.5 py-0.2 rounded bg-[#F3FAFE] text-[#1268B3] border border-[#D9E8F2] font-medium"
                                 >
                                   {cap.replace(/_/g, " ")}
                                 </span>
                               ))}
                               {item.capabilities.length > 3 && (
-                                <span className="text-[10px] text-slate-500">
+                                <span className="text-[10px] text-[#8A9AA8]">
                                   +{item.capabilities.length - 3} more
                                 </span>
                               )}
@@ -532,11 +532,11 @@ export default function Resources() {
 
                     {/* Location */}
                     <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-1.5 font-medium text-slate-200">
-                        <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <div className="flex items-center gap-1.5 font-bold text-[#17324D]">
+                        <MapPin className="w-3.5 h-3.5 text-[#1268B3] shrink-0" />
                         <span>{item.location_name || "Coast Station"}</span>
                       </div>
-                      <div className="text-[11px] font-mono text-slate-400 mt-0.5">
+                      <div className="text-[11px] font-mono text-[#5E7183] mt-0.5">
                         {item.latitude != null ? item.latitude.toFixed(4) : "—"}°N,{" "}
                         {item.longitude != null ? item.longitude.toFixed(4) : "—"}°E
                       </div>
@@ -549,20 +549,20 @@ export default function Resources() {
 
                     {/* Available / Total */}
                     <td className="py-3.5 px-4">
-                      <div className="font-mono text-sm font-bold text-white">
+                      <div className="font-mono text-sm font-bold text-[#0B3A66]">
                         {item.quantity}{" "}
-                        <span className="text-xs font-normal text-slate-400">
+                        <span className="text-xs font-normal text-[#5E7183]">
                           {item.unit}
                         </span>
                       </div>
-                      <div className="w-24 bg-ocean-950 rounded-full h-1.5 mt-1.5 overflow-hidden border border-ocean-800">
+                      <div className="w-24 bg-[#EAF3F8] rounded-full h-1.5 mt-1.5 overflow-hidden border border-[#D9E8F2]">
                         <div
                           className={`h-full rounded-full ${
                             item.status === "AVAILABLE"
-                              ? "bg-emerald-400 w-full"
+                              ? "bg-[#087F68] w-full"
                               : item.status === "ASSIGNED" || item.status === "DEPLOYED"
-                              ? "bg-cyan-400 w-3/4"
-                              : "bg-rose-500 w-1/4"
+                              ? "bg-[#1268B3] w-3/4"
+                              : "bg-[#C6283D] w-1/4"
                           }`}
                         />
                       </div>
@@ -572,16 +572,16 @@ export default function Resources() {
                     <td className="py-3.5 px-4">
                       <div className="space-y-0.5 text-[11px]">
                         {item.speed_knots ? (
-                          <div className="text-slate-300">
-                            Transit: <strong className="text-white">{item.speed_knots} kts</strong>
+                          <div className="text-[#17324D]">
+                            Transit: <strong className="text-[#0B3A66]">{item.speed_knots} kts</strong>
                           </div>
                         ) : null}
-                        <div className="text-slate-400 flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-amber-400" />
+                        <div className="text-[#5E7183] flex items-center gap-1">
+                          <Clock className="w-3 h-3 text-[#A86A00]" />
                           Mob: {item.mobilization_time_hours}h
                         </div>
                         {item.cost_per_hour ? (
-                          <div className="text-slate-400">
+                          <div className="text-[#5E7183]">
                             Rate: ${item.cost_per_hour}/hr
                           </div>
                         ) : null}
@@ -590,10 +590,10 @@ export default function Resources() {
 
                     {/* Contact Lead */}
                     <td className="py-3.5 px-4">
-                      <div className="text-xs font-medium text-slate-300">
+                      <div className="text-xs font-bold text-[#17324D]">
                         {item.contact_lead || "Operations Base"}
                       </div>
-                      <div className="text-[11px] text-slate-500 line-clamp-1">
+                      <div className="text-[11px] text-[#5E7183] line-clamp-1">
                         {item.description || "Active emergency response resource"}
                       </div>
                     </td>
@@ -608,10 +608,10 @@ export default function Resources() {
                             ? "Mark resource available"
                             : "Set into maintenance review"
                         }
-                        className={`px-2.5 py-1 rounded text-xs font-medium transition inline-flex items-center gap-1 disabled:opacity-40 ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition inline-flex items-center gap-1.5 shadow-xs disabled:opacity-40 cursor-pointer ${
                           item.status === "MAINTENANCE"
-                            ? "bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700"
-                            : "bg-ocean-950 text-slate-300 hover:bg-ocean-800 border border-ocean-700"
+                            ? "bg-[#087F68] hover:bg-[#066553] text-white"
+                            : "bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3]"
                         }`}
                       >
                         <Wrench className="w-3 h-3" />

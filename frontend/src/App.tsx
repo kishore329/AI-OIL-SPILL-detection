@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import { AppLayout } from "./layouts/AppLayout";
 import Dashboard    from "./pages/Dashboard";
 import Incidents    from "./pages/Incidents";
@@ -15,28 +16,30 @@ import AIAssistant from "./pages/AIAssistant";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Mobile-first public reporting portal */}
-        <Route path="report" element={<CitizenReport />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Mobile-first public reporting portal */}
+          <Route path="report" element={<CitizenReport />} />
 
-        {/* Command & Control authenticated dashboard layout */}
-        <Route element={<AppLayout />}>
-          <Route index         element={<Dashboard />} />
-          <Route path="incidents"     element={<Incidents />} />
-          <Route path="incidents/:id" element={<Incidents />} />
-          <Route path="alerts"        element={<AlertsCommandCenter />} />
-          <Route path="assistant"     element={<AIAssistant />} />
-          <Route path="detect"        element={<DetectSpill />} />
-          <Route path="detect-spill"  element={<DetectSpill />} />
-          <Route path="priority"  element={<PriorityQueue />} />
-          <Route path="map"       element={<MapView />} />
-          <Route path="risk"      element={<RiskAnalysis />} />
-          <Route path="resources" element={<Resources />} />
-          <Route path="reports"   element={<CitizenReportsAdmin />} />
-          <Route path="simulator" element={<Simulator />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          {/* Command & Control authenticated dashboard layout */}
+          <Route element={<AppLayout />}>
+            <Route index         element={<Dashboard />} />
+            <Route path="incidents"     element={<Incidents />} />
+            <Route path="incidents/:id" element={<Incidents />} />
+            <Route path="alerts"        element={<AlertsCommandCenter />} />
+            <Route path="assistant"     element={<AIAssistant />} />
+            <Route path="detect"        element={<DetectSpill />} />
+            <Route path="detect-spill"  element={<DetectSpill />} />
+            <Route path="priority"  element={<PriorityQueue />} />
+            <Route path="map"       element={<MapView />} />
+            <Route path="risk"      element={<RiskAnalysis />} />
+            <Route path="resources" element={<Resources />} />
+            <Route path="reports"   element={<CitizenReportsAdmin />} />
+            <Route path="simulator" element={<Simulator />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

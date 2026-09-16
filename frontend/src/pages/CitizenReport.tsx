@@ -158,14 +158,14 @@ export default function CitizenReport() {
   };
 
   return (
-    <div className="min-h-screen bg-ocean-950 text-slate-100 flex flex-col items-center p-3 sm:p-6 pb-24">
+    <div className="min-h-screen bg-[#F4F9FD] text-[#17324D] flex flex-col items-center p-3 sm:p-6 pb-24">
       {/* Top Header Navigation */}
-      <div className="w-full max-w-xl flex items-center justify-between py-2 mb-4 border-b border-ocean-800">
-        <Link to="/" className="flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300">
+      <div className="w-full max-w-xl flex items-center justify-between py-2 mb-4 border-b border-[#D9E8F2]">
+        <Link to="/" className="flex items-center gap-2 text-xs font-semibold text-[#1268B3] hover:text-[#0B3A66]">
           <ArrowLeft className="w-4 h-4" />
           <span>Coast Command</span>
         </Link>
-        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E8F8F4] text-[#087F68] border border-[#B3E7DA] flex items-center gap-1">
           <Shield className="w-3 h-3" />
           Coast Guard Public Portal
         </span>
@@ -174,23 +174,23 @@ export default function CitizenReport() {
       {/* Main Container */}
       <div className="w-full max-w-xl space-y-6">
         {/* Title & Marine Context Banner */}
-        <div className="bg-gradient-to-r from-ocean-900 via-ocean-850 to-indigo-950 p-4 sm:p-5 rounded-2xl border border-ocean-700/80 shadow-xl space-y-2">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#D9E8F2] shadow-sm space-y-2">
           <div className="flex items-center gap-2.5">
-            <div className="p-2.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+            <div className="p-2.5 rounded-xl bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2]">
               <Camera className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-lg sm:text-xl font-black text-white tracking-tight">
+              <h1 className="text-lg sm:text-xl font-black text-[#0B3A66] tracking-tight">
                 Report a Suspected Oil Spill
               </h1>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-[#5E7183]">
                 Direct emergency intelligence link for fishermen, coastal citizens &amp; mariners
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 pt-2 text-[11px] text-cyan-300/90 font-mono border-t border-ocean-800/80">
+          <div className="flex items-center gap-3 pt-2 text-[11px] text-[#1268B3] font-mono border-t border-[#D9E8F2]">
             <span className="flex items-center gap-1">
-              <Phone className="w-3 h-3 text-emerald-400" />
+              <Phone className="w-3 h-3 text-[#087F68]" />
               MRCC Toll-Free: 1554
             </span>
             <span>•</span>
@@ -200,60 +200,60 @@ export default function CitizenReport() {
 
         {/* Successful Submission View */}
         {submittedReport ? (
-          <div className="bg-ocean-900/90 p-6 rounded-2xl border border-emerald-500/50 shadow-2xl space-y-5 animate-fade-in text-center">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-400 flex items-center justify-center mx-auto">
+          <div className="bg-white p-6 rounded-2xl border border-[#B3E7DA] shadow-lg space-y-5 animate-fade-in text-center">
+            <div className="w-16 h-16 rounded-full bg-[#E8F8F4] border-2 border-[#087F68] text-[#087F68] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-10 h-10" />
             </div>
 
             <div className="space-y-1">
-              <h2 className="text-xl font-bold text-white">Report Submitted Successfully</h2>
-              <p className="text-xs text-slate-300 max-w-md mx-auto">
+              <h2 className="text-xl font-bold text-[#0B3A66]">Report Submitted Successfully</h2>
+              <p className="text-xs text-[#5E7183] max-w-md mx-auto">
                 Thank you for protecting our coastal waters and marine ecosystem. Coast Guard command has received your field observation.
               </p>
             </div>
 
             {/* Tracking Reference Card */}
-            <div className="p-4 rounded-xl bg-ocean-950 border border-ocean-800 text-left space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-ocean-800/80 pb-2">
-                <span className="text-slate-400">Report Reference:</span>
-                <span className="font-extrabold text-cyan-300 text-sm">{submittedReport.report_code}</span>
+            <div className="p-4 rounded-xl bg-[#F8FBFE] border border-[#D9E8F2] text-left space-y-2 font-mono text-xs">
+              <div className="flex items-center justify-between border-b border-[#D9E8F2] pb-2">
+                <span className="text-[#5E7183]">Report Reference:</span>
+                <span className="font-extrabold text-[#1268B3] text-sm">{submittedReport.report_code}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Status:</span>
-                <span className="font-bold text-amber-300 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
+                <span className="text-[#5E7183]">Status:</span>
+                <span className="font-bold text-[#A86A00] px-2 py-0.5 rounded bg-[#FFF9EB] border border-[#F6D88E]">
                   {submittedReport.status}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">GPS Location:</span>
-                <span className="text-slate-200">{submittedReport.latitude.toFixed(4)}°N, {submittedReport.longitude.toFixed(4)}°E</span>
+                <span className="text-[#5E7183]">GPS Location:</span>
+                <span className="text-[#17324D]">{submittedReport.latitude.toFixed(4)}°N, {submittedReport.longitude.toFixed(4)}°E</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Category:</span>
-                <span className="text-slate-200">{submittedReport.incident_category.replace(/_/g, " ")}</span>
+                <span className="text-[#5E7183]">Category:</span>
+                <span className="text-[#17324D]">{submittedReport.incident_category.replace(/_/g, " ")}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Submitted At:</span>
-                <span className="text-slate-200">{new Date(submittedReport.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} UTC</span>
+                <span className="text-[#5E7183]">Submitted At:</span>
+                <span className="text-[#17324D]">{new Date(submittedReport.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} UTC</span>
               </div>
             </div>
 
             {/* Workflow Progression Stepper */}
             <div className="space-y-2 text-left pt-2">
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <span className="text-[11px] font-semibold text-[#5E7183] uppercase tracking-wider block">
                 Verification &amp; Response Pipeline
               </span>
               <div className="grid grid-cols-4 gap-1 text-center font-mono text-[9px]">
-                <div className="p-2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
+                <div className="p-2 rounded bg-[#E8F8F4] text-[#087F68] border border-[#B3E7DA] font-bold">
                   1. SUBMITTED
                 </div>
-                <div className="p-2 rounded bg-ocean-950 text-slate-400 border border-ocean-800">
+                <div className="p-2 rounded bg-white text-[#5E7183] border border-[#D9E8F2]">
                   2. REVIEW
                 </div>
-                <div className="p-2 rounded bg-ocean-950 text-slate-400 border border-ocean-800">
+                <div className="p-2 rounded bg-white text-[#5E7183] border border-[#D9E8F2]">
                   3. AI VERIFY
                 </div>
-                <div className="p-2 rounded bg-ocean-950 text-slate-400 border border-ocean-800">
+                <div className="p-2 rounded bg-white text-[#5E7183] border border-[#D9E8F2]">
                   4. DISPATCH
                 </div>
               </div>
@@ -263,13 +263,13 @@ export default function CitizenReport() {
               <button
                 type="button"
                 onClick={handleResetForm}
-                className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs transition cursor-pointer"
+                className="w-full py-2.5 rounded-xl bg-[#1268B3] hover:bg-[#0F4C81] text-white font-semibold text-xs transition cursor-pointer shadow-sm"
               >
                 Submit Another Report
               </button>
               <Link
                 to="/"
-                className="w-full py-2.5 rounded-xl bg-ocean-800 hover:bg-ocean-700 text-slate-200 font-semibold text-xs transition text-center flex items-center justify-center gap-1"
+                className="w-full py-2.5 rounded-xl bg-white hover:bg-[#F3FAFE] text-[#1268B3] border border-[#1268B3] font-semibold text-xs transition text-center flex items-center justify-center gap-1 shadow-sm"
               >
                 Return to Command Dashboard
               </Link>
@@ -279,24 +279,24 @@ export default function CitizenReport() {
           /* Main Submission Form */
           <form onSubmit={handleSubmit} className="space-y-5">
             {submitError && (
-              <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/60 text-rose-200 text-xs flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+              <div className="p-3.5 rounded-xl bg-[#FFF1F2] border border-[#F5B5BC] text-[#C6283D] text-xs flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-[#C6283D] shrink-0" />
                 <span>{submitError}</span>
               </div>
             )}
 
             {/* 1. Photo Upload / Mobile Camera */}
-            <div className="bg-ocean-900/80 p-4 rounded-2xl border border-ocean-700/60 space-y-3 shadow-md">
+            <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] space-y-3 shadow-sm">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <Camera className="w-4 h-4 text-cyan-400" />
+                <label className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-1.5">
+                  <Camera className="w-4 h-4 text-[#1268B3]" />
                   <span>1. Photo Evidence (Recommended)</span>
                 </label>
-                <span className="text-[10px] text-slate-400">JPG, PNG, WEBP (Max 10MB)</span>
+                <span className="text-[10px] text-[#5E7183]">JPG, PNG, WEBP (Max 10MB)</span>
               </div>
 
               {photoPreview ? (
-                <div className="relative rounded-xl overflow-hidden border border-ocean-700 group max-h-64 bg-ocean-950 flex items-center justify-center">
+                <div className="relative rounded-xl overflow-hidden border border-[#D9E8F2] group max-h-64 bg-[#F8FBFE] flex items-center justify-center">
                   <img src={photoPreview} alt="Evidence preview" className="w-full h-auto max-h-64 object-cover" />
                   <button
                     type="button"
@@ -306,21 +306,21 @@ export default function CitizenReport() {
                   >
                     <X className="w-4 h-4" />
                   </button>
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] font-mono text-slate-200">
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] font-mono text-white">
                     {photoFile?.name} ({(photoFile?.size! / (1024 * 1024)).toFixed(2)} MB)
                   </div>
                 </div>
               ) : (
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="p-6 border-2 border-dashed border-ocean-700 hover:border-cyan-500/80 rounded-xl bg-ocean-950/40 hover:bg-ocean-900/40 transition cursor-pointer text-center space-y-2"
+                  className="p-6 border-2 border-dashed border-[#D9E8F2] hover:border-[#1268B3] rounded-xl bg-[#F8FBFE] hover:bg-[#EAF6FF] transition cursor-pointer text-center space-y-2"
                 >
-                  <div className="w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-[#EAF6FF] text-[#1268B3] border border-[#D9E8F2] flex items-center justify-center mx-auto">
                     <Upload className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-cyan-300 block">Tap to Take Photo or Upload Image</span>
-                    <span className="text-[11px] text-slate-400 block mt-0.5">Use your mobile camera to capture visual sheen</span>
+                    <span className="text-xs font-bold text-[#1268B3] block">Tap to Take Photo or Upload Image</span>
+                    <span className="text-[11px] text-[#5E7183] block mt-0.5">Use your mobile camera to capture visual sheen</span>
                   </div>
                 </div>
               )}
@@ -336,21 +336,21 @@ export default function CitizenReport() {
             </div>
 
             {/* 2. GPS Location & Coordinate Picker */}
-            <div className="bg-ocean-900/80 p-4 rounded-2xl border border-ocean-700/60 space-y-3 shadow-md">
+            <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] space-y-3 shadow-sm">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-emerald-400" />
+                <label className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 text-[#087F68]" />
                   <span>2. Incident Location (GPS)</span>
                 </label>
                 {gpsAccuracy !== null && (
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <span className="text-[10px] font-mono text-[#087F68] bg-[#E8F8F4] px-2 py-0.5 rounded border border-[#B3E7DA]">
                     GPS Accuracy: ±{gpsAccuracy}m
                   </span>
                 )}
               </div>
 
               {locationError && (
-                <p className="text-[11px] text-amber-300 bg-amber-500/10 p-2 rounded border border-amber-500/20">
+                <p className="text-[11px] text-[#8C5800] bg-[#FFF9EB] p-2 rounded border border-[#F6D88E]">
                   {locationError}
                 </p>
               )}
@@ -359,7 +359,7 @@ export default function CitizenReport() {
                 type="button"
                 disabled={gettingLocation}
                 onClick={handleGetCurrentLocation}
-                className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-md disabled:opacity-50"
+                className="w-full py-2.5 px-3 rounded-xl bg-[#087F68] hover:bg-[#066452] text-white font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-sm disabled:opacity-50"
               >
                 <Compass className={`w-4 h-4 ${gettingLocation ? "animate-spin" : ""}`} />
                 <span>{gettingLocation ? "Acquiring GPS Satellite Signal..." : "Use Current GPS Location"}</span>
@@ -367,25 +367,25 @@ export default function CitizenReport() {
 
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div>
-                  <span className="text-[10px] text-slate-400 block mb-1">Latitude (°N)</span>
+                  <span className="text-[10px] text-[#5E7183] block mb-1">Latitude (°N)</span>
                   <input
                     type="number"
                     step="0.000001"
                     value={latitude}
                     onChange={(e) => setLatitude(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-ocean-950 border border-ocean-700 text-xs font-mono text-slate-100 focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9E8F2] text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                     placeholder="e.g. 13.0827"
                     required
                   />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 block mb-1">Longitude (°E)</span>
+                  <span className="text-[10px] text-[#5E7183] block mb-1">Longitude (°E)</span>
                   <input
                     type="number"
                     step="0.000001"
                     value={longitude}
                     onChange={(e) => setLongitude(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-ocean-950 border border-ocean-700 text-xs font-mono text-slate-100 focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9E8F2] text-xs font-mono text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                     placeholder="e.g. 80.2707"
                     required
                   />
@@ -393,21 +393,21 @@ export default function CitizenReport() {
               </div>
 
               <div>
-                <span className="text-[10px] text-slate-400 block mb-1">Landmark / Port / Coastal Area (Optional)</span>
+                <span className="text-[10px] text-[#5E7183] block mb-1">Landmark / Port / Coastal Area (Optional)</span>
                 <input
                   type="text"
                   value={locationDescription}
                   onChange={(e) => setLocationDescription(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-ocean-950 border border-ocean-700 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9E8F2] text-xs text-[#17324D] placeholder:text-[#8A9AA8] focus:outline-none focus:border-[#1268B3] shadow-sm"
                   placeholder="e.g. Marina Beach, 2 km offshore near lighthouse"
                 />
               </div>
             </div>
 
             {/* 3. Category & Approximate Spread */}
-            <div className="bg-ocean-900/80 p-4 rounded-2xl border border-ocean-700/60 space-y-3 shadow-md">
-              <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-purple-400" />
+            <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] space-y-3 shadow-sm">
+              <label className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-[#1268B3]" />
                 <span>3. Observation Category</span>
               </label>
 
@@ -422,22 +422,22 @@ export default function CitizenReport() {
                       onClick={() => setCategory(cat.id)}
                       className={`p-2.5 rounded-xl border text-left transition cursor-pointer flex flex-col justify-between ${
                         isSelected
-                          ? "bg-purple-600/30 border-purple-400 text-white shadow-sm"
-                          : "bg-ocean-950/60 border-ocean-800 text-slate-400 hover:text-slate-200 hover:border-ocean-700"
+                          ? "bg-[#EAF6FF] border-[#1268B3] text-[#0B3A66] shadow-xs"
+                          : "bg-[#F8FBFE] border-[#D9E8F2] text-[#5E7183] hover:text-[#17324D] hover:border-[#1268B3]"
                       }`}
                     >
                       <div className="flex items-center gap-1.5 mb-1">
-                        <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-purple-300" : "text-slate-400"}`} />
+                        <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-[#1268B3]" : "text-[#5E7183]"}`} />
                         <span className="text-xs font-bold leading-tight">{cat.label}</span>
                       </div>
-                      <span className="text-[10px] text-slate-400 line-clamp-2 leading-snug">{cat.desc}</span>
+                      <span className="text-[10px] text-[#5E7183] line-clamp-2 leading-snug">{cat.desc}</span>
                     </button>
                   );
                 })}
               </div>
 
               <div className="pt-2">
-                <span className="text-[10px] text-slate-400 block mb-1">Approximate Visible Spread</span>
+                <span className="text-[10px] text-[#5E7183] block mb-1">Approximate Visible Spread</span>
                 <div className="flex flex-wrap gap-2">
                   {SIZES.map((sz) => (
                     <button
@@ -446,8 +446,8 @@ export default function CitizenReport() {
                       onClick={() => setEstimatedSize(sz)}
                       className={`px-2.5 py-1.5 rounded-lg text-xs font-medium border transition cursor-pointer ${
                         estimatedSize === sz
-                          ? "bg-cyan-600 text-white border-cyan-400"
-                          : "bg-ocean-950 border-ocean-800 text-slate-400 hover:text-slate-200"
+                          ? "bg-[#1268B3] text-white border-[#1268B3] shadow-xs"
+                          : "bg-white border-[#D9E8F2] text-[#5E7183] hover:text-[#17324D] hover:bg-[#F8FBFE]"
                       }`}
                     >
                       {sz}
@@ -458,56 +458,56 @@ export default function CitizenReport() {
             </div>
 
             {/* 4. Description */}
-            <div className="bg-ocean-900/80 p-4 rounded-2xl border border-ocean-700/60 space-y-2 shadow-md">
-              <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                <Eye className="w-4 h-4 text-amber-400" />
+            <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] space-y-2 shadow-sm">
+              <label className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-1.5">
+                <Eye className="w-4 h-4 text-[#A86A00]" />
                 <span>4. Spill Description (Mandatory)</span>
               </label>
               <textarea
                 rows={3}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full p-3 rounded-xl bg-ocean-950 border border-ocean-700 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 leading-relaxed"
+                className="w-full p-3 rounded-xl bg-white border border-[#D9E8F2] text-xs text-[#17324D] placeholder:text-[#8A9AA8] focus:outline-none focus:border-[#1268B3] leading-relaxed shadow-sm"
                 placeholder="Describe what you see: color (black/brown/rainbow), smell of fuel or diesel, movement towards shore, nearby boats or ships..."
                 required
               />
             </div>
 
             {/* 5. Optional Reporter Information & Privacy Notice */}
-            <div className="bg-ocean-900/80 p-4 rounded-2xl border border-ocean-700/60 space-y-3 shadow-md">
+            <div className="bg-white p-4 rounded-2xl border border-[#D9E8F2] space-y-3 shadow-sm">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-blue-400" />
+                <label className="text-xs font-bold text-[#0B3A66] uppercase tracking-wider flex items-center gap-1.5">
+                  <Lock className="w-4 h-4 text-[#1268B3]" />
                   <span>5. Reporter Identity (Optional &amp; Protected)</span>
                 </label>
-                <span className="text-[10px] text-slate-400">Strictly Confidential</span>
+                <span className="text-[10px] text-[#5E7183]">Strictly Confidential</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <span className="text-[10px] text-slate-400 block mb-1">Your Name</span>
+                  <span className="text-[10px] text-[#5E7183] block mb-1">Your Name</span>
                   <input
                     type="text"
                     value={reporterName}
                     onChange={(e) => setReporterName(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-ocean-950 border border-ocean-700 text-xs text-slate-100 focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9E8F2] text-xs text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                     placeholder="e.g. S. Kumar"
                   />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 block mb-1">Phone Number or Email</span>
+                  <span className="text-[10px] text-[#5E7183] block mb-1">Phone Number or Email</span>
                   <input
                     type="text"
                     value={reporterContact}
                     onChange={(e) => setReporterContact(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-ocean-950 border border-ocean-700 text-xs text-slate-100 focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9E8F2] text-xs text-[#17324D] focus:outline-none focus:border-[#1268B3] shadow-sm"
                     placeholder="e.g. +91 98401 23456"
                   />
                 </div>
               </div>
 
               <div>
-                <span className="text-[10px] text-slate-400 block mb-1">Role / Association</span>
+                <span className="text-[10px] text-[#5E7183] block mb-1">Role / Association</span>
                 <div className="flex flex-wrap gap-2">
                   {AFFILIATIONS.map((aff) => (
                     <button
@@ -516,8 +516,8 @@ export default function CitizenReport() {
                       onClick={() => setReporterAffiliation(aff)}
                       className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition cursor-pointer ${
                         reporterAffiliation === aff
-                          ? "bg-indigo-600 text-white border-indigo-400"
-                          : "bg-ocean-950 border-ocean-800 text-slate-400 hover:text-slate-200"
+                          ? "bg-[#1268B3] text-white border-[#1268B3] shadow-xs"
+                          : "bg-white border-[#D9E8F2] text-[#5E7183] hover:text-[#17324D] hover:bg-[#F8FBFE]"
                       }`}
                     >
                       {aff}
@@ -527,8 +527,8 @@ export default function CitizenReport() {
               </div>
 
               {/* Privacy Guarantee Note */}
-              <div className="p-2.5 rounded-lg bg-blue-950/30 border border-blue-500/30 flex items-start gap-2 text-[10px] text-blue-200/90 leading-relaxed">
-                <Shield className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+              <div className="p-2.5 rounded-lg bg-[#F8FBFE] border border-[#D9E8F2] flex items-start gap-2 text-[10px] text-[#5E7183] leading-relaxed">
+                <Shield className="w-3.5 h-3.5 text-[#087F68] shrink-0 mt-0.5" />
                 <span>
                   Privacy Guarantee: Your contact details are stored securely and never published publicly. Responders may only contact you for critical clarification during active containment operations.
                 </span>
@@ -539,7 +539,7 @@ export default function CitizenReport() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-extrabold text-sm transition flex items-center justify-center gap-2 shadow-xl cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 rounded-xl bg-[#1268B3] hover:bg-[#0F4C81] text-white font-extrabold text-sm transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50"
             >
               <Send className={`w-4 h-4 ${submitting ? "animate-spin" : ""}`} />
               <span>{submitting ? "Transmitting Field Report to Coast Guard..." : "Submit Official Oil Spill Report"}</span>

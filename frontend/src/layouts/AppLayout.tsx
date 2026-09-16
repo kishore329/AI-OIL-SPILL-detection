@@ -7,7 +7,7 @@ export function AppLayout() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-ocean-950 text-slate-100">
+    <div className="flex h-screen overflow-hidden bg-[#F4F9FD] dark:bg-[#071521] text-[#17324D] dark:text-[#EAF6FF] transition-colors duration-200">
       {/* Sidebar (Desktop + Mobile Drawer) */}
       <Sidebar
         mobileOpen={mobileNavOpen}
